@@ -1,0 +1,72 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ANNSBIR - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/ANNSBIR.res" /d "NDEBUG" "F:\程序\image retrieval\ANNSBIR\ANNSBIR.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/ANNSBIR.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"F:\程序\image retrieval\ANNSBIR\ANNSBIR.cpp"
+"F:\程序\image retrieval\ANNSBIR\ANNSBIRDoc.cpp"
+"F:\程序\image retrieval\ANNSBIR\ANNSBIRView.cpp"
+"F:\程序\image retrieval\ANNSBIR\Classes\BtnST.cpp"
+"F:\程序\image retrieval\ANNSBIR\classes\cjpeg.cpp"
+"F:\程序\image retrieval\ANNSBIR\classes\idct.cpp"
+"F:\程序\image retrieval\ANNSBIR\MainFrm.cpp"
+"F:\程序\image retrieval\ANNSBIR\Classes\PictCtrl.cpp"
+"F:\程序\image retrieval\ANNSBIR\Classes\Picture.cpp"
+"F:\程序\image retrieval\ANNSBIR\Classes\StatLink.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/ANNSBIR.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"F:\程序\image retrieval\ANNSBIR\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/ANNSBIR.pdb" /machine:I386 /out:"Release/ANNSBIR.exe" 
+".\Release\ANNSBIR.obj"
+".\Release\ANNSBIRDoc.obj"
+".\Release\ANNSBIRView.obj"
+".\Release\BtnST.obj"
+".\Release\cjpeg.obj"
+".\Release\idct.obj"
+".\Release\MainFrm.obj"
+".\Release\PictCtrl.obj"
+".\Release\Picture.obj"
+".\Release\StatLink.obj"
+".\Release\StdAfx.obj"
+".\Release\ANNSBIR.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ANNSBIR.cpp
+ANNSBIRDoc.cpp
+ANNSBIRView.cpp
+BtnST.cpp
+cjpeg.cpp
+idct.cpp
+MainFrm.cpp
+PictCtrl.cpp
+Picture.cpp
+StatLink.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ANNSBIR.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

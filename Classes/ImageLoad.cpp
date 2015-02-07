@@ -14,7 +14,6 @@ CImageLoad::CImageLoad()
 	this->m_fH=NULL;
 	this->m_fS=NULL;
 	this->m_fV=NULL;
-	this->m_yGray=NULL;
 }
 
 CImageLoad::~CImageLoad()
@@ -47,15 +46,13 @@ void CImageLoad::deleteMemory()
 	delete[]this->m_fH;
 	delete[]this->m_fS;
 	delete[]this->m_fV;
-	delete[]this->m_yGray;
 	this->m_yB=NULL;
 	this->m_yG=NULL;
 	this->m_yR=NULL;
 	this->m_fH=NULL;
 	this->m_fS=NULL;
 	this->m_fV=NULL;
-	this->m_yGray=NULL;
-
+//	delete[]this->m_yGray;
 	this->m_bLoadSuccess=false;
 //}
 

@@ -2,8 +2,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_MAINFRM_H__5DC47F35_7280_4B3F_BF77_C55CC8A42CB7__INCLUDED_)
-#define AFX_MAINFRM_H__5DC47F35_7280_4B3F_BF77_C55CC8A42CB7__INCLUDED_
+#if !defined(AFX_MAINFRM_H__DCF4408C_9FDC_4845_8E74_EC1C891A408E__INCLUDED_)
+#define AFX_MAINFRM_H__DCF4408C_9FDC_4845_8E74_EC1C891A408E__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
@@ -25,7 +25,6 @@ public:
 // Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CMainFrame)
-	public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	//}}AFX_VIRTUAL
 
@@ -45,8 +44,7 @@ protected:  // control bar embedded members
 protected:
 	//{{AFX_MSG(CMainFrame)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code!
+//	afx_msg void OnButton2();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
@@ -56,4 +54,4 @@ protected:
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
-#endif // !defined(AFX_MAINFRM_H__5DC47F35_7280_4B3F_BF77_C55CC8A42CB7__INCLUDED_)
+#endif // !defined(AFX_MAINFRM_H__DCF4408C_9FDC_4845_8E74_EC1C891A408E__INCLUDED_)

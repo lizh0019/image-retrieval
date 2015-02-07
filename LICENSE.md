@@ -1,5 +1,5 @@
 /*
- * Visual C++ implementation of Image Retrieval System.
+ * Visual C++ implementation of Artificial-neural-network-based Image Retrieval System.
  *
  * Copyright (C) 2005-2006: Li Zhen.
  *
@@ -26,7 +26,7 @@
  * [including the GNU Public License.]
  * 
  * Author: Li Zhen (Harbin Institute of Technology)
- * Version: 1.1
- * Last Update Date: 2006
+ * Version: 2.1
+ * Last Update Date: 2007
  *
  */
