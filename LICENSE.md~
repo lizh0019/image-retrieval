@@ -1,7 +1,7 @@
 /*
- * Visual C++ implementation of Tooth filling CAD software for Harbin Longteng Hospital.
+ * Visual C++ implementation of MR-MS-vector-quantization-based Image Retrieval System.
  *
- * Copyright (C) 2004-2005: Li Zhen.
+ * Copyright (C) 2005-2006: Li Zhen.
  *
  * Copyright remains the author(s)' and as such any Copyright notices in
  * the code are not to be removed.
@@ -27,6 +27,6 @@
  * 
  * Author: Li Zhen (Harbin Institute of Technology)
  * Version: 1.1
- * Last Update Date: 2004.12.19
+ * Last Update Date: 2005.04.07
  *
  */

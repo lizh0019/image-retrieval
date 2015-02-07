@@ -1,5 +1,5 @@
 /*
- * Visual C++ implementation of MR-MS-vector-quantization-based Image Retrieval System.
+ * Visual C++ implementation of Image Retrieval System.
  *
  * Copyright (C) 2005-2006: Li Zhen.
  *
@@ -27,6 +27,6 @@
  * 
  * Author: Li Zhen (Harbin Institute of Technology)
  * Version: 1.1
- * Last Update Date: 2005.04.07
+ * Last Update Date: 2006
  *
  */

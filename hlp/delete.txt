@@ -1,1 +1,0 @@
-C:\Programme\Microsoft Visual Studio\VC98\MFC\include\afxhelp.hm.

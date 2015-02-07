@@ -1,0 +1,706 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\SBIRSystem.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_IMAGEBASE DIALOG DISCARDABLE  0, 0, 192, 115
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ImageBase"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,124,88,37,14
+    PUSHBUTTON      "load...",IDC_BUTTON_LOAD,151,25,25,14
+    PUSHBUTTON      "Creat...",IDC_BUTTON_CREAT,151,43,25,14
+    PUSHBUTTON      "OK",IDOK,25,87,50,14
+    LTEXT           "Path:",IDC_STATIC,21,38,18,8
+    COMBOBOX        IDC_PATH,58,34,78,30,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_PARAMENTS DIALOG DISCARDABLE  0, 0, 212, 184
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Parament Set"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,150,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,125,149,50,14
+    EDITTEXT        IDC_EDIT1,142,39,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,142,63,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,142,89,40,14,ES_AUTOHSCROLL
+    LTEXT           "Increment of Relevance(a):",IDC_STATIC,21,41,101,10
+    LTEXT           "Decrease of Irrelevance(b):",IDC_STATIC,21,67,101,10
+    LTEXT           "Decrease of R and unlabled(c):",IDC_STATIC,21,93,101,10
+    CONTROL         "Check1",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,142,114,40,14
+    LTEXT           "Studying:",IDC_STATIC,21,114,88,10
+END
+
+IDD_SBIRSYSTEM_FORM DIALOGEX 0, 0, 836, 443
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Retrieval Result",IDC_RETRIEVELRESULT_BOX,351,15,466,
+                    335
+    CONTROL         "",IDC_RESULTE1,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,370,28,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY,440,119,19,8
+    GROUPBOX        "Result Information",IDC_RESULT_INFORMATION,351,356,465,
+                    74
+    LTEXT           "Total Results:",IDC_STATIC_RESULTNUMBER,383,378,67,10
+    LTEXT           "numberof results",IDC_DATA_RESULTNUMBER,467,378,77,10
+    PUSHBUTTON      "Next Page(Page Down)",IDC_BUTTON_NEXTPAGE,578,367,86,14
+    PUSHBUTTON      "Pre Page(Page Up)",IDC_BUTTON_PREPAGE,578,388,86,14
+    PUSHBUTTON      "First Page(Home)",IDC_BUTTON_HOMEPAGE,578,412,86,14
+    CONTROL         "+",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    372,119,20,10
+    CONTROL         "0",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,394,119,20,10
+    CONTROL         "-",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,414,119,20,10
+    CONTROL         "",IDC_RESULTE2,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,479,28,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY2,549,119,19,8
+    CONTROL         "+",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    481,119,20,10
+    CONTROL         "0",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,503,119,20,10
+    CONTROL         "-",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,523,119,20,10
+    CONTROL         "",IDC_RESULTE3,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,590,28,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY3,660,119,19,8
+    CONTROL         "+",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    592,119,20,10
+    CONTROL         "0",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON,614,119,20,10
+    CONTROL         "-",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON,634,119,20,10
+    CONTROL         "",IDC_RESULTE4,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,700,28,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY4,770,119,19,8
+    CONTROL         "+",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    702,119,20,10
+    CONTROL         "0",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON,724,119,20,
+                    10
+    CONTROL         "-",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON,744,119,20,
+                    10
+    CONTROL         "",IDC_RESULTE5,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,370,139,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY5,440,231,19,8
+    CONTROL         "+",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    372,231,20,10
+    CONTROL         "0",IDC_RADIO14,"Button",BS_AUTORADIOBUTTON,394,231,20,
+                    10
+    CONTROL         "-",IDC_RADIO15,"Button",BS_AUTORADIOBUTTON,414,231,20,
+                    10
+    CONTROL         "",IDC_RESULTE6,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,479,139,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY6,549,235,19,8
+    CONTROL         "+",IDC_RADIO16,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    481,231,20,10
+    CONTROL         "0",IDC_RADIO17,"Button",BS_AUTORADIOBUTTON,503,231,20,
+                    10
+    CONTROL         "-",IDC_RADIO18,"Button",BS_AUTORADIOBUTTON,523,231,20,
+                    10
+    CONTROL         "",IDC_RESULTE7,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,590,139,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY7,660,231,19,8
+    CONTROL         "+",IDC_RADIO19,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    592,231,20,10
+    CONTROL         "0",IDC_RADIO20,"Button",BS_AUTORADIOBUTTON,614,231,20,
+                    10
+    CONTROL         "-",IDC_RADIO21,"Button",BS_AUTORADIOBUTTON,634,231,20,
+                    10
+    CONTROL         "",IDC_RESULTE8,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,700,142,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY8,770,231,19,8
+    CONTROL         "+",IDC_RADIO22,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    702,231,20,10
+    CONTROL         "0",IDC_RADIO23,"Button",BS_AUTORADIOBUTTON,724,231,20,
+                    10
+    CONTROL         "-",IDC_RADIO24,"Button",BS_AUTORADIOBUTTON,744,231,20,
+                    10
+    CONTROL         "",IDC_RESULTE9,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,368,244,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY9,438,337,19,8
+    CONTROL         "+",IDC_RADIO25,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    370,337,20,10
+    CONTROL         "0",IDC_RADIO26,"Button",BS_AUTORADIOBUTTON,392,337,20,
+                    10
+    CONTROL         "-",IDC_RADIO27,"Button",BS_AUTORADIOBUTTON,412,337,20,
+                    10
+    CONTROL         "",IDC_RESULTE10,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,477,244,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY10,547,337,19,8
+    CONTROL         "+",IDC_RADIO28,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    479,337,20,10
+    CONTROL         "0",IDC_RADIO29,"Button",BS_AUTORADIOBUTTON,501,337,20,
+                    10
+    CONTROL         "-",IDC_RADIO30,"Button",BS_AUTORADIOBUTTON,521,337,20,
+                    10
+    CONTROL         "",IDC_RESULTE11,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,588,244,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY11,658,337,19,8
+    CONTROL         "+",IDC_RADIO31,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    590,337,20,10
+    CONTROL         "0",IDC_RADIO32,"Button",BS_AUTORADIOBUTTON,612,337,20,
+                    10
+    CONTROL         "-",IDC_RADIO33,"Button",BS_AUTORADIOBUTTON,632,337,20,
+                    10
+    CONTROL         "",IDC_RESULTE12,"Static",SS_BLACKFRAME | SS_NOTIFY | 
+                    SS_SUNKEN | WS_BORDER,698,244,90,90
+    LTEXT           "sim",IDC_DATA_SIMILARITY12,768,337,19,8
+    CONTROL         "+",IDC_RADIO34,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    700,337,20,10
+    CONTROL         "0",IDC_RADIO35,"Button",BS_AUTORADIOBUTTON,722,337,20,
+                    10
+    CONTROL         "-",IDC_RADIO36,"Button",BS_AUTORADIOBUTTON,742,337,20,
+                    10
+    LTEXT           "Total Pages:",IDC_STATIC_RESULTNUMBER2,382,394,67,10
+    LTEXT           "total pages",IDC_DATA_TOTALPAGES,467,394,77,10
+    LTEXT           "Current Page No:",IDC_STATIC_RESULTNUMBER3,382,412,67,
+                    10
+    LTEXT           "current page",IDC_DATA_CURRENTPAGE,467,412,77,10
+    EDITTEXT        IDC_RECALL,743,391,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PRECISE,743,415,40,14,ES_AUTOHSCROLL
+    LTEXT           "Recall:",IDC_STATIC,705,393,29,8
+    LTEXT           "Precise:",IDC_STATIC,705,415,33,8
+    CONTROL         "",IDC_SAMPLEIMAGE_PICTURE,"Static",SS_BLACKFRAME | 
+                    SS_NOTIFY | SS_SUNKEN | WS_BORDER,22,78,145,137
+    GROUPBOX        "Retrieval By Image",IDC_SAMPLEIMAGE_BOX,10,26,164,197
+    GROUPBOX        "Control",IDC_CONTROL_BOX,15,230,155,81
+    PUSHBUTTON      "Sample Image..",IDC_BUTTON_OPENSAMPLE,22,55,69,14
+    PUSHBUTTON      "Load or Creat Image DataBase..",
+                    IDC_BUTTON_IMAGEDATABASE,21,252,143,14
+    PUSHBUTTON      "Retrieval",IDC_BUTTON_RETRIEVAL,99,55,68,14
+    GROUPBOX        "Information",IDC_INOFORMATION_BOX,16,321,157,109
+    EDITTEXT        IDC_THRESHOLD,130,286,33,14,ES_AUTOHSCROLL
+    LTEXT           "Threshold:",IDC_STATIC_THRESHOLD,84,286,43,14
+    PUSHBUTTON      "Parameter Set..",IDC_BUTTON_PARAMETER,21,284,62,14
+    LTEXT           "DatabaseSize:",IDC_STATIC_IMAGEDATABASESIZE,25,377,63,8
+    LTEXT           "ImageBasePath:",IDC_STATIC_IMAGEPATH,25,361,63,8
+    LTEXT           "SampleImage ID:",IDC_STATIC_CURRENT_STATE,25,341,63,8
+    LTEXT           "databasesize",IDC_DATA_IMAGEDATABASESIZE,89,377,76,8
+    LTEXT           "retrievaltime",IDC_DATA_IMAGERETRIEVALTIME,89,361,76,8
+    LTEXT           "sampleImageID",IDC_DATA_SAMPLEID,89,343,76,8
+    LTEXT           "Study Times:",IDC_STATIC,25,393,49,8
+    LTEXT           "study times",IDC_DATA_STUDY_TIMES,89,393,76,8
+    LTEXT           "Feedback Times:",IDC_STATIC,26,412,61,8
+    LTEXT           "feedback time",IDC_DATA_FEEDBACKTIME,90,412,76,8
+    LISTBOX         IDC_LIST_ANNOTION,186,247,145,173,LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | WS_VSCROLL | 
+                    WS_GROUP | WS_TABSTOP,WS_EX_DLGMODALFRAME | 
+                    WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    GROUPBOX        "Annotion Relevant",IDC_STATIC,177,230,164,200
+    EDITTEXT        IDC_EDIT_KEYWORD_RETRIEVIED,185,52,102,17,ES_AUTOHSCROLL
+    GROUPBOX        "Retrieval by Keywords",IDC_STATIC,177,26,164,197
+    PUSHBUTTON      "Retrieval",IDC_BUTTON_KEYWORDRETRIEVAL,289,55,41,14
+    LISTBOX         IDC_LIST_KEYWORDRETRIEVIED,185,78,145,137,
+                    LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | 
+                    WS_VSCROLL | WS_GROUP | WS_TABSTOP,WS_EX_DLGMODALFRAME | 
+                    WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    PUSHBUTTON      "Feedback",IDC_BUTTON_RELEVANCEFEEDBACK,705,370,78,14,
+                    BS_CENTER | BS_VCENTER | BS_FLAT | NOT WS_TABSTOP
+END
+
+IDD_DIALOG_LOADSAMPLE DIALOG DISCARDABLE  0, 0, 207, 223
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Load Image"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,131,168,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,131,193,50,14
+    CONTROL         "",IDC_BROWSEIMAGE,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    24,23,152,124
+    GROUPBOX        "Image in Base",IDC_STATIC,17,8,168,145
+    EDITTEXT        IDC_EDIT2,92,193,34,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Display",IDC_BUTTON_DISPLAY_CUURETN,76,168,50,14
+    CONTROL         "Random",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,24,193,45,14
+    PUSHBUTTON      "Next One",IDC_BUTTON_NEXT,21,168,50,14
+    GROUPBOX        "Control",IDC_STATIC,15,153,172,57
+    LTEXT           "ID:",IDC_STATIC,76,196,11,11
+END
+
+IDD_DIALOG_DISPLAYRESULT DIALOG DISCARDABLE  0, 0, 183, 201
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Result Image"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,124,175,45,14
+    CONTROL         "",IDC_RESULTIMAGE_ORGINAL,"Static",SS_BITMAP | 
+                    SS_CENTERIMAGE,17,14,146,128
+    GROUPBOX        "Result Image",IDC_STATIC,13,2,159,161
+    PUSHBUTTON      "Retrieval It",IDC_BUTTON_RETRIEVAL_CHANGE,69,175,45,14
+    LTEXT           "Width:",IDC_STATIC,24,148,24,8
+    LTEXT           "Height:",IDC_STATIC,89,148,24,8
+    LTEXT           "Width:",IDC_STATIC_WIDTH,54,148,24,8
+    LTEXT           "Height:",IDC_STATIC_HEIGHT,125,148,24,8
+    PUSHBUTTON      "Save As...",IDC_BUTTON_SAVE,16,175,45,14
+    GROUPBOX        "Control",IDC_STATIC,13,165,161,29
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_IMAGEBASE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 185
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 108
+    END
+
+    IDD_DIALOG_PARAMENTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 205
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 177
+    END
+
+    IDD_SBIRSYSTEM_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 827
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 436
+    END
+
+    IDD_DIALOG_LOADSAMPLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 200
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 216
+    END
+
+    IDD_DIALOG_DISPLAYRESULT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 200
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "Operation"
+    BEGIN
+        MENUITEM "Get the Retrieval Result(expermient 1)", 
+                                                IDC_GETINFORMATINO
+        MENUITEM "test the retrieval method(experiment 3)", 
+                                                IDC_RETRIEVAL_METHOD_TEST
+        MENUITEM "初始化语义标签",              IDC_INITIAL_SEMANTICANNOTION
+        MENUITEM "打开标签联想功能",            ID_OPEN_ANNOTION
+        MENUITEM "关闭联想功能",                ID_CLOSE_ANNOTION
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About SBIRSystem...",        ID_APP_ABOUT
+    END
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 237, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About SBIRSystem"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "SBIRSystem Version 2.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005\nWrite by Jinhaijun\njinhaijun@dsp.hit.edu.cn\nWrite from 2005.5.29-2005.5.29",
+                    IDC_STATIC,39,34,120,40
+    DEFPUSHBUTTON   "OK",IDOK,180,7,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 230
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\SBIRSystem.ico"
+IDR_SBIRSYTYPE          ICON    DISCARDABLE     "res\\SBIRSystemDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_HOME,        IDC_BUTTON_HOMEPAGE,    VIRTKEY, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_NEXT,        IDC_BUTTON_NEXTPAGE,    VIRTKEY, NOINVERT
+    VK_PRIOR,       IDC_BUTTON_PREPAGE,     VIRTKEY, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "SBIRSystem MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SBIRSystem\0"
+            VALUE "LegalCopyright", "Copyright (C) 2005\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SBIRSystem.EXE\0"
+            VALUE "ProductName", "SBIRSystem Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "SBIRSystem\n\nSBIRSy\n\n\nSBIRSystem.Document\nSBIRSy Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "SBIRSystem"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\SBIRSystem.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
