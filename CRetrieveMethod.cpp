@@ -121,11 +121,13 @@ void CRetrieveMethod::rgb2hsv(BYTE *image_byte,double *image_double,LONG width,L
   LONG i,j,p;
   for(i=0;i<height;i++)
   {
+	p=0;
 	for(j=0;j<width;j++)
 	{
-      	p=(i*width+j)*3;
-        rgb2hsv_component(image_byte+p,image_double+p);
+      p=(i*width+j)*3;
+      rgb2hsv_component(image_byte+p,image_double+p);
 	}
+	p=0;
   }
 }
 /*****************************************
@@ -149,7 +151,7 @@ void CRetrieveMethod::rgb2hcv(BYTE *image_byte,double *image_double,LONG width,L
   {
 	for(j=0;j<width;j++)
 	{
-      	p=(i*width+j)*3;
+		p=(i*width+j)*3;
         rgb2hcv_component(image_byte+p,image_double+p);
 	}
   }
@@ -176,7 +178,7 @@ void CRetrieveMethod::rgb2Lab(BYTE *image_byte,double *image_double,LONG width,L
   {
 	for(j=0;j<width;j++)
 	{
-      	p=(i*width+j)*3;
+		p=(i*width+j)*3;
         rgb2Lab_component(image_byte+p,image_double+p);
 	}
   }
@@ -205,63 +207,6 @@ void CRetrieveMethod::rgb2YCbCr(BYTE *image_byte,BYTE *image_outbyte,LONG width,
 	{
       	p=(i*width+j)*3;
         rgb2YCbCr_component(image_byte+p,image_outbyte+p);
-	}
-  }
-
-}
-/*****************************************
-        *
-        *   Public function: YCbC2rgbr(...
-        *
-        *   
-        *  Convert the whole input image from rgb to YCbCr
-        *  input: -image_byte: 24bits YCbCr-style BMP image in a
-		*  1-D array (Cr(16-240) Cb(16-240) Y(16-235) Cr Cb Y...) 
-        *  -height: the height of the image
-        *  -width: the width of the image
-        *  output: -image_double: YCbCr image 
-		*  (related to 24bits RGB image)
-		*  (B(0-255) G(0-255) R(0-255) B G R B G R...)
-******************************************/
-void CRetrieveMethod::YCbCr2rgb(BYTE *image_byte,BYTE *image_outbyte,LONG width,LONG height)
-{
-  LONG i,j,p;
-  for(i=0;i<height;i++)
-  {
-	for(j=0;j<width;j++)
-	{
-      	p=(i*width+j)*3;
-        YCbCr2rgb_component(image_byte+p,image_outbyte+p);
-	}
-  }
-
-}
-
-/*****************************************
-        *
-        *   Public function: YCbC2rgbr_other(...
-        *
-        *   
-        *  Convert the whole input image from rgb to YCbCr
-        *  input: -image_byte: 24bits YCbCr-style BMP image in a
-		*  1-D array (Cr(16-240) Cb(16-240) Y(16-235) Cr Cb Y...) 
-        *  -height: the height of the image
-        *  -width: the width of the image
-        *  output: -image_double: YCbCr image 
-		*  (related to 24bits RGB image)
-		*  (B(0-255) G(0-255) R(0-255) B G R B G R...)
-******************************************/
-void CRetrieveMethod::YCbCr2rgb_other(BYTE *image_byte,BYTE *image_outbyte,LONG width,LONG height)
-{
-  LONG i,j,p;
-  long int linebytes;
-  linebytes=(width*24+31)/32*4;
-  for(i=0;i<height;i++)
-  {
-	for(j=0;j<width;j++)
-	{
-      	p=54+i*linebytes+j*3;
-        YCbCr2rgb_component(image_byte+p,image_outbyte+p);
 	}
   }
 
@@ -315,7 +260,7 @@ void CRetrieveMethod::rgb2YIQ(BYTE *image_byte,double *image_double,LONG width,L
   {
 	for(j=0;j<width;j++)
 	{
-      	p=(i*width+j)*3;
+		p=(i*width+j)*3;
         rgb2YIQ_component(image_byte+p,image_double+p);
 	}
   }
@@ -343,7 +288,7 @@ void CRetrieveMethod::rgb2I1I2I3(BYTE *image_byte,double *image_double,LONG widt
   {
 	for(j=0;j<width;j++)
 	{
-      	p=(i*width+j)*3;
+        p=(i*width+j)*3;
         rgb2I1I2I3_component(image_byte+p,image_double+p);
 	}
   }
@@ -534,7 +479,7 @@ void CRetrieveMethod::rgb2RGBY(BYTE *image_byte,double *image_double,LONG width,
   {
 	for(j=0;j<width;j++)
 	{
-      	p=(i*width+j)*3;
+		p=(i*width+j)*3;
         rgb2RGBY_component(image_byte+p,image_double+p);
 	}
   }
@@ -706,9 +651,9 @@ int CRetrieveMethod::compute_color_histogram_feature_vector(BYTE *rgb_or_gimage,
 	//bits error
 	if(bits!=8&&bits!=24)return -2;
 	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(width<100||width>2000)return -2;
 	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(height<100||height>2000)return -2;
 	
 	//temp double image
 	double *image_double=new double[width*height*3]; 
@@ -833,9 +778,9 @@ int CRetrieveMethod::compute_haar_integral_invariant_feature_vector(BYTE *rgb_or
 	//bits error
 	if(bits!=8&&bits!=24)return -2;
 	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(width<100||width>2000)return -2;
 	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(height<100||height>2000)return -2;
 	//points error
 	if(points!=(DWORD)(width*height)&&points!=(DWORD)(width*height/2)&&points!=(DWORD)(width*height/4)&&points!=(DWORD)(width*height/8)&&points!=1000&&points!=2000&&points!=4000)return -2;
 	//angles error
@@ -998,9 +943,9 @@ int CRetrieveMethod::get_medium_image_for_haar_invariant_feature(double *inputim
 	}
 	if(a==0)return 1;
 	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return 1;
+	if(width<100||width>2000)return 1;
 	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return 1;
+	if(height<100||height>2000)return 1;
 	LONG length,n;
 	length=width*height;
 	//normalized to be -1.0  to 1.0
@@ -1171,9 +1116,9 @@ int CRetrieveMethod::compute_texture_feature_vector(BYTE *rgb_or_gimage,double *
 	//bits error
 	if(bits!=8&&bits!=24)return -2;
 	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(width<100||width>2000)return -2;
 	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(height<100||height>2000)return -2;
 	//temp double image
 	double *image_double=new double[width*height*3]; 
 	if(image_double==NULL)return -1;//memory error
@@ -1793,9 +1738,9 @@ int CRetrieveMethod::compute_shape_feature_vector(BYTE *rgb_or_gimage,double *sh
 	//bits error
 	if(bits!=8&&bits!=24)return -2;
 	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(width<100||width>2000)return -2;
 	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
+	if(height<100||height>2000)return -2;
 	double max[3],min[3];
 	//temp double image
 	double *image_double=new double[width*height*3]; 
@@ -2303,790 +2248,29 @@ double CRetrieveMethod::calculate_upq(double *image_double,LONG width,LONG heigh
 ******************************************/
 int CRetrieveMethod::compute_distortion_shape_feature_vector(double *image_double,double *distortion_feature,BYTE colorspace,LONG width,LONG height,WORD thisdimension,WORD *dimensionused)
 {
-//    if(rgb_or_gimage==NULL||hist_feature==NULL)return -1;//memory error
-//	if(description!=0&&description!=1)return -2;//hist or accum_hist
-	if(colorspace<0||colorspace>25)return -2;//color space type error
-	//bins setting error
-//	if(bins!=MAX_HISTOGRAM_BIN&&bins!=MAX_HISTOGRAM_BIN/2&&bins!=MAX_HISTOGRAM_BIN/4&&bins!=MAX_HISTOGRAM_BIN/8)return -2;
-	//bits error
-//	if(bits!=8&&bits!=24)return -2;
-	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	*dimensionused+=thisdimension;
-    return 0;
+  *dimensionused+=thisdimension;
+  return 0;
 }
 
-int CRetrieveMethod::compute_other_feature_vector1(BYTE *rgb_or_gimage,float *CodeBookY1,float (*CodeBookY2)[DIMENSION1],float (*CodeBookY3)[DIMENSION2],float *CodeBookY4,float *CodeBookCb1,float (*CodeBookCb2)[DIMENSION1],float (*CodeBookCb3)[DIMENSION2],float *CodeBookCb4,float *CodeBookCr1,float (*CodeBookCr2)[DIMENSION1],float (*CodeBookCr3)[DIMENSION2],float *CodeBookCr4,double *other_feature1,WORD bits,LONG width,LONG height,WORD *dimensionused)
+int CRetrieveMethod::compute_other_feature_vector1(BYTE *rgb_or_gimage,double *other_feature1,WORD bits,LONG width,LONG height,WORD *dimensionused)
 {
-	if(rgb_or_gimage==NULL||other_feature1==NULL)return -1;//memory error
-	//bits error
-	if(bits!=8&&bits!=24)return -2;
-	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	if(CodeBookY1==NULL||CodeBookY2==NULL||CodeBookY3==NULL||CodeBookY4==NULL||CodeBookCb1==NULL||CodeBookCb2==NULL||CodeBookCb3==NULL||CodeBookCb4==NULL||CodeBookCr1==NULL||CodeBookCr2==NULL||CodeBookCr3==NULL||CodeBookCr4==NULL)return -1;
-	
-	//The memory handle
-	HGLOBAL hMem;
-	//The blocks and counters
-	long int blocks;
-    long int i,j,k,l;
-	int component;
-    //The memory pointer for each component image
-	unsigned char *ImageY,*ImageCb,*ImageCr;
-	//The number of blocks in width and height
-	unsigned short int wb,hb;
-
-	//The pointer for Encode image vectors
-	unsigned char *SourceVector[MAXENCODEVECTORS];
-	float *DCTSourceVector[MAXENCODEVECTORS];
-	float *SourceVector1;
-	float *SourceVector2[MAXENCODEVECTORS];
-	float *SourceVector3[MAXENCODEVECTORS];
-	float *SourceVector4;
-	 
-	//The index in codebook for each input image vetor to be encoded of two stages
-	unsigned short int *EncodeCodeIndex1,*EncodeCodeIndex2,*EncodeCodeIndex3,*EncodeCodeIndex4;
-	
-	//The pointer array for generated codevectors by codebook design
-    int BOOKSIZE1, BOOKSIZE2;
-    unsigned char INBLOCK[BLOCKHEIGHT][BLOCKWIDTH],*INBLOCK1[BLOCKHEIGHT];
-	double OUTDCT[BLOCKHEIGHT][BLOCKWIDTH],DCT1D[VECTORDIMENSION],*OUTDCT1[BLOCKHEIGHT];
-	
-	
-	//temp double image
-	unsigned char *image_byte=new unsigned char[width*height*3]; 
-	if(image_byte==NULL)return -1;//memory error
-	
-	BYTE *rgb_image_byte=new BYTE[width*height*3]; 
-	if(rgb_image_byte==NULL)
-	{
-		delete [] image_byte;
-		return -1;//memory error
-	}
-	if(bits==8)
-	  g2rgb(rgb_or_gimage,rgb_image_byte,width,height);
-	else
-	  memcpy(rgb_image_byte,rgb_or_gimage,width*height*3);
-    rgb2YCbCr(rgb_image_byte,image_byte,width,height);
-	delete [] rgb_image_byte;
-	
-	hb=height/BLOCKHEIGHT;
-    wb=width/BLOCKWIDTH;
-	blocks=hb*wb;
-
-    //Apply memory
-	hMem=NULL;
-	i=3*width*height  //Y Cb Cr
-	// SourceVector   DCTSourceVector          SourceVector1                 SourceVector2/3/4
-	+blocks*(2*sizeof(float)+VECTORDIMENSION+VECTORDIMENSION*sizeof(float)+sizeof(float)*DIMENSION1+sizeof(float)*DIMENSION2)
-	+4*blocks*sizeof(unsigned short int); //EncodeIndex1/2/3/4
-	
-	hMem=GlobalAlloc(GMEM_FIXED,i);
-	if(hMem==NULL)
-	{
-	    delete [] image_byte;
-	    return -1;
-	}
-	//Alloc the memory
- 	for(i=0;i<blocks;i++)
-	  SourceVector[i]=(unsigned char *)hMem+i*VECTORDIMENSION;
-	for(i=0;i<blocks;i++)
-	  DCTSourceVector[i]=(float *)((unsigned char *)hMem+blocks*VECTORDIMENSION)+i*VECTORDIMENSION;
-	SourceVector1=DCTSourceVector[0]+blocks*VECTORDIMENSION;
-	for(i=0;i<blocks;i++)
-	  SourceVector2[i]=SourceVector1+i*DIMENSION1+blocks;
-	for(i=0;i<blocks;i++)
-	  SourceVector3[i]=SourceVector2[0]+i*DIMENSION2+blocks*DIMENSION1;
-	SourceVector4=SourceVector3[0]+blocks*DIMENSION2;
-	EncodeCodeIndex1=(unsigned short int *)(SourceVector4+blocks);
-    EncodeCodeIndex2=EncodeCodeIndex1+blocks;
-    EncodeCodeIndex3=EncodeCodeIndex2+blocks;
-    EncodeCodeIndex4=EncodeCodeIndex3+blocks;
-    ImageY=(unsigned char *)(EncodeCodeIndex4+blocks);
-	ImageCb=ImageY+width*height;
-	ImageCr=ImageCb+width*height;
-    long int pp,qq;
-    double ttt;
-    for(i=0;i<height;i++)
-    {
-      for(j=0;j<width;j++)
-	  {
-	     pp=i*width+j;
-		 qq=j*3+i*3*width;
-		 ImageY[pp]=image_byte[qq+2];
-	     ImageCb[pp]=image_byte[qq+1];
-	     ImageCr[pp]=image_byte[qq];
-	  }
-    }
-	int posi=0;
-	double c;
-	for(component=2;component>=0;component--)
-	{
-	  if(component==2)
-	  {
-		  BOOKSIZE1=BOOKSIZEY1;
-		  BOOKSIZE2=BOOKSIZEY2;
-	  }
-	  if(component==1)
-	  {
-		  BOOKSIZE1=BOOKSIZECb1;
-		  BOOKSIZE2=BOOKSIZECb2;
-	  }
-	  if(component==0)
-      {  
-		  BOOKSIZE1=BOOKSIZECr1;
-		  BOOKSIZE2=BOOKSIZECr2;
-	  }
-	  
-	  //block the source image
-	  for(l=0;l<hb;l++)
-	  {
-        for(k=0;k<wb;k++)
-		{
-	  	  for(j=0;j<BLOCKHEIGHT;j++)		
-		  {
-		    for(i=0;i<BLOCKWIDTH;i++)		  
-			{
-	          if(component==2)
-				SourceVector[k+l*wb][i+j*BLOCKWIDTH]=ImageY[i+k*BLOCKWIDTH+(j+l*BLOCKHEIGHT)*width];
-			  else if(component==1)
-			    SourceVector[k+l*wb][i+j*BLOCKWIDTH]=ImageCb[i+k*BLOCKWIDTH+(j+l*BLOCKHEIGHT)*width];
-			  else if(component==0)
-			    SourceVector[k+l*wb][i+j*BLOCKWIDTH]=ImageCr[i+k*BLOCKWIDTH+(j+l*BLOCKHEIGHT)*width];
-			} 
-		  }
-		}
-	  }
-	  
-	  //Encode Start
-      for(i=0;i<BLOCKHEIGHT;i++)
-	  { 
-		INBLOCK1[i]=INBLOCK[i];
-		OUTDCT1[i]=OUTDCT[i];
-	  } 
-	  for(i=0;i<blocks;i++)
-	  {
-	    for(k=0;k<BLOCKHEIGHT;k++)
-		{
-	      for(j=0;j<BLOCKWIDTH;j++)
-	      INBLOCK1[k][j]=SourceVector[i][k*BLOCKWIDTH+j];
-		}
-	    DCT(INBLOCK1,OUTDCT1,BLOCKHEIGHT,BLOCKWIDTH);
-	    DCT2To1Or1To2(OUTDCT1,DCT1D,BLOCKHEIGHT,BLOCKWIDTH,0);
-	    for(k=0;k<VECTORDIMENSION;k++)
-		  DCTSourceVector[i][k]=(float)DCT1D[k];
-		SourceVector1[i]=(float)DCT1D[0];
-		for(k=POSITION1;k<POSITION2;k++)
-		  SourceVector2[i][k-POSITION1]=(float)DCT1D[k];
-		for(k=POSITION2;k<POSITION2+DIMENSION2;k++)
-		 SourceVector3[i][k-POSITION2]=(float)DCT1D[k];
-		c=0.0;
-		for(k=POSITION2+DIMENSION2;k<VECTORDIMENSION;k++)
-		{
-		  c+=DCT1D[k]*DCT1D[k];
-		}
-		SourceVector4[i]=(float)sqrt(c/(double)(VECTORDIMENSION-POSITION2-DIMENSION2));
-	  }
-	  
-	  //encoding
- 	  if(component==2)
-      {
-		i=FSDCTVQScalar256GrayImageEncode(blocks,BOOKSIZE0,SourceVector1,CodeBookY1,EncodeCodeIndex1,&ttt);
-	    i+=FSDCTVQ256GrayImageEncode(blocks,BOOKSIZE1,DIMENSION1,SourceVector2,CodeBookY2,EncodeCodeIndex2,&ttt);
-		i+=FSDCTVQ256GrayImageEncode(blocks,BOOKSIZE2,DIMENSION2,SourceVector3,CodeBookY3,EncodeCodeIndex3,&ttt);
-	    i+=FSDCTVQScalar256GrayImageEncode(blocks,BOOKSIZE3,SourceVector4,CodeBookY4,EncodeCodeIndex4,&ttt);
-	  }
-	  if(component==1)
-      {
-		i=FSDCTVQScalar256GrayImageEncode(blocks,BOOKSIZE0,SourceVector1,CodeBookCb1,EncodeCodeIndex1,&ttt);
-	    i+=FSDCTVQ256GrayImageEncode(blocks,BOOKSIZE1,DIMENSION1,SourceVector2,CodeBookCb2,EncodeCodeIndex2,&ttt);
-		i+=FSDCTVQ256GrayImageEncode(blocks,BOOKSIZE2,DIMENSION2,SourceVector3,CodeBookCb3,EncodeCodeIndex3,&ttt);
-	    i+=FSDCTVQScalar256GrayImageEncode(blocks,BOOKSIZE3,SourceVector4,CodeBookCb4,EncodeCodeIndex4,&ttt);
-	  }
-	  if(component==0)
-      {
-		i=FSDCTVQScalar256GrayImageEncode(blocks,BOOKSIZE0,SourceVector1,CodeBookCr1,EncodeCodeIndex1,&ttt);
-	    i+=FSDCTVQ256GrayImageEncode(blocks,BOOKSIZE1,DIMENSION1,SourceVector2,CodeBookCr2,EncodeCodeIndex2,&ttt);
-		i+=FSDCTVQ256GrayImageEncode(blocks,BOOKSIZE2,DIMENSION2,SourceVector3,CodeBookCr3,EncodeCodeIndex3,&ttt);
-	    i+=FSDCTVQScalar256GrayImageEncode(blocks,BOOKSIZE3,SourceVector4,CodeBookCr4,EncodeCodeIndex4,&ttt);
-	  }
-      calculate_histogram_int(EncodeCodeIndex1,other_feature1+posi,blocks,32,0,BOOKSIZE0-1);
-      posi+=16;
-      calculate_histogram_int(EncodeCodeIndex2,other_feature1+posi,blocks,32,0,BOOKSIZE1-1);
-      posi+=16;
-      calculate_histogram_int(EncodeCodeIndex3,other_feature1+posi,blocks,32,0,BOOKSIZE2-1);
-      posi+=16;
-      calculate_histogram_int(EncodeCodeIndex4,other_feature1+posi,blocks,32,0,BOOKSIZE3-1);
-      posi+=16;
-      if(i!=0)
-	  {
-        GlobalFree(hMem);
-		delete [] image_byte;
-		return -1;
-	  }
-   }
-   GlobalFree(hMem);
-   delete [] image_byte;
-   
-   *dimensionused+=OtherDim[0];
-   return 0;
+	*dimensionused+=OtherDim[0];
+	return 0;
 }
-int CRetrieveMethod::calculate_histogram_int(unsigned short int *input,double *output,int len,int bins,unsigned short int min,unsigned short int max)
+int CRetrieveMethod::compute_other_feature_vector2(BYTE *rgb_or_gimage,double *other_feature2,WORD bits,LONG width,LONG height,WORD *dimensionused)
 {
-   LONG i;
-   WORD j;
-   //set the histogram array to be zero
-   for(j=0;j<bins;j++)output[j]=0.0;
-   if(bins==1)
-   {
-	 output[0]=1.0;
-	 return 0;
-   }
-   else
-   {
-     //get the histogram 
-     for(i=0;i<len;i++)
-	 {
-	   j=(WORD)((double)(input[i]-min)*(double)(bins-1)/(double)(max-min)+0.5);
-	   //let the k be not larger than bins-1
-	   if(j>=bins-1)j=bins-1;
-	   output[j]=output[j]+1.0;
-	 }
-   }
-   for(i=0;i<bins;i++)
-     output[i]/=(double)len;
-   return 0;
+	*dimensionused+=OtherDim[1];
+	return 0;
 }
-
-int CRetrieveMethod::calculate_histogram_char(unsigned char *input,double *output,int len,int bins,unsigned char min,unsigned char max)
+int CRetrieveMethod::compute_other_feature_vector3(BYTE *rgb_or_gimage,double *other_feature3,WORD bits,LONG width,LONG height,WORD *dimensionused)
 {
-   LONG i;
-   WORD j;
-   //set the histogram array to be zero
-   for(j=0;j<bins;j++)output[j]=0.0;
-   if(bins==1)
-   {
-	 output[0]=1.0;
-	 return 0;
-   }
-   else
-   {
-     //get the histogram 
-     for(i=0;i<len;i++)
-	 {
-	   j=(WORD)((double)(input[i]-min)*(double)(bins-1)/(double)(max-min)+0.5);
-	   //let the k be not larger than bins-1
-	   if(j>=bins-1)j=bins-1;
-	   output[j]=output[j]+1.0;
-	 }
-   }
-   for(i=0;i<bins;i++)
-     output[i]/=(double)len;
-   return 0;
+	*dimensionused+=OtherDim[2];
+	return 0;
 }
-
-int CRetrieveMethod::compute_other_feature_vector2(BYTE *rgb_or_gimage,unsigned char (*CodeBookY)[VQDIMENSION],unsigned char (*CodeBookCb)[VQDIMENSION],unsigned char (*CodeBookCr)[VQDIMENSION],double *other_feature2,WORD bits,LONG width,LONG height,WORD *dimensionused)
+int CRetrieveMethod::compute_other_feature_vector4(BYTE *rgb_or_gimage,double *other_feature4,WORD bits,LONG width,LONG height,WORD *dimensionused)
 {
-	if(rgb_or_gimage==NULL||other_feature2==NULL)return -1;//memory error
-	//bits error
-	if(bits!=8&&bits!=24)return -2;
-	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	if(CodeBookY==NULL||CodeBookCb==NULL||CodeBookCr==NULL)return -1;
-	
-	//The memory handle
-	HGLOBAL hMem;
-	//The blocks and counters
-	long int blocks;
-    long int i,j,k,l;
-	int component;
-    //The memory pointer for each component image
-	unsigned char *ImageY,*ImageCb,*ImageCr;
-	//The number of blocks in width and height
-	unsigned short int wb,hb;
-	
-	//The pointer for Encode image vectors
-	unsigned char *SourceVector[VQMAXENCODEVECTORS];
-		 
-	//The index in codebook for each input image vetor to be encoded of two stages
-	unsigned short int *EncodeCodeIndex1;
-	
-	//The pointer array for generated codevectors by codebook design
-    int BOOKSIZE1;
-   	
-	//temp double image
-	unsigned char *image_byte=new unsigned char[width*height*3]; 
-	if(image_byte==NULL)return -1;//memory error
-	
-	BYTE *rgb_image_byte=new BYTE[width*height*3]; 
-	if(rgb_image_byte==NULL)
-	{
-		delete [] image_byte;
-		return -1;//memory error
-	}
-	if(bits==8)
-	  g2rgb(rgb_or_gimage,rgb_image_byte,width,height);
-	else
-	  memcpy(rgb_image_byte,rgb_or_gimage,width*height*3);
-    rgb2YCbCr(rgb_image_byte,image_byte,width,height);
-	delete [] rgb_image_byte;
-	
-	hb=height/VQBLOCKHEIGHT;
-    wb=width/VQBLOCKWIDTH;
-	blocks=hb*wb;
-
-    //Apply memory
-	hMem=NULL;
-	i=3*width*height  //Y Cb Cr
-	// SourceVector
-	+blocks*VQDIMENSION*sizeof(unsigned char)
-	+blocks*sizeof(unsigned short int); //EncodeIndex1
-	
-	hMem=GlobalAlloc(GMEM_FIXED,i);
-	if(hMem==NULL)
-	{
-	    delete [] image_byte;
-	    return -1;
-	}
-	//Alloc the memory
- 	for(i=0;i<blocks;i++)
-	  SourceVector[i]=(unsigned char *)hMem+i*VQDIMENSION;
-	EncodeCodeIndex1=(unsigned short int *)(SourceVector[0]+blocks*VQDIMENSION);
-    ImageY=(unsigned char *)(EncodeCodeIndex1+blocks);
-	ImageCb=ImageY+width*height;
-	ImageCr=ImageCb+width*height;
-    long int pp,qq;
-    double ttt;
-    for(i=0;i<height;i++)
-    {
-      for(j=0;j<width;j++)
-	  {
-	     pp=i*width+j;
-		 qq=j*3+i*3*width;
-		 ImageY[pp]=image_byte[qq+2];
-	     ImageCb[pp]=image_byte[qq+1];
-	     ImageCr[pp]=image_byte[qq];
-	  }
-    }
-	int posi=0;
-	for(component=2;component>=0;component--)
-	{
-	  if(component==2)
-	  	  BOOKSIZE1=VQBOOKSIZEY;
-	  if(component==1)
-	  	  BOOKSIZE1=VQBOOKSIZECb;
-	  if(component==0)
-          BOOKSIZE1=VQBOOKSIZECr;
-	  
-	  //block the source image
-	  for(l=0;l<hb;l++)
-	  {
-        for(k=0;k<wb;k++)
-		{
-	  	  for(j=0;j<VQBLOCKHEIGHT;j++)		
-		  {
-		    for(i=0;i<VQBLOCKWIDTH;i++)		  
-			{
-	          if(component==2)
-				SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageY[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			  else if(component==1)
-			    SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageCb[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			  else if(component==0)
-			    SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageCr[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			} 
-		  }
-		}
-	  }
-	  
-	  //Encode Start
-      
- 	  if(component==2)
-      {
-		i=FSVQ256GrayImageEncode(blocks,BOOKSIZE1,VQDIMENSION,SourceVector,CodeBookY,EncodeCodeIndex1,&ttt);
-	  }
-	  if(component==1)
-      {
-		i=FSVQ256GrayImageEncode(blocks,BOOKSIZE1,VQDIMENSION,SourceVector,CodeBookCb,EncodeCodeIndex1,&ttt);
-	  }
-	  if(component==0)
-      {
-		i=FSVQ256GrayImageEncode(blocks,BOOKSIZE1,VQDIMENSION,SourceVector,CodeBookCr,EncodeCodeIndex1,&ttt);
-	  }
-      calculate_histogram_int(EncodeCodeIndex1,other_feature2+posi,blocks,64,0,BOOKSIZE1-1);
-	  posi+=64;
-      if(i!=0)
-	  {
-        GlobalFree(hMem);
-		delete [] image_byte;
-		return -1;
-	  }
-   }
-   GlobalFree(hMem);
-   delete [] image_byte;
-   
-   *dimensionused+=OtherDim[1];
-   return 0;
-}
-
-
-int CRetrieveMethod::compute_other_feature_vector3(BYTE *rgb_or_gimage,unsigned char (*CodeBookY1)[VQDIMENSION],short int (*CodeBookY2)[VQDIMENSION],unsigned char (*CodeBookCb1)[VQDIMENSION],short int (*CodeBookCb2)[VQDIMENSION],unsigned char (*CodeBookCr1)[VQDIMENSION],short int (*CodeBookCr2)[VQDIMENSION],double *other_feature3,WORD bits,LONG width,LONG height,WORD *dimensionused)
-{
-	if(rgb_or_gimage==NULL||other_feature3==NULL)return -1;//memory error
-	//bits error
-	if(bits!=8&&bits!=24)return -2;
-	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	if(CodeBookY1==NULL||CodeBookY2==NULL||CodeBookCb1==NULL||CodeBookCb2==NULL||CodeBookCr1==NULL||CodeBookCr2==NULL)return -1;
-	//The memory handle
-	HGLOBAL hMem;
-	//The blocks and counters
-	long int blocks;
-    long int i,j,k,l;
-	int component;
-    //The memory pointer for each component image
-	unsigned char *ImageY,*ImageCb,*ImageCr;
-	//The number of blocks in width and height
-	unsigned short int wb,hb;
-
-		
-	//The index in codebook for each input image vetor to be encoded of two stages
-	unsigned short int *EncodeCodeIndex1,*EncodeCodeIndex2;
-	
-	//The pointer array for generated codevectors by codebook design
-    int BOOKSIZE1, BOOKSIZE2;
-   	
-	//temp double image
-	unsigned char *image_byte=new unsigned char[width*height*3]; 
-	if(image_byte==NULL)return -1;//memory error
-	
-	BYTE *rgb_image_byte=new BYTE[width*height*3]; 
-	if(rgb_image_byte==NULL)
-	{
-		delete [] image_byte;
-		return -1;//memory error
-	}
-	if(bits==8)
-	  g2rgb(rgb_or_gimage,rgb_image_byte,width,height);
-	else
-	  memcpy(rgb_image_byte,rgb_or_gimage,width*height*3);
-    rgb2YCbCr(rgb_image_byte,image_byte,width,height);
-	delete [] rgb_image_byte;
-	
-	hb=height/VQBLOCKHEIGHT;
-    wb=width/VQBLOCKWIDTH;
-	blocks=hb*wb;
-
-    //Apply memory
-	hMem=NULL;
-	i=3*width*height  //Y Cb Cr
-	+2*blocks*sizeof(unsigned short int); //EncodeIndex1/2
-	
-	
-	unsigned char (*SourceVector)[VQDIMENSION];
-	SourceVector=new unsigned char[blocks][VQDIMENSION];
-	if(SourceVector==NULL)
-	{
-		delete [] image_byte;
-		return -1;
-	}
-	
-	short int (*SourceVector1)[VQDIMENSION];  //for error vector quantization
-	SourceVector1=new short int[blocks][VQDIMENSION];
-	if(SourceVector1==NULL)
-	{
-	  delete [] image_byte;
-	  delete [] SourceVector;
-	  return -1;
-	}
-	hMem=GlobalAlloc(GMEM_FIXED,i);
-	if(hMem==NULL)
-	{
-	    delete [] image_byte;
-		delete [] SourceVector;
-	    delete [] SourceVector1;
-	    return -1;
-	}
-	//Alloc the memory
- 	EncodeCodeIndex1=(unsigned short int *)hMem;
-    EncodeCodeIndex2=EncodeCodeIndex1+blocks;
-    ImageY=(unsigned char *)(EncodeCodeIndex2+blocks);
-	ImageCb=ImageY+width*height;
-	ImageCr=ImageCb+width*height;
-    long int pp,qq;
-    for(i=0;i<height;i++)
-    {
-      for(j=0;j<width;j++)
-	  {
-	     pp=i*width+j;
-		 qq=j*3+i*3*width;
-		 ImageY[pp]=image_byte[qq+2];
-	     ImageCb[pp]=image_byte[qq+1];
-	     ImageCr[pp]=image_byte[qq];
-	  }
-    }
-	int posi=0;
-	for(component=2;component>=0;component--)
-	{
-	  if(component==2)
-	  {
-		  BOOKSIZE1=VQBOOKSIZEY1;
-		  BOOKSIZE2=VQBOOKSIZEY2;
-	  }
-	  if(component==1)
-	  {
-		  BOOKSIZE1=VQBOOKSIZECb1;
-		  BOOKSIZE2=VQBOOKSIZECb2;
-	  }
-	  if(component==0)
-      {  
-		  BOOKSIZE1=VQBOOKSIZECr1;
-		  BOOKSIZE2=VQBOOKSIZECr2;
-	  }
-	  
-	  //block the source image
-	  for(l=0;l<hb;l++)
-	  {
-        for(k=0;k<wb;k++)
-		{
-	  	  for(j=0;j<VQBLOCKHEIGHT;j++)		
-		  {
-		    for(i=0;i<VQBLOCKWIDTH;i++)		  
-			{
-	          if(component==2)
-				SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageY[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			  else if(component==1)
-			    SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageCb[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			  else if(component==0)
-			    SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageCr[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			} 
-		  }
-		}
-	  }
-	  
-	  //Encode Start
-	  //encoding
- 	  if(component==2)
-      {
-		i=TwoStageVQ256GrayImageEncode(blocks,BOOKSIZE1,BOOKSIZE2,VQBLOCKWIDTH,VQBLOCKHEIGHT,SourceVector,SourceVector1,CodeBookY1,CodeBookY2,EncodeCodeIndex1,EncodeCodeIndex2);
-	  }
-	  if(component==1)
-      {
-		i=TwoStageVQ256GrayImageEncode(blocks,BOOKSIZE1,BOOKSIZE2,VQBLOCKWIDTH,VQBLOCKHEIGHT,SourceVector,SourceVector1,CodeBookCb1,CodeBookCb2,EncodeCodeIndex1,EncodeCodeIndex2);
-	  }
-	  if(component==0)
-      {
-		i=TwoStageVQ256GrayImageEncode(blocks,BOOKSIZE1,BOOKSIZE2,VQBLOCKWIDTH,VQBLOCKHEIGHT,SourceVector,SourceVector1,CodeBookCr1,CodeBookCr2,EncodeCodeIndex1,EncodeCodeIndex2);
-	  }
-      calculate_histogram_int(EncodeCodeIndex1,other_feature3+posi,blocks,BOOKSIZE1,0,BOOKSIZE1-1);
-	  posi+=BOOKSIZE1;
-      calculate_histogram_int(EncodeCodeIndex2,other_feature3+posi,blocks,BOOKSIZE2,0,BOOKSIZE2-1);
-	  posi+=BOOKSIZE2;
-      if(i!=0)
-	  {
-        GlobalFree(hMem);
-		delete [] image_byte;
-		delete [] SourceVector;
-	    delete [] SourceVector1;
-		return -1;
-	  }
-   }
-   GlobalFree(hMem);
-   delete [] image_byte;
-   delete [] SourceVector;
-   delete [] SourceVector1;
-   *dimensionused+=OtherDim[2];
-   return 0;
-}
-
-int CRetrieveMethod::compute_other_feature_vector4(BYTE *rgb_or_gimage,unsigned char (*CodeBookY1)[VQDIMENSION],short int (*CodeBookY2)[VQDIMENSION],unsigned char (*CodeBookCb1)[VQDIMENSION],short int (*CodeBookCb2)[VQDIMENSION],unsigned char (*CodeBookCr1)[VQDIMENSION],short int (*CodeBookCr2)[VQDIMENSION],double *other_feature4,WORD bits,LONG width,LONG height,WORD *dimensionused)
-{
-	if(rgb_or_gimage==NULL||other_feature4==NULL)return -1;//memory error
-	//bits error
-	if(bits!=8&&bits!=24)return -2;
-	//width error
-	if(width<50||width>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	//height error
-	if(height<50||height>MAX_IMAGE_WIDTHORHEIGHT)return -2;
-	if(CodeBookY1==NULL||CodeBookY2==NULL||CodeBookCb1==NULL||CodeBookCb2==NULL||CodeBookCr1==NULL||CodeBookCr2==NULL)return -1;
-	//The memory handle
-	HGLOBAL hMem;
-	//The blocks and counters
-	long int blocks;
-    long int i,j,k,l;
-	int component;
-    //The memory pointer for each component image
-	unsigned char *ImageY,*ImageCb,*ImageCr;
-	//The number of blocks in width and height
-	unsigned short int wb,hb;
-
-		
-	//The index in codebook for each input image vetor to be encoded of two stages
-	unsigned short int *EncodeCodeIndex1,*EncodeCodeIndex2;
-	
-	//The pointer array for generated codevectors by codebook design
-    int BOOKSIZE1, BOOKSIZE2;
-   	
-	//temp double image
-	unsigned char *image_byte=new unsigned char[width*height*3]; 
-	if(image_byte==NULL)return -1;//memory error
-	
-	BYTE *rgb_image_byte=new BYTE[width*height*3]; 
-	if(rgb_image_byte==NULL)
-	{
-		delete [] image_byte;
-		return -1;//memory error
-	}
-	if(bits==8)
-	  g2rgb(rgb_or_gimage,rgb_image_byte,width,height);
-	else
-	  memcpy(rgb_image_byte,rgb_or_gimage,width*height*3);
-    rgb2YCbCr(rgb_image_byte,image_byte,width,height);
-	delete [] rgb_image_byte;
-	
-	hb=height/VQBLOCKHEIGHT;
-    wb=width/VQBLOCKWIDTH;
-	blocks=hb*wb;
-
-    //Apply memory
-	hMem=NULL;
-	i=3*width*height  //Y Cb Cr
-	+2*blocks*sizeof(unsigned short int); //EncodeIndex1/2
-	
-	
-	unsigned char (*SourceVector)[VQDIMENSION];
-	SourceVector=new unsigned char[blocks][VQDIMENSION];
-	if(SourceVector==NULL)
-	{
-		delete [] image_byte;
-		return -1;
-	}
-	
-	unsigned char *SourceVector0;
-	SourceVector0=new unsigned char[blocks];
-	if(SourceVector0==NULL)
-	{
-		delete [] image_byte;
-		delete [] SourceVector;
-		return -1;
-	}
-	short int (*SourceVector1)[VQDIMENSION];  //for error vector quantization
-	SourceVector1=new short int[blocks][VQDIMENSION];
-	if(SourceVector1==NULL)
-	{
-	  delete [] image_byte;
-	  delete [] SourceVector;
-	  delete [] SourceVector0;
-	  return -1;
-	}
-	hMem=GlobalAlloc(GMEM_FIXED,i);
-	if(hMem==NULL)
-	{
-	    delete [] image_byte;
-		delete [] SourceVector;
-		delete [] SourceVector0;
-	    delete [] SourceVector1;
-	    return -1;
-	}
-	//Alloc the memory
- 	EncodeCodeIndex1=(unsigned short int *)hMem;
-    EncodeCodeIndex2=EncodeCodeIndex1+blocks;
-    ImageY=(unsigned char *)(EncodeCodeIndex2+blocks);
-	ImageCb=ImageY+width*height;
-	ImageCr=ImageCb+width*height;
-    long int pp,qq;
-    for(i=0;i<height;i++)
-    {
-      for(j=0;j<width;j++)
-	  {
-	     pp=i*width+j;
-		 qq=j*3+i*3*width;
-		 ImageY[pp]=image_byte[qq+2];
-	     ImageCb[pp]=image_byte[qq+1];
-	     ImageCr[pp]=image_byte[qq];
-	  }
-    }
-	int posi=0;
-	for(component=2;component>=0;component--)
-	{
-	  if(component==2)
-	  {
-		  BOOKSIZE1=VQBOOKSIZEYM;
-		  BOOKSIZE2=VQBOOKSIZEYR;
-	  }
-	  if(component==1)
-	  {
-		  BOOKSIZE1=VQBOOKSIZECbM;
-		  BOOKSIZE2=VQBOOKSIZECbR;
-	  }
-	  if(component==0)
-      {  
-		  BOOKSIZE1=VQBOOKSIZECrM;
-		  BOOKSIZE2=VQBOOKSIZECrR;
-	  }
-	  
-	  //block the source image
-	  for(l=0;l<hb;l++)
-	  {
-        for(k=0;k<wb;k++)
-		{
-	  	  for(j=0;j<VQBLOCKHEIGHT;j++)		
-		  {
-		    for(i=0;i<VQBLOCKWIDTH;i++)		  
-			{
-	          if(component==2)
-				SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageY[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			  else if(component==1)
-			    SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageCb[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			  else if(component==0)
-			    SourceVector[k+l*wb][i+j*VQBLOCKWIDTH]=ImageCr[i+k*VQBLOCKWIDTH+(j+l*VQBLOCKHEIGHT)*width];
-			} 
-		  }
-		}
-	  }
-	  
-	  //Encode Start
-	  //encoding
- 	  if(component==2)
-      {
-		i=MeanRemovedVQ256GrayImageEncode(blocks,BOOKSIZE1,BOOKSIZE2,VQBLOCKWIDTH,VQBLOCKHEIGHT,SourceVector,SourceVector0,SourceVector1,CodeBookY1,CodeBookY2,EncodeCodeIndex1,EncodeCodeIndex2);
-	  }
-	  if(component==1)
-      {
-		i=MeanRemovedVQ256GrayImageEncode(blocks,BOOKSIZE1,BOOKSIZE2,VQBLOCKWIDTH,VQBLOCKHEIGHT,SourceVector,SourceVector0,SourceVector1,CodeBookCb1,CodeBookCb2,EncodeCodeIndex1,EncodeCodeIndex2);
-	  }
-	  if(component==0)
-      {
-		i=MeanRemovedVQ256GrayImageEncode(blocks,BOOKSIZE1,BOOKSIZE2,VQBLOCKWIDTH,VQBLOCKHEIGHT,SourceVector,SourceVector0,SourceVector1,CodeBookCr1,CodeBookCr2,EncodeCodeIndex1,EncodeCodeIndex2);
-	  }
-      calculate_histogram_int(EncodeCodeIndex1,other_feature4+posi,blocks,BOOKSIZE1,0,BOOKSIZE1-1);
-	  posi+=BOOKSIZE1;
-      calculate_histogram_int(EncodeCodeIndex2,other_feature4+posi,blocks,BOOKSIZE2,0,BOOKSIZE2-1);
-	  posi+=BOOKSIZE2;
-      if(i!=0)
-	  {
-        GlobalFree(hMem);
-		delete [] image_byte;
-		delete [] SourceVector;
-		delete [] SourceVector0;
-	    delete [] SourceVector1;
-		return -1;
-	  }
-   }
-   GlobalFree(hMem);
-   delete [] image_byte;
-   delete [] SourceVector;
-   delete [] SourceVector0;
-   delete [] SourceVector1;
-   *dimensionused+=OtherDim[3];
-   return 0;
+	*dimensionused+=OtherDim[3];
+	return 0;
 }
 
 /*****************************************
@@ -3264,37 +2448,6 @@ void CRetrieveMethod::rgb2YCbCr_component(BYTE *rgb,BYTE *YCbCr)
   YCbCr[1]=(BYTE)(b+0.5);
   YCbCr[0]=(BYTE)(c+0.5);
 }
-
-/*****************************************
-        *
-        *   Private function: rgb2YCbCr_component(...
-        *
-//Three values YCbCr[0]: Cr; YCbCr[1]:Cb; YCbCr[2]:Y
-//converted to rgb[0]: B; rgb[1]:G; rgb[2]:R
-//R(0-255)  G(0-255)  Cr(0-255)
-//OK
-******************************************/
-void CRetrieveMethod::YCbCr2rgb_component(BYTE *YCbCr,BYTE *rgb)
-{
-  double rn,gn,bn;
-  BYTE Y,Cb,Cr;
-  Y=YCbCr[2];
-  Cb=YCbCr[1];
-  Cr=YCbCr[0];
-  rn=1.164*(Y-16)+1.596*(Cr-128.0);
-  gn=1.164*(Y-16)-0.392*(Cb-128.0)+0.813*(Cr-128.0);
-  bn=1.164*(Y-16)+2.017*(Cb-128.0);
-  if(rn>255)rn=255;
-  if(rn<0)rn=0;
-  if(gn>255)gn=255;
-  if(gn<0)gn=0;
-  if(bn>255)bn=255;
-  if(bn<0)bn=0;
-  rgb[2]=(unsigned char)rn;
-  rgb[1]=(unsigned char)gn;
-  rgb[0]=(unsigned char)bn;
-}
-
 /*****************************************
         *
         *   overloaded Private function: rgb2YCbCr_component(...
@@ -4031,7 +3184,7 @@ int CRetrieveMethod::LBGCodebookDesign(DWORD VectorNumber,WORD BookSize,WORD Vec
 {
    DWORD i,l;
    WORD j,k;
-   double d0,d1,d,min,dd[MAX_FEATUREVECTOR_DIMENSION],par,temtem,tem;
+   double d0,d1,d,min,dd[MAX_FEATUREVECTOR_DIMENSION],par;
    //Define starttime and finishtime
    clock_t ltime1,ltime2;      
    if(BookSize>MAX_CODEBOOK_SIZE)return -1;
@@ -4045,7 +3198,7 @@ int CRetrieveMethod::LBGCodebookDesign(DWORD VectorNumber,WORD BookSize,WORD Vec
    for(i=0;i<BookSize;i++)
    {
      l=(int)((double)rand()*par);
- 	 memcpy(CodeVector+i*(VectorDimension+2),TrainVector+l*VectorDimension,VectorDimension*sizeof(double));
+ 	 memcpy(CodeVector+i*VectorDimension,TrainVector+l*VectorDimension,VectorDimension);
    }
    d0=9.99e+60;   
    *Iterations=0;
@@ -4068,7 +3221,7 @@ int CRetrieveMethod::LBGCodebookDesign(DWORD VectorNumber,WORD BookSize,WORD Vec
 		  d=0.0;
 		  for(k=0;k<VectorDimension;k++)
 		  {			  
-		    d=d+((double)TrainVector[i*VectorDimension+k]-(double)CodeVector[j*(VectorDimension+2)+k])*((double)TrainVector[i*VectorDimension+k]-(double)CodeVector[j*(VectorDimension+2)+k]);
+		    d=d+((double)TrainVector[i*VectorDimension+k]-(double)CodeVector[j*VectorDimension+k])*((double)TrainVector[i*VectorDimension+k]-(double)CodeVector[j*VectorDimension+k]);
 		    if(d>=min)break;
 		  }
 		  if(d<min)
@@ -4083,7 +3236,6 @@ int CRetrieveMethod::LBGCodebookDesign(DWORD VectorNumber,WORD BookSize,WORD Vec
 	 if((d0-d1)/d1<=e)break;
 	 (*Iterations)++;
 	 d0=d1;
-	 //Get the new codebook
 	 for(j=0;j<BookSize;j++)
 	 {
 	    if(NumberinCluster[j]!=0)
@@ -4104,53 +3256,14 @@ int CRetrieveMethod::LBGCodebookDesign(DWORD VectorNumber,WORD BookSize,WORD Vec
 		  }
 		  for(k=0;k<VectorDimension;k++)
 		  {
-		    CodeVector[j*(VectorDimension+2)+k]=(float)(dd[k]/(double)NumberinCluster[j]);
+		    CodeVector[j*VectorDimension+k]=(float)(dd[k]/(double)NumberinCluster[j]);
 		  }
 		}
 		else
 		{
 		  l=(int)((double)rand()*par);
-          memcpy(CodeVector+j*(VectorDimension+2),TrainVector+l*VectorDimension,VectorDimension*sizeof(double));
+          memcpy(CodeVector+j*VectorDimension,TrainVector+l*VectorDimension,VectorDimension);
 		}
-
-		//Compute the mean and variance of the codeoword
-	    tem=0.0;
-	    for(k=0;k<VectorDimension;k++)
-		{
-	 	  tem+=(double)CodeVector[j*(VectorDimension+2)+k];
-		}
-	    CodeVector[j*(VectorDimension+2)+VectorDimension]=tem/(double)VectorDimension;
-	    
-		temtem=0.0;
-	    for(k=0;k<VectorDimension;k++)
-		{ 
-	 	  tem=(double)CodeVector[j*(VectorDimension+2)+k]-CodeVector[j*(VectorDimension+2)+VectorDimension];
-		  temtem+=tem*tem;
-		}
-	    temtem/=(double)VectorDimension;
-	    CodeVector[j*(VectorDimension+2)+VectorDimension+1]=sqrt(min);
-	 }
-
-	 //codebook sorted by mean of codeword
-	 double tt[MAX_FEATUREVECTOR_DIMENSION+2];
-	 DWORD index;
-	 for(i=0;i<(DWORD)(BookSize-1);i++)
-	 {
-	   index=i;
-	   for(l=i+1;l<BookSize;l++)
-	   {
-	     if(CodeVector[index*(VectorDimension+2)+VectorDimension]>CodeVector[l*(VectorDimension+2)+VectorDimension])
-		 {
-			index=l;
-		 } //end of for j,get the index  
-	   }
-	   if(index==i)
-	   {
-	     continue;
-	   }
-	   memcpy(tt,CodeVector+i*(VectorDimension+2),(VectorDimension+2)*sizeof(double));
-	   memcpy(CodeVector+i*(VectorDimension+2),CodeVector+index*(VectorDimension+2),(VectorDimension+2)*sizeof(double));
-	   memcpy(CodeVector+index*(VectorDimension+2),tt,(VectorDimension+2)*sizeof(double));
 	 }
    }
    ltime2=clock();
@@ -4186,2586 +3299,175 @@ void CRetrieveMethod::SortingByAverage(LPFEATUREVECTOR lpFeatureVector,DWORD Vec
 	}
 }
 
-///Sorting lpFeatureVector in each cluster in ascending order based on normalized mean values
-void CRetrieveMethod::ClusterSortingByAverage(LPFEATUREVECTOR m_lpFeatureVector,double *Codeword,WORD *Index,DWORD VectorNumber,WORD Booksize)
+//计算高：dataheigth，datawidth首地址为*pdata的特征矢量存在结构体中：FeatureVector
+//Featurefirst:为特征矢量结构体的存入的第一个的编号，Featurenumber:该算法提取参数的个数
+///本算法中,Featurenumber必须等于7
+bool CRetrieveMethod::FeatureVectorExtractMethod_1_7(unsigned char *pdata, int datawidth, int dataheigth,double *OrgFeature,int Featurefirst, int Featurenumber)
 {
-    DWORD i,j,p,l;
-	DWORD index; //
-	DWORD *ind=new DWORD[VectorNumber];
-	FEATUREVECTOR temp;
-	for(p=0;p<Booksize;p++)
+	if(Featurenumber!=7) 
 	{
-	  l=0;
-	  for(i=0;i<VectorNumber;i++)
-	  {
-		if(Index[i]==p)
+		MessageBox(NULL,"FeatureExtract Number error","Error!",MB_OK);
+		return false;
+	}
+////add your word here
+/////注意：计算一个特征量，iFeatureNumbercheck＋＋；
+//////////////////////////////////////////////////////////////////////////
+	////////参数1：最佳域值
+	//////算法：给定初始值，将像素分为两部分，计算个自的中心，中心的均值作为新的域值，与
+	//////////前一次的最佳域值比较，若相同则结束
+	/////////并用最大值限制迭代次数
+	////说明：参数1，2是颜色中的不变量，是在最佳域值方法中提取出来的
+	int i,j;
+	double regiondata1=128,regiondata2=128;         ///最佳域值初值
+	int Max=1000;                                     ///迭代最多的次数
+	int regionnumberleft=0,regionnumberright=0;           ////两个区域的计数值
+	long double regiontotallleft=0,regiontotalright=0;         ////两个区域的总和
+	long int count;     //计数器
+	for(count=0;count<Max;count++)   ////执行次数
+	{
+		regionnumberleft=0;
+		regionnumberright=0;  
+		regiontotallleft=0;
+		regiontotalright=0;
+		for(i=0; i<dataheigth; i++)
 		{
-		  ind[l]=i;
-		  l++;
-		}
-	  }
-      if(l<2)continue;
-	  for(i=0;i<l-1;i++)
-	  {
-	    index=i;
-		for(j=i+1;j<l;j++)
-		{
-			if(m_lpFeatureVector[ind[index]].m_dNAverage>m_lpFeatureVector[ind[j]].m_dNAverage) 
-			{
-				index=j;
-			}  //end of for j,get the index
-		}
-		if(index==i)  //Minimal 
-		{
-		  continue;//next i
-		}
-		temp=m_lpFeatureVector[ind[i]];
-		m_lpFeatureVector[ind[i]]=m_lpFeatureVector[ind[index]];
-		m_lpFeatureVector[ind[index]]=temp;
-	  }
-	}
-	delete [] ind;
-}
-
-/*
-     Some  private Basic General Fast Algorithms
-	 //FullSearch
-	 //ENNS
-	 //EKNNS
-	 //EENNS
-	 //EEKNNS
-	 //EEENNS
-	 //EEEKNNS
-*/
-//FullSearch, the distances are sorted
-void CRetrieveMethod::FullSearchMethod(double *query,double *database,DWORD databasesize,WORD dimension, RETRIEVEDRESULT *result)
-{
-	DWORD number,check;
-	WORD dim;
-	double e,tem;
-	RETRIEVEDRESULT p;
-    //+++++++++++Compute the distance between
-	//+++++++++++query image and each database
-	//+++++++++++vector to be compared
-	for(number=0;number<databasesize;number++)
-	{
-	  tem=0.0;
-	  for(dim=0;dim<dimension;dim++)
-	  {
-	    e=query[dim]-database[number*dimension+dim];
-		tem+=e*e;
-	  }
-	  result[number].m_fDistance=(float)tem;
-	  result[number].m_dwImageIndex=number;
-	}
-
-	//+++++++++++++Bubble sort for current computed distances
-	for(number=1;number<databasesize;number++)
-	{
-	  for(check=0;check<databasesize-number;check++)
-	  {
-	    if(result[check].m_fDistance>result[check+1].m_fDistance)
-		{
-		  p=result[check];
-		  result[check]=result[check+1];
-		  result[check+1]=p;
-		}
-	  }
-	}
-}
-
-//FullSearch2, the distances are sorted
-void CRetrieveMethod::FullSearchMethod2(double *query,double *database,DWORD databasesize,WORD dimension, RETRIEVEDRESULT *result)
-{
-	DWORD number,check;
-	WORD dim;
-	double e,tem;
-	RETRIEVEDRESULT p;
-    //+++++++++++Compute the distance between
-	//+++++++++++query image and each database
-	//+++++++++++vector to be compared
-	for(number=0;number<databasesize;number++)
-	{
-	  tem=0.0;
-	  for(dim=0;dim<dimension;dim++)
-	  {
-	    e=query[dim]-database[number*(dimension+2)+dim];
-		tem+=e*e;
-	  }
-	  result[number].m_fDistance=(float)tem;
-	  result[number].m_dwImageIndex=number;
-	}
-
-	//+++++++++++++Bubble sort for current computed distances
-	for(number=1;number<databasesize;number++)
-	{
-	  for(check=0;check<databasesize-number;check++)
-	  {
-	    if(result[check].m_fDistance>result[check+1].m_fDistance)
-		{
-		  p=result[check];
-		  result[check]=result[check+1];
-		  result[check+1]=p;
-		}
-	  }
-	}
-}
-
-//ENNS, the best one
-void CRetrieveMethod::ENNSMethod(double *query,double querymean, double *database,double *means,DWORD databasesize,WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int j,k;//j for the main loop, k for dimension
-    int w;//for the loop 
-    double dsqrt;//sqrt distance for vector[p]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin;
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD I=databasesize;
-	double dmin;
-    DWORD index,itmp;
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-	//++++++++++++++calculate the distance for p+++++++++++
-    dmin=0.0;
-	index=p;//
-	itmp=p*dimension;
-	for(k=0;k<dimension;k++)
-	{
-	 dtmp=query[k]-database[itmp+k];
-	 dmin+=dtmp*dtmp;
-	}
-	//Get the sqrt distance for vector[p]
-	dsqrt=sqrt(dmin/dimension);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	j=0;
-    for(w=0;w<(int)I;w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else
-		{
-		    if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p-j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			    dtmp=query[k]-database[itmp+k];
-			    pds+=dtmp*dtmp;
-			    if(pds>=dmin)break;
-			  }
-			  if(pds<dmin)// If it is less than dmin, updating the dmin
-			  {
-			    //initial pds as the dmin
-			    index=p-j;
-                dmin=pds;
-			    //update the mmax mmin
-			    //The new dsqrt
-			    dsqrt=sqrt(dmin/dimension);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else
+ 		  for(j=0; j<datawidth; j++)
 		  {
-		    if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else
+			if(*(pdata + i*datawidth + j)<=(unsigned char)regiondata2)
 			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p+j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin)break;
-			  }
-			  if(pds<dmin)// If it is less than dmin, updating the dmin
-			  {
-			    //initial pds as the dmin
-			    index=p+j;
-                dmin=pds;
-			    //update the mmax mmin
-			    //The new dsqrt
-			    dsqrt=sqrt(dmin/dimension);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-			  }   
+			  regionnumberleft++;       ////左计数器加一
+			  regiontotallleft=regiontotallleft+(*(pdata + i*datawidth + j));//总和加一
 			}
+			else 
+			  regiontotalright=regiontotalright+(*(pdata + i*datawidth + j));
 		  }
-	  }
-	  j=j+1;
-	}
-    result->m_fDistance=(float)dmin;
-    result->m_dwImageIndex=index;
-}
-
-//EENNS,the best one
-void CRetrieveMethod::EENNSMethod(double *query,double querymean,double queryvariance, double *database,double *means,double *variances,DWORD databasesize,WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int j,k;//j for the main loop, k for dimension
-    int w;//for the loop 
-    double dsqrt,dsqrtv;//sqrt distances for vector[p]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD I=databasesize;
-	double dmin;
-    DWORD index,itmp;
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-	//++++++++++++++calculate the distance for p+++++++++++
-    dmin=0.0;
-	index=p;//
-	itmp=p*dimension;
-	for(k=0;k<dimension;k++)
-	{
-	 dtmp=query[k]-database[itmp+k];
-	 dmin+=dtmp*dtmp;
-	}
-	//Get the sqrt and sqrtv distance for vector[p]
-	dsqrt=sqrt(dmin/dimension);
-	dsqrtv=sqrt(dmin);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    j=0;
-    for(w=0;w<(int)I;w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else
-		{
-		    if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(variances[p-j]>vmin&&variances[p-j]<vmax)
-			{
-			  ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p-j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			    dtmp=query[k]-database[itmp+k];
-			    pds+=dtmp*dtmp;
-			    if(pds>=dmin)break;
-			  }
-			  if(pds<dmin)// If it is less than dmin, updating the dmin
-			  {
-			    //initial pds as the dmin
-			    index=p-j;
-                dmin=pds;
-			    //update the mmax mmin vmax vmin
-			    //The new dsqrt and dsqrtv
-			    dsqrt=sqrt(dmin/dimension);
-	            dsqrtv=sqrt(dmin);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-				//The new vmax and vmin
-	            vmax=vx+dsqrtv;
-	            vmin=vx-dsqrtv;
-			  }   
-			}
 		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else
-		  {
-		    if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(variances[p+j]>vmin&&variances[p+j]<vmax)
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p+j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin)break;
-			  }
-			  if(pds<dmin)// If it is less than dmin, updating the dmin
-			  {
-			    //pds as the dmin
-			    index=p+j;
-                dmin=pds;
-			    //update the mmax mmin vmax vmin
-			    //The new dsqrt and dsqrtv
-			    dsqrt=sqrt(dmin/dimension);
-	            dsqrtv=sqrt(dmin);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-				//The new vmax and vmin
-	            vmax=vx+dsqrtv;
-	            vmin=vx-dsqrtv;
-			  }   
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    result->m_fDistance=(float)dmin;
-    result->m_dwImageIndex=index;
-}
-
-//EEENNS,the best one
-void CRetrieveMethod::EEENNSMethod(double *query,double querymean,double queryvariance, double *database,double *means,double *variances,DWORD databasesize,WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int j,k;//j for the main loop, k for dimension
-    int w;//for the loop 
-    double dsqrt,dsqrtv;//sqrt distances for vector[p]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD I=databasesize;
-	double dmin;
-    DWORD index,itmp;
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-	//++++++++++++++calculate the distance for p+++++++++++
-    dmin=0.0;
-	index=p;//
-	itmp=p*dimension;
-	for(k=0;k<dimension;k++)
-	{
-	 dtmp=query[k]-database[itmp+k];
-	 dmin+=dtmp*dtmp;
-	}
-	//Get the sqrt and sqrtv distance for vector[p]
-	dsqrt=sqrt(dmin/dimension);
-	dsqrtv=sqrt(dmin);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    j=0;
-    for(w=0;w<(int)I;w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else
+		regionnumberright=datawidth*dataheigth-regionnumberleft;///右计数器计算得出
+		if(regionnumberright==0)  //排除异常
 		{
-		    if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(variances[p-j]>vmin&&variances[p-j]<vmax)
-			{
-			  dtmp=(variances[p-j]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-means[p-j]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin)
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-				itmp=(p-j)*dimension;
-			    for(k=0;k<dimension;k++)
-				{
-			      dtmp=query[k]-database[itmp+k];
-			      pds+=dtmp*dtmp;
-			      if(pds>=dmin)break;
-				}
-			    if(pds<dmin)// If it is less than dmin, updating the dmin
-				{
-			      //initial pds as the dmin
-			      index=p-j;
-                  dmin=pds;
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt and dsqrtv
-			      dsqrt=sqrt(dmin/dimension);
-	              dsqrtv=sqrt(dmin);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The new vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }
-			}
+		  regionnumberright=1;
 		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else
-		  {
-		    if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(variances[p+j]>vmin&&variances[p+j]<vmax)
-			{
-              dtmp=(variances[p+j]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-means[p+j]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin)
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-				itmp=(p+j)*dimension;
-			    for(k=0;k<dimension;k++)
-				{
-			   	   dtmp=query[k]-database[itmp+k];
-			       pds+=dtmp*dtmp;
-			       if(pds>=dmin)break;
-				}
-			    if(pds<dmin)// If it is less than dmin, updating the dmin
-				{
-			      //pds as the dmin
-			      index=p+j;
-                  dmin=pds;
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt and dsqrtv
-			      dsqrt=sqrt(dmin/dimension);
-	              dsqrtv=sqrt(dmin);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The new vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    result->m_fDistance=(float)dmin;
-    result->m_dwImageIndex=index;
-}
-
-//EEENNS,the best one
-//another version
-void CRetrieveMethod::EEENNSMethod(double *query,double querymean,double queryvariance, double *database,DWORD databasesize,WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int j,k;//j for the main loop, k for dimension
-    int w;//for the loop 
-    double dsqrt,dsqrtv;//sqrt distances for vector[p]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD I=databasesize;
-	double dmin;
-    DWORD index,itemp;
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=database[ii*(dimension+2)+dimension])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=database[jj*(dimension+2)+dimension])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=database[p*(dimension+2)+dimension])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-database[jj*(dimension+2)+dimension])>=fabs(mx-database[ii*(dimension+2)+dimension]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-	//++++++++++++++calculate the distance for p+++++++++++
-    dmin=0.0;
-	index=p;//
-	itemp=p*(dimension+2);
-	for(k=0;k<dimension;k++)
-	{
-	 dtmp=query[k]-database[itemp+k];
-	 dmin+=dtmp*dtmp;
-	}
-	//Get the sqrt and sqrtv distance for vector[p]
-	dsqrt=sqrt(dmin/dimension);
-	dsqrtv=sqrt(dmin);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    j=0;
-    for(w=0;w<(int)I;w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else
+		if(regionnumberleft==0)//排除异常
 		{
-		    itemp=(p-j)*(dimension+2);
-			if(database[itemp+dimension]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(database[itemp+dimension+1]>vmin&&database[itemp+dimension+1]<vmax)
-			{
-			  dtmp=(database[itemp+dimension+1]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-database[itemp+dimension]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin)
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-			    for(k=0;k<dimension;k++)
-				{
-			      dtmp=query[k]-database[itemp+k];
-			      pds+=dtmp*dtmp;
-			      if(pds>=dmin)break;
-				}
-			    if(pds<dmin)// If it is less than dmin, updating the dmin
-				{
-			      //initial pds as the dmin
-			      index=p-j;
-                  dmin=pds;
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt and dsqrtv
-			      dsqrt=sqrt(dmin/dimension);
-	              dsqrtv=sqrt(dmin);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The new vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }
-			}
+		  regionnumberleft=1;
 		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else
-		  {
-		    itemp=(p+j)*(dimension+2);
-			if(database[itemp+dimension]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(database[itemp+dimension+1]>vmin&&database[itemp+dimension+1]<vmax)
-			{
-              dtmp=(database[itemp+dimension+1]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-database[itemp+dimension]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin)
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-			    for(k=0;k<dimension;k++)
-				{
-			   	   dtmp=query[k]-database[itemp+k];
-			       pds+=dtmp*dtmp;
-			       if(pds>=dmin)break;
-				}
-			    if(pds<dmin)// If it is less than dmin, updating the dmin
-				{
-			      //pds as the dmin
-			      index=p+j;
-                  dmin=pds;
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt and dsqrtv
-			      dsqrt=sqrt(dmin/dimension);
-	              dsqrtv=sqrt(dmin);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The new vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    result->m_fDistance=(float)dmin;
-    result->m_dwImageIndex=index;
-}
-//EKNNS,the best K ones
-int CRetrieveMethod::EKNNSMethod(double *query,double querymean, double *database,double *means,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt;//sqrt distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    DWORD I=databasesize;
-	DWORD K;
-	//If K is bigger than the total number of vectors
-	if(I<value_K)
-	  K=I;
-	else
-	  K=value_K;
-	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
-	{
-	  delete [] dmin;
-	  return -1;
-	}
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
-	}
-
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
-	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i] 
-	   itmp=i*dimension;
-	   for(k=0;k<dimension;k++)
-	   {
-		 dtmp=query[k]-database[itmp+k];
-	     dmin[i-low]+=dtmp*dtmp;
-	   }
-	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
-
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-    for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else if((int)p-j<low)
-		{
-		    if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p-j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			    dtmp=query[k]-database[itmp+k];
-			    pds+=dtmp*dtmp;
-			    if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p-j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				    break;
-				}
-			    //update the mmax mmin
-			    //The new dsqrt
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p+j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p+j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				   break;
-				}
-			    //update the mmax mmin
-			    //The new dsqrt
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-			  }   
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    for(n=0;n<(int)K;n++)
-	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=index[n];
-    }
-    delete []dmin;
-    delete []index;
-    return 0;
-}
-
-//EEKNNS,the best K ones
-int CRetrieveMethod::EEKNNSMethod(double *query,double querymean,double queryvariance, double *database,double *means,double *variances,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt,dsqrtv;//sqrt sqrtv distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    DWORD I=databasesize;
-	DWORD K;
-	//If K is bigger than the total number of vectors
-	if(I<value_K)
-	  K=I;
-	else
-	  K=value_K;
-	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
-	{
-	  delete [] dmin;
-	  return -1;
-	}
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
-	}
-
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
-	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i]
-	   itmp=i*dimension;
-	   for(k=0;k<dimension;k++)
-	   {
-		 dtmp=query[k]-database[itmp+k];
-	     dmin[i-low]+=dtmp*dtmp;
-	   }
-	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
-
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt sqrtv distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	dsqrtv=sqrt(dmin[K-1]);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else if((int)p-j<low)
-		{
-		    if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(variances[p-j]>vmin&&variances[p-j]<vmax)
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p-j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			    dtmp=query[k]-database[itmp+k];
-			    pds+=dtmp*dtmp;
-			    if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p-j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				    break;
-				}
-			    //update the mmax mmin vmax vmin
-			    //The new dsqrt dsqrtv
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-				dsqrtv=sqrt(dmin[K-1]);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-				//The vmax and vmin
-	            vmax=vx+dsqrtv;
-	            vmin=vx-dsqrtv;
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(variances[p+j]>vmin&&variances[p+j]<vmax)
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=(p+j)*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p+j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				   break;
-				}
-			    //update the mmax mmin vmax vmin
-			    //The new dsqrt dsqrtv
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-				dsqrtv=sqrt(dmin[K-1]);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-				//The vmax and vmin
-	            vmax=vx+dsqrtv;
-	            vmin=vx-dsqrtv;
-			  }   
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    for(n=0;n<(int)K;n++)
-	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=index[n];
-    }
-    delete []dmin;
-    delete []index;
-    return 0;
-}
-
-//EEEKNNS,the best K ones
-int CRetrieveMethod::EEEKNNSMethod(double *query,double querymean,double queryvariance, double *database,double *means,double *variances,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt,dsqrtv;//sqrt sqrtv distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    DWORD I=databasesize;
-	DWORD K;
-	//If K is bigger than the total number of vectors
-	if(I<value_K)
-	  K=I;
-	else
-	  K=value_K;
-	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
-	{
-	  delete [] dmin;
-	  return -1;
-	}
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
-	}
-
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
-	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i] 
-	   for(k=0;k<dimension;k++)
-	   {
-		 dtmp=query[k]-database[i*dimension+k];
-	     dmin[i-low]+=dtmp*dtmp;
-	   }
-	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
-
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt sqrtv distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	dsqrtv=sqrt(dmin[K-1]);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else if((int)p-j<low)
-		{
-		    if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(variances[p-j]>vmin&&variances[p-j]<vmax)
-			{
-              dtmp=(variances[p-j]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-means[p-j]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin[K-1])
-			  {
-				 ///Computing the distance by PDS
-			    pds=0.0;
-			    for(k=0;k<dimension;k++)
-				{
-			      dtmp=query[k]-database[(p-j)*dimension+k];
-			      pds+=dtmp*dtmp;
-			      if(pds>=dmin[K-1])break;
-				}
-			    if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-				{
-			      //initial pds as the dmin[K-1]
-			      index[K-1]=p-j;
-                  dmin[K-1]=pds;
-			      for(m=K-1;m>=1;m--)//insearting
-				  {
-			        if(dmin[m]<dmin[m-1])
-					{
-				      dtmp=dmin[m];
-				      dmin[m]=dmin[m-1];
-				      dmin[m-1]=dtmp;
-				      itmp=index[m];
-				      index[m]=index[m-1];
-				      index[m-1]=itmp;
-					}
-				    else
-				      break;
-				  }
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt dsqrtv
-			      dsqrt=sqrt(dmin[K-1]/dimension);
-				  dsqrtv=sqrt(dmin[K-1]);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(variances[p+j]>vmin&&variances[p+j]<vmax)
-			{
-              dtmp=(variances[p+j]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-means[p+j]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin[K-1])
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-			    for(k=0;k<dimension;k++)
-				{
-			   	 dtmp=query[k]-database[(p+j)*dimension+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-				}
-			    if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-				{
-			      //initial pds as the dmin[K-1]
-			      index[K-1]=p+j;
-                  dmin[K-1]=pds;
-			      for(m=K-1;m>=1;m--)//insearting
-				  {
-			        if(dmin[m]<dmin[m-1])
-					{
-				      dtmp=dmin[m];
-				      dmin[m]=dmin[m-1];
-				      dmin[m-1]=dtmp;
-				      itmp=index[m];
-				      index[m]=index[m-1];
-				      index[m-1]=itmp;
-					}
-				    else
-				     break;
-				  }
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt dsqrtv
-			      dsqrt=sqrt(dmin[K-1]/dimension);
-				  dsqrtv=sqrt(dmin[K-1]);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    for(n=0;n<(int)K;n++)
-	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=index[n];
-    }
-    delete []dmin;
-    delete []index;
-    return 0;
-}
-
-//EEEKNNS,the best K ones
-//another version
-int CRetrieveMethod::EEEKNNSMethod(double *query,double querymean,double queryvariance, double *database,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt,dsqrtv;//sqrt sqrtv distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    DWORD I=databasesize;
-	DWORD K;
-	//If K is bigger than the total number of vectors
-	if(I<value_K)
-	  K=I;
-	else
-	  K=value_K;
-	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
-	{
-	  delete [] dmin;
-	  return -1;
-	}
-    
-	//+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    if(mx<=database[ii*(dimension+2)+dimension])p=ii;
-    //If smaller than the maximum mean
-    else if(mx>=database[jj*(dimension+2)+dimension])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        if(mx<=database[p*(dimension+2)+dimension])
-	      jj=p;
-        else 
-	      ii=p;
-        if(fabs(mx-database[jj*(dimension+2)+dimension])>=fabs(mx-database[ii*(dimension+2)+dimension]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
-	}
-
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
-	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i] 
-	   itmp=i*(dimension+2);
-	   for(k=0;k<dimension;k++)
-	   {
-		 dtmp=query[k]-database[itmp+k];
-	     dmin[i-low]+=dtmp*dtmp;
-	   }
-	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
-
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt sqrtv distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	dsqrtv=sqrt(dmin[K-1]);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else if((int)p-j<low)
-		{
-		    itmp=(p-j)*(dimension+2);
-			if(database[itmp+dimension]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(database[itmp+dimension+1]>vmin&&database[itmp+dimension+1]<vmax)
-			{
-              dtmp=(database[itmp+dimension+1]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-database[itmp+dimension]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin[K-1])
-			  {
-				 ///Computing the distance by PDS
-			    pds=0.0;
-			    for(k=0;k<dimension;k++)
-				{
-			      dtmp=query[k]-database[itmp+k];
-			      pds+=dtmp*dtmp;
-			      if(pds>=dmin[K-1])break;
-				}
-			    if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-				{
-			      //initial pds as the dmin[K-1]
-			      index[K-1]=p-j;
-                  dmin[K-1]=pds;
-			      for(m=K-1;m>=1;m--)//insearting
-				  {
-			        if(dmin[m]<dmin[m-1])
-					{
-				      dtmp=dmin[m];
-				      dmin[m]=dmin[m-1];
-				      dmin[m-1]=dtmp;
-				      itmp=index[m];
-				      index[m]=index[m-1];
-				      index[m-1]=itmp;
-					}
-				    else
-				      break;
-				  }
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt dsqrtv
-			      dsqrt=sqrt(dmin[K-1]/dimension);
-				  dsqrtv=sqrt(dmin[K-1]);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    itmp=(p+j)*(dimension+2);
-			if(database[itmp+dimension]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(database[itmp+dimension+1]>vmin&&database[itmp+dimension+1]<vmax)
-			{
-              dtmp=(database[itmp+dimension+1]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-database[itmp+dimension]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin[K-1])
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-			    for(k=0;k<dimension;k++)
-				{
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-				}
-			    if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-				{
-			      //initial pds as the dmin[K-1]
-			      index[K-1]=p+j;
-                  dmin[K-1]=pds;
-			      for(m=K-1;m>=1;m--)//insearting
-				  {
-			        if(dmin[m]<dmin[m-1])
-					{
-				      dtmp=dmin[m];
-				      dmin[m]=dmin[m-1];
-				      dmin[m-1]=dtmp;
-				      itmp=index[m];
-				      index[m]=index[m-1];
-				      index[m-1]=itmp;
-					}
-				    else
-				     break;
-				  }
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt dsqrtv
-			      dsqrt=sqrt(dmin[K-1]/dimension);
-				  dsqrtv=sqrt(dmin[K-1]);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-    for(n=0;n<(int)K;n++)
-	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=index[n];
-    }
-    delete []dmin;
-    delete []index;
-    return 0;
-}
-
-
-//EKNNSForIterative,the best K ones
-int CRetrieveMethod::EKNNSMethodForIterative(double *query,double querymean, double *database,double *means,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result,DWORD *searchindexlist)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt;//sqrt distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    flagup=FALSE;
-    flagdown=FALSE;
-    DWORD I=databasesize;
-    DWORD K;
-	//If value_K is bigger than the total number of vectors
-	if(I<value_K) K=I;
-	else K=value_K;
-	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
-	{
-	  delete [] dmin;
-	  return -1;
-	}
-    //+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    //if(mx<=means[searchindexlist[ii]])p=ii;
-	if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    //else if(mx>=means[searchindexlist[jj]])p=jj;
-	else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        //if(mx<=means[searchindexlist[p]])
-		if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        //if(fabs(mx-means[searchindexlist[jj]])>=fabs(mx-means[searchindexlist[ii]]))
-		if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
-	}
-
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
-	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i] 
-	   itmp=searchindexlist[i]*dimension;
-	   for(k=0;k<dimension;k++)
-	   {
-		 dtmp=query[k]-database[itmp+k];
-	     dmin[i-low]+=dtmp*dtmp;
-	   }
-	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
-
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
+		regiondata2=(regiontotallleft/regionnumberleft+regiontotalright/regionnumberright)/2.0;////计算公式
+		if((unsigned char)regiondata2==(unsigned char)regiondata1)///结束
+		  break;
 		else 
+		  regiondata1=regiondata2;
+	}
+	OrgFeature[Featurefirst+0]=regiondata2/255.0; ///归一化
+///参数2
+	OrgFeature[Featurefirst+1]=(double)regionnumberleft/(regionnumberleft+regionnumberright);
+////end of 颜色
+	///颜色参数的个数
+
+//////说明：参数3，4，5是纹理中的不变量，他们是在共生矩阵中提取的
+////参数3:
+///统计共生矩阵
+	double (*texturematrix)[256]=new double[256][256];  ///共生矩阵x
+	double (*texturematriy)[256]=new double[256][256];  ///共生矩阵x
+	for(i=0; i<256; i++)
+	{
+		for(j=0; j<256; j++)
 		{
-		    //if(means[searchindexlist[p-j]]<=mmin) //The flag set when special condition is satisfied
-			if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if((int)p-j<low)
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=searchindexlist[(p-j)]*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			    dtmp=query[k]-database[itmp+k];
-			    pds+=dtmp*dtmp;
-			    if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p-j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				    break;
-				}
-			    //update the mmax mmin
-			    //The new dsqrt
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-			  }   
-			}
+			texturematrix[i][j]=0;
+			texturematriy[i][j]=0;
 		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    //if(means[searchindexlist[p+j]]>=mmax) //The flag set when special condition is satisfied
-			if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=searchindexlist[(p+j)]*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p+j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				   break;
-				}
-			    //update the mmax mmin
-			    //The new dsqrt
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-			  }   
-			}
-		  }
-	  }
-	  j=j+1;
 	}
-
-    for(n=0;n<(int)K;n++)
+	for(i=1; i<dataheigth-1; i++)
 	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=searchindexlist[index[n]];
-    }
-
-    for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(index[n]<index[n+1])///
+		for(j=1; j<datawidth-1; j++)
 		{
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
+			texturematrix[*(pdata + i*datawidth + j)][*(pdata + i*datawidth + j-1)]=texturematrix[*(pdata + i*datawidth + j)][*(pdata + i*datawidth + j-1)]+1;
+			texturematrix[*(pdata + i*datawidth + j)][*(pdata + i*datawidth + j+1)]=texturematrix[*(pdata + i*datawidth + j)][*(pdata + i*datawidth + j+1)]+1;
+			texturematriy[*(pdata + i*datawidth + j)][*(pdata + (i-1)*datawidth + j)]=texturematrix[*(pdata + i*datawidth + j)][*(pdata + (i-1)*datawidth + j)]+1;
+			texturematriy[*(pdata + i*datawidth + j)][*(pdata + (i+1)*datawidth + j)]=texturematrix[*(pdata + i*datawidth + j)][*(pdata + (i+1)*datawidth + j)]+1;
 		}
-	  }
-	}
-	for(m=0;m<(int)K;m++)
-	{
-	  for(n=(int)index[m];n<(int)I-m-1;n++)
-	  {
-		searchindexlist[n]=searchindexlist[n+1];
-	  }
-	}
-    delete []dmin;
-    delete []index;
-    return 0;
-}
-//EEKNNSMethodForIterative
-int CRetrieveMethod::EEKNNSMethodForIterative(double *query,double querymean,double queryvariance, double *database,double *means,double *variances,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result,DWORD *searchindexlist)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt, dsqrtv;//sqrt sqrtv distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    DWORD I=databasesize;
-    DWORD K;
-	//If value_K is bigger than the total number of vectors
-	if(I<value_K) K=I;
-	else K=value_K;
-	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
-	{
-	  delete [] dmin;
-	  return -1;
-	}
-    //+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    //if(mx<=means[searchindexlist[ii]])p=ii;
-	if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    //else if(mx>=means[searchindexlist[jj]])p=jj;
-	else if(mx>=means[jj])p=jj;
-    else
-	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        //if(mx<=means[searchindexlist[p]])
-		if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        //if(fabs(mx-means[searchindexlist[jj]])>=fabs(mx-means[searchindexlist[ii]]))
-		if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
 	}
 
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
+///////参数3：反差（主对角线的惯性矩）Con
+/////////特点：对于粗纹理由于共生矩阵的元素较集中于主对角线附近，此时（h-k)（像素差）较小，
+//			  相应的CON值也较小，相反，对于细纹理，则相应的CON值较大。
+////////参数4：能量（角二阶矩）Asm
+////////特点： 这是一种对图像灰度分布的度量，当共生矩阵的元素分布较集中与主对角线时，
+//		  	 相应的ASM值较大，反之，ASM值较小。
+////////参数5：熵
+/////////特点：当共生矩阵的元素相差不大且较分散时，ENT值较大；反之，生矩阵的元素较集中时，
+//      	  ENT值较小。
+	unsigned long int MaxNumber=dataheigth*datawidth;////归一化参数
+	unsigned long double Ent1=0,Ent2=0;					////熵变量Ent1水平，Ent2
+	unsigned long double Asm1=0,Asm2=0;           ///能量变量
+    unsigned long double Con1=0,Con2=0;        ///反差变量
+	for(i=0; i<256; i++)
 	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i] 
-	   itmp=searchindexlist[i]*dimension;
-	   for(k=0;k<dimension;k++)
+	   for(j=0; j<256; j++)
 	   {
-		 dtmp=query[k]-database[itmp+k];
-	     dmin[i-low]+=dtmp*dtmp;
+	 	 long double varible1=texturematrix[i][j]/MaxNumber;  //简化计算的变量,/////归一化共生矩阵
+		 long double varible2=texturematriy[i][j]/MaxNumber;
+		 Con1=Con1+(i-j)*(i-j)*varible1;
+		 Con2=Con2+(i-j)*(i-j)*varible2;
+		 Asm1=Asm1+varible1*varible1;
+		 Asm2=Asm2+varible2*varible2;
+		 if(varible1!=0)
+			Ent1=Ent1+varible1*log(varible1);
+		 if(varible2!=0)
+			Ent2=Ent2+varible2*log(varible2);				
 	   }
 	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
+	OrgFeature[Featurefirst+2]=(Con1+Con2)/2/255.0/255.0;             //提取反差变量
+	OrgFeature[Featurefirst+3]=(Asm1+Asm2)/2;              ///提取能量变量
+	OrgFeature[Featurefirst+4]=-(Ent1+Ent2)/2;              ///提取熵变量
+	delete[] texturematrix;
+	delete[] texturematriy;
+//////参数3，4，5提取结束	
+////end of 纹理
+///纹理参数的个数
 
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt sqrtv distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	dsqrtv=sqrt(dmin[K-1]);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else if((int)p-j<low)
-		{
-		    //if(means[searchindexlist[p-j]]<=mmin) //The flag set when special condition is satisfied
-			if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(variances[p-j]>vmin&&variances[p-j]<vmax)
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=searchindexlist[(p-j)]*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			    dtmp=query[k]-database[itmp+k];
-			    pds+=dtmp*dtmp;
-			    if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p-j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				    break;
-				}
-			    //update the mmax mmin vmax vmin
-			    //The new dsqrt dsqrtv
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-				dsqrtv=sqrt(dmin[K-1]);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-				//The vmax and vmin
-	            vmax=vx+dsqrtv;
-	            vmin=vx-dsqrtv;
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    //if(means[searchindexlist[p+j]]>=mmax) //The flag set when special condition is satisfied
-			if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(variances[p+j]>vmin&&variances[p+j]<vmax)
-			{
-              ///Computing the distance by PDS
-			  pds=0.0;
-			  itmp=searchindexlist[(p+j)]*dimension;
-			  for(k=0;k<dimension;k++)
-			  {
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-			  }
-			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-			  {
-			    //initial pds as the dmin[K-1]
-			    index[K-1]=p+j;
-                dmin[K-1]=pds;
-			    for(m=K-1;m>=1;m--)//insearting
-				{
-			      if(dmin[m]<dmin[m-1])
-				  {
-				    dtmp=dmin[m];
-				    dmin[m]=dmin[m-1];
-				    dmin[m-1]=dtmp;
-				    itmp=index[m];
-				    index[m]=index[m-1];
-				    index[m-1]=itmp;
-				  }
-				  else
-				   break;
-				}
-			    //update the mmax mmin vmax vmin
-			    //The new dsqrt dsqrtv
-			    dsqrt=sqrt(dmin[K-1]/dimension);
-				dsqrtv=sqrt(dmin[K-1]);
-	            //The new mmax and mmin
-	            mmax=mx+dsqrt;
-	            mmin=mx-dsqrt;
-				//The vmax and vmin
-	            vmax=vx+dsqrtv;
-	            vmin=vx-dsqrtv;
-			  }   
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-
-    for(n=0;n<(int)K;n++)
-	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=searchindexlist[index[n]];
-    }
-
-    for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(index[n]<index[n+1])///
-		{
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-	for(m=0;m<(int)K;m++)
-	{
-	  for(n=(int)index[m];n<(int)I-m-1;n++)
-	  {
-		searchindexlist[n]=searchindexlist[n+1];
-	  }
-	}
-    delete []dmin;
-    delete []index;
-    return 0;
-}
-
-//EEEKNNSMethodForIterative
-int CRetrieveMethod::EEEKNNSMethodForIterative(double *query,double querymean,double queryvariance, double *database,double *means,double *variances,DWORD databasesize,DWORD value_K, WORD dimension,RETRIEVEDRESULT *result,DWORD *searchindexlist)
-{
-    DWORD p;//The index of least mean distance candidate
-    int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
-    int m,n,w;//for the loop 
-    double dsqrt, dsqrtv;//sqrt sqrtv distance for vector[K-1]
-    double dtmp=0.0,pds;  ///temp double varaiable
-    double mmax,mmin,vmax,vmin;
-    LONG low,high;//The lower and higher limits to be searched
-    BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
-    DWORD itmp;
-    DWORD I=databasesize;
-    DWORD K;
-	//If value_K is bigger than the total number of vectors
-	if(I<value_K) K=I;
-	else K=value_K;
 	
-	double *dmin= new double [K];//distance for K vectors
-    if(dmin==NULL)return -1;
-    DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
-    if(index==NULL)
+////参数6,7提取：形状不变量
+///////二阶矩和一阶矩
+/////特点：矩是对图像的一种的一种统计形式，他的计算要用到图像或区域中的所有相关的像素点，
+////	对一个数字图像函数F（X）,如果他分段连续且只在XY平面上的有限个点不为零，则可以证明他的
+////////各阶矩存在。
+	  	//范例图像的各阶矩的声明
+	double M_00=0.0,M_01=0.0,M_10=0.0,M_11=0.0,M_20=0.0,M_02=0.0;//P+Q阶矩
+    double U_00=0.0,U_11=0.0,U_20=0.0,U_02=0.0;//P+Q阶中心矩
+	double m_00,n_00;//重心坐标
+	double u_00,u_11,u_20,u_02;//归一化的P+Q阶中心矩
+ 	///计算范例图的各阶矩
+	for(int l=0; l<dataheigth; l++)
 	{
-	  delete [] dmin;
-	  return -1;
+		for(int k=0; k<datawidth; k++)
+		{ 
+		  M_00+=*(pdata + l*datawidth + k);
+		  M_01+=*(pdata + l*datawidth + k)*l;
+          M_10+=*(pdata + l*datawidth + k)*k;	
+		}
 	}
-    //+++++++++++++Get the initial matching index p in the current mean list+++++++++++++++
-    double mx=querymean;
-	double vx=queryvariance;
-    //The low
-    DWORD ii=0;
-    //The upper
-    DWORD jj=I-1;
-    //If smaller than the minimum mean
-    //if(mx<=means[searchindexlist[ii]])p=ii;
-	if(mx<=means[ii])p=ii;
-    //If smaller than the maximum mean
-    //else if(mx>=means[searchindexlist[jj]])p=jj;
-	else if(mx>=means[jj])p=jj;
-    else
+	//重心坐标 
+	m_00=M_10/M_00;//横坐标
+	n_00=M_01/M_00;//纵坐标
+	U_00=M_00;
+	for(j=0; j<dataheigth; j++)
 	{
-      while(jj-ii>1)
-	  {
-        p=(ii+jj)/2;
-        //if(mx<=means[searchindexlist[p]])
-		if(mx<=means[p])
-	      jj=p;
-        else 
-	      ii=p;
-        //if(fabs(mx-means[searchindexlist[jj]])>=fabs(mx-means[searchindexlist[ii]]))
-		if(fabs(mx-means[jj])>=fabs(mx-means[ii]))
-	      p=ii;
-        else
-	      p=jj;
-	  }
-	}
-    //++++++++++Get the lower and upper limits+++++++++
-    if(K%2==0)
-	{
-	  low=p-(K/2);
- 	  high=p+(K/2)-1;
-	}
-    else
-	{
-      low=p-(K-1)/2;
-      high=p+(K-1)/2;
-	}
-    if(low<0)//if lower than 0
-	{
-      low=0;
-      high=K-1;
-      flagdown=TRUE;
-	}
-    if(high>(LONG)(I-1))//if larger than the list length
-	{
-	  low=I-K;
-	  high=I-1;
-	  flagup=TRUE;
-	}
-    
-	///If K==I then no up and down search is performed
-	if(K==I)
-	{
-	  flagup=TRUE;
-	  flagdown=TRUE;
-	}
-
-	//++++++++++++++calculate the K distances+++++++++++
-    for(i=low;i<=high;i++)
-	{
-	   dmin[i-low]=0.0;
-	   index[i-low]=i;// get the index[i] 
-	   itmp=searchindexlist[i]*dimension;
-	   for(k=0;k<dimension;k++)
+	   for(i=0; i<datawidth; i++)
 	   {
-		 dtmp=query[k]-database[itmp+k];
-	     dmin[i-low]+=dtmp*dtmp;
+		 U_02+=(j-n_00)*(j-n_00)*(*(pdata + j*datawidth + i));
+		 U_20+=(i-m_00)*(i-m_00)*(*(pdata + j*datawidth + i));
+		 U_11+=(i-m_00)*(j-n_00)*(*(pdata + j*datawidth + i));
 	   }
 	}
-	///Sorting in the ascending order
-	//Bubble sort for current computed K distances
-	for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(dmin[n]>dmin[n+1])///
-		{
-		  dtmp=dmin[n];
-		  dmin[n]=dmin[n+1];
-		  dmin[n+1]=dtmp;
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-    
-
-	//Initial Setting before searching
-	//The start point is j=min{p-low+1,high-p+1}
-	j=p-low+1;
-	if(j>(int)(high-p+1))j=high-p+1;
-    if(low==0)j=high-p+1;
-	if(high==(LONG)I-1)j=p-low+1;
-	//Get the sqrt sqrtv distance for vector[K-1]
-	dsqrt=sqrt(dmin[K-1]/dimension);
-	dsqrtv=sqrt(dmin[K-1]);
-	//The mmax and mmin
-	mmax=mx+dsqrt;
-	mmin=mx-dsqrt;
-	//The vmax and vmin
-	vmax=vx+dsqrtv;
-	vmin=vx-dsqrtv;
-    for(w=0;w<(int)(I-K+2);w++)
-	{
-      //The terminate flags
-	  if(flagup==TRUE&&flagdown==TRUE)break;
-      ////If we need search in the low direction
-	  if(flagdown==FALSE)
-	  {
-	    if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
-		else if((int)p-j<low)
-		{
-		    //if(means[searchindexlist[p-j]]<=mmin) //The flag set when special condition is satisfied
-			if(means[p-j]<=mmin) //The flag set when special condition is satisfied
-		     flagdown=TRUE;
-		    else if(variances[p-j]>vmin&&variances[p-j]<vmax)
-			{
-              dtmp=(variances[p-j]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-means[p-j]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin[K-1])
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-				itmp=searchindexlist[(p-j)]*dimension;
-			    for(k=0;k<dimension;k++)
-				{
-			      dtmp=query[k]-database[itmp+k];
-			      pds+=dtmp*dtmp;
-			      if(pds>=dmin[K-1])break;
-				}
-			    if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-				{
-			      //initial pds as the dmin[K-1]
-			      index[K-1]=p-j;
-                  dmin[K-1]=pds;
-			      for(m=K-1;m>=1;m--)//insearting
-				  {
-			        if(dmin[m]<dmin[m-1])
-					{
-				      dtmp=dmin[m];
-				      dmin[m]=dmin[m-1];
-				      dmin[m-1]=dtmp;
-				      itmp=index[m];
-				      index[m]=index[m-1];
-				      index[m-1]=itmp;
-					}
-				    else
-				     break;
-				  }
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt dsqrtv
-			      dsqrt=sqrt(dmin[K-1]/dimension);
-				  dsqrtv=sqrt(dmin[K-1]);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }   
-			}
-		}
-	  }
-      ////If we need search in the low direction
-	  if(flagup==FALSE)
-	  {
-		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
-		  else if((int)p+j>high)
-		  {
-		    //if(means[searchindexlist[p+j]]>=mmax) //The flag set when special condition is satisfied
-			if(means[p+j]>=mmax) //The flag set when special condition is satisfied
-		      flagup=TRUE;
-		    else if(variances[p+j]>vmin&&variances[p+j]<vmax)
-			{
-              dtmp=(variances[p+j]-vx);
-			  dtmp=dtmp*dtmp;
-			  pds=(mx-means[p+j]);
-			  pds=pds*pds*dimension;
-			  pds+=dtmp;
-			  if(pds<dmin[K-1])
-			  {
-			    ///Computing the distance by PDS
-			    pds=0.0;
-				itmp=searchindexlist[(p+j)]*dimension;
-			    for(k=0;k<dimension;k++)
-				{
-			   	 dtmp=query[k]-database[itmp+k];
-			     pds+=dtmp*dtmp;
-			     if(pds>=dmin[K-1])break;
-				}
-			    if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
-				{
-			      //initial pds as the dmin[K-1]
-			      index[K-1]=p+j;
-                  dmin[K-1]=pds;
-			      for(m=K-1;m>=1;m--)//insearting
-				  {
-			        if(dmin[m]<dmin[m-1])
-					{
-				      dtmp=dmin[m];
-				      dmin[m]=dmin[m-1];
-				      dmin[m-1]=dtmp;
-				      itmp=index[m];
-				      index[m]=index[m-1];
-				      index[m-1]=itmp;
-					}
-				    else
-				     break;
-				  }
-			      //update the mmax mmin vmax vmin
-			      //The new dsqrt dsqrtv
-			      dsqrt=sqrt(dmin[K-1]/dimension);
-				  dsqrtv=sqrt(dmin[K-1]);
-	              //The new mmax and mmin
-	              mmax=mx+dsqrt;
-	              mmin=mx-dsqrt;
-				  //The vmax and vmin
-	              vmax=vx+dsqrtv;
-	              vmin=vx-dsqrtv;
-				}
-			  }   
-			}
-		  }
-	  }
-	  j=j+1;
-	}
-
-    for(n=0;n<(int)K;n++)
-	{
-     result[n].m_fDistance=(float)dmin[n];
-     result[n].m_dwImageIndex=searchindexlist[index[n]];
-    }
-
-    for(m=1;m<(int)K;m++)
-	{
-	  for(n=0;n<(int)K-m;n++)
-	  {
-	    if(index[n]<index[n+1])///
-		{
-		  itmp=index[n];
-		  index[n]=index[n+1];
-		  index[n+1]=itmp;
-		}
-	  }
-	}
-	for(m=0;m<(int)K;m++)
-	{
-	  for(n=(int)index[m];n<(int)I-m-1;n++)
-	  {
-		searchindexlist[n]=searchindexlist[n+1];
-	  }
-	}
-    delete []dmin;
-    delete []index;
-    return 0;
+	u_00=U_00;
+	u_02=U_02/pow(u_00,2.0);
+	u_11=U_11/pow(u_00,2.0);
+	u_20=U_20/pow(u_00,2.0);
+	///二阶不变矩保存
+	OrgFeature[Featurefirst+5]=(pow((u_20-u_02),2.0)+4*u_11*u_11);  ////保存 
+	///一阶不变矩保存
+	OrgFeature[Featurefirst+6]=(u_20+u_02);
+	return true;
 }
 
 
@@ -6796,6 +3498,8 @@ int CRetrieveMethod::FullSearchRetrieveMethod(FEATUREVECTOR QueryImageFeatureVec
 {
 	clock_t time1,time2;
 	DWORD number,check,l;
+	WORD dimension;
+	double e,tem;
 	RETRIEVEDRESULT p;
 
 	//Judge the parameter
@@ -6808,12 +3512,32 @@ int CRetrieveMethod::FullSearchRetrieveMethod(FEATUREVECTOR QueryImageFeatureVec
 	time1=clock();
 	
 	//Compute the distance between query image and each database image to be compared
-	//and Bubble sort for current computed distances
-	FullSearchMethod(QueryImageFeatureVector.m_dNormalizedFeature,
-	(lpFeatureVector+(*RetrievedNumber))->m_dNormalizedFeature,
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
-    for(number=0;number<VectorNumberTobeSearched;number++)
-	  RetrievedResult[number+(*RetrievedNumber)].m_dwImageIndex+=(*RetrievedNumber);
+	for(number=0;number<VectorNumberTobeSearched;number++)
+	{
+	  tem=0.0;
+	  for(dimension=0;dimension<VectorDimension;dimension++)
+	  {
+	    e=QueryImageFeatureVector.m_dNormalizedFeature[dimension]\
+		-lpFeatureVector[number+(*RetrievedNumber)].m_dNormalizedFeature[dimension];
+		tem+=e*e;
+	  }
+	  RetrievedResult[number+(*RetrievedNumber)].m_fDistance=(float)tem;
+	  RetrievedResult[number+(*RetrievedNumber)].m_dwImageIndex=number+(*RetrievedNumber);
+	}
+
+	//Bubble sort for current computed distances
+	for(number=1;number<VectorNumberTobeSearched;number++)
+	{
+	  for(check=0;check<VectorNumberTobeSearched-number;check++)
+	  {
+	    if(RetrievedResult[check+(*RetrievedNumber)].m_fDistance>RetrievedResult[check+(*RetrievedNumber)+1].m_fDistance)
+		{
+		  p=RetrievedResult[check+(*RetrievedNumber)];
+		  RetrievedResult[check+(*RetrievedNumber)]=RetrievedResult[check+(*RetrievedNumber)+1];
+		  RetrievedResult[check+(*RetrievedNumber)+1]=p;
+		}
+	  }
+	}
     
 	//Insert current sorted computed distances into the last sorted distances
 	if(*RetrievedNumber!=0)
@@ -6844,57 +3568,6 @@ int CRetrieveMethod::FullSearchRetrieveMethod(FEATUREVECTOR QueryImageFeatureVec
  	return 0;
 }
 
-int CRetrieveMethod::FullSearchRetrieveMethod2(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,long int *RetrievedNumber,DWORD VectorNumberTobeSearched,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime)
-{
-	clock_t time1,time2;
-	DWORD number,check,l;
-	RETRIEVEDRESULT p;
-
-	//Judge the parameter
-	if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-	if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-	if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-	if((*RetrievedNumber)>=(long int)TotalVectorNumber)return -3;
-    if(VectorNumberTobeSearched+(*RetrievedNumber)>TotalVectorNumber)return -3;
-	//get the initial time
-	time1=clock();
-	
-	//Compute the distance between query image and each database image to be compared
-	//and Bubble sort for current computed distances
-	FullSearchMethod2(QueryImageFeatureVector.m_dNormalizedFeature,
-	(lpFeatureVector+(*RetrievedNumber))->m_dNormalizedFeature,
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
-    for(number=0;number<VectorNumberTobeSearched;number++)
-	  RetrievedResult[number+(*RetrievedNumber)].m_dwImageIndex+=(*RetrievedNumber);
-    
-	//Insert current sorted computed distances into the last sorted distances
-	if(*RetrievedNumber!=0)
-	{
-	  for(number=0;number<VectorNumberTobeSearched;number++)
-	  {
-	    for(check=0;check<number+(*RetrievedNumber);check++)
-		{
-		  if(RetrievedResult[number+(*RetrievedNumber)].m_fDistance<RetrievedResult[check].m_fDistance)
-		  {
-		    p=RetrievedResult[check];
-			RetrievedResult[check]=RetrievedResult[number+(*RetrievedNumber)];
-			for(l=(*RetrievedNumber)+number;l>=check+2;l--)
-			  RetrievedResult[l]=RetrievedResult[l-1];
-			RetrievedResult[check+1]=p;
-		    break;
-		  }
-		}
-	  }
-	}
-	//get the finished time
-	time2=clock();
-	//sum the retrieved vectors
-	(*RetrievedNumber)+=VectorNumberTobeSearched;
-	//sum the retrieved time
-	(*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-//////////////////////////////////////////////////////////////////////////
- 	return 0;
-}
 
 /**************************************
         *   Public function: EKNNSRetrieveKeyMethod(...
@@ -6924,495 +3597,688 @@ int CRetrieveMethod::EKNNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,L
 {
 
   clock_t time1,time2; ///Define the time variable
-  int i,k;
 	
-  //Judge the parameter
+	//Judge the parameter
   if(iteratived==TRUE&&searchindexlist==NULL)return -1;
   if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
   if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
   if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
   if((*RetrievedNumber)>=(long int)TotalVectorNumber)return -3;
-  if(VectorNumberTobeSearched>TotalVectorNumber||VectorNumberTobeSearched<1)return -3;//Larger than 50% of the whole database
+  if(VectorNumberTobeSearched>160||VectorNumberTobeSearched<1)return -3;//Larger than 10 pages
   if(VectorNumberTobeSearched+(*RetrievedNumber)>TotalVectorNumber)return -3;
+  DWORD K=VectorNumberTobeSearched;
+  double mx=QueryImageFeatureVector.m_dNAverage;
+  DWORD I=TotalVectorNumber-(*RetrievedNumber);
+  double *dmin= new double [K];//distance for K vectors
+  if(dmin==NULL)return -1;
+  DWORD *index= new DWORD [K]; //Indices For K vectors in the current search list
+  if(index==NULL)
+  {
+	delete [] dmin;
+	return -1;
+  }
   
-  double *means=new double [TotalVectorNumber-(*RetrievedNumber)];
-  if(means==NULL) return -2;
-  
+  DWORD p;//The index of least mean distance candidate
+  int i,j,k;//i for index[i] and dmin[i]  //j for the main loop, k for dimension
+  int m,n,w;//for the loop 
+  double dsqrt;//sqrt distance for vector[K-1]
+  double dtmp=0.0,pds;  ///temp double varaiable
+  double mmax,mmin;
+  LONG low,high;//The lower and higher limits to be searched
+  BOOL flagup=FALSE,flagdown=FALSE;//If stop in the two search directions
+  DWORD itmp;
   //get the initial time
   time1=clock();
-  
-  //Perform the EKNNS
-  if(iteratived==FALSE)
+  int pp=1;
+  if(TotalVectorNumber<=1000)pp=5;
+  for(int yy=0;yy<pp;yy++)
   {
-    for(i=0;i<(int)(TotalVectorNumber-(*RetrievedNumber));i++)
-      means[i]=lpFeatureVector[i].m_dNAverage;
-	k=EKNNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,
-	lpFeatureVector->m_dNormalizedFeature,means,TotalVectorNumber-(*RetrievedNumber),
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
-  }
-  else
-  {
-	for(i=0;i<(int)(TotalVectorNumber-(*RetrievedNumber));i++)
-	  means[i]=lpFeatureVector[searchindexlist[i]].m_dNAverage;
-    k=EKNNSMethodForIterative(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,
-	lpFeatureVector->m_dNormalizedFeature,means,TotalVectorNumber-(*RetrievedNumber),
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber),searchindexlist);
-  }
-  
-  //get the finished time
-  time2=clock();
-  
-  //sum the retrieved vectors
-  (*RetrievedNumber)+=VectorNumberTobeSearched;
-  //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  
-  delete []means;
-  return k;
-}
+	flagup=FALSE;
+	flagdown=FALSE;
+	//Get the initial matching index p in the current mean list
+	p=GetInitialLeastMeanDistanceIndex(QueryImageFeatureVector,lpFeatureVector,TotalVectorNumber-(*RetrievedNumber),iteratived,searchindexlist);
 
+	//Get the lower and upper limits
+	if(K%2==0)
+	{
+	  low=p-(K/2);
+	  high=p+(K/2)-1;
+	}
+	else
+	{
+	  low=p-(K-1)/2;
+	  high=p+(K-1)/2;
+	}
 
-/**************************************
-        *   Public function: EEKNNSRetrieveKeyMethod(...
-        *
-        *   This function is used to EEKNNS algorithm based retrieval only the first page
-        *   
-	    *   input
-		    -QueryImageFeatureVector  The query image feature vector
-			-lpFeatureVector  The database feature vectors
-            -VectorDimension, The dimension of feature vector
-			-TotalVectorNumber,The total number of vectors to be compared
-			-RetrievedNumber, Current retrieved number of images
-			-VectorNumberTobeSearched, the number of vectors to be compared this time
-		    -RetrieveList, the current index list
-			output
-			-RetrievedNumber, retrieved number of images up to now
-			-RetrievedResult, the retrieval results
-			-RetrieveTime, the retrieval time up to now?
-			-RetrieveList, the remaining index list
-			return
-			0: normal
-			-1: parameter error
-			-2: memory error
-			-3: Retrieved number overflow
-**************************************/
-int CRetrieveMethod::EEKNNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,long int *RetrievedNumber,DWORD VectorNumberTobeSearched,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime, BOOL iteratived,DWORD *searchindexlist)
-{
-  clock_t time1,time2; ///Define the time variable
-  int i,k;
+    if(low<0)//if lower than 0
+	{
+	  low=0;
+	  high=K-1;
+	  flagdown=TRUE;
+	}
+
+	if(high>(LONG)(I-1))//if larger than the list length
+	{
+	  low=I-K;
+	  high=I-1;
+	  flagup=TRUE;
+	}
+
+///If the images to be searched are the remained images
+//for the last time, then no up and down search is performed
+	if(K+(*RetrievedNumber)==TotalVectorNumber)
+	{
+	  flagup=TRUE;    /////
+	  flagdown=TRUE;
+	}
+    
+	//calculate the K distances
+    if(iteratived==FALSE)
+	{
+	  for(i=low;i<=high;i++)
+	  {
+	   dmin[i-low]=0.0;
+	   index[i-low]=i;// get the index[i] 
+	   for(k=0;k<VectorDimension;k++)
+	   {
+		 dtmp=QueryImageFeatureVector.m_dNormalizedFeature[k]-lpFeatureVector[i].m_dNormalizedFeature[k];
+	     dmin[i-low]+=dtmp*dtmp;
+	   }
+	  }
+	}
+	else
+	{
+	  for(i=low;i<=high;i++)
+	  {
+	   dmin[i-low]=0.0;
+	   index[i-low]=i;// get the index[i] 
+	   for(k=0;k<VectorDimension;k++)
+	   {
+		 dtmp=QueryImageFeatureVector.m_dNormalizedFeature[k]-lpFeatureVector[searchindexlist[i]].m_dNormalizedFeature[k];
+	     dmin[i-low]+=dtmp*dtmp;
+	   }
+	  }
+	}
 	
-  //Judge the parameter
-  if(iteratived==TRUE&&searchindexlist==NULL)return -1;
-  if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-  if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-  if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-  if((*RetrievedNumber)>=(long int)TotalVectorNumber)return -3;
-  if(VectorNumberTobeSearched>TotalVectorNumber||VectorNumberTobeSearched<1)return -3;//Larger than 50% of the whole database
-  if(VectorNumberTobeSearched+(*RetrievedNumber)>TotalVectorNumber)return -3;
-  
-  double *means=new double [TotalVectorNumber-(*RetrievedNumber)];
-  if(means==NULL) return -2;
-  
-  double *variances=new double [TotalVectorNumber-(*RetrievedNumber)];
-  if(variances==NULL)
-  {
-	 delete [] means;
-	 return -2;
+	///Sorting in the ascending order
+	//Bubble sort for current computed K distances
+	for(m=1;m<(int)K;m++)
+	{
+	  for(n=0;n<(int)K-m;n++)
+	  {
+	    if(dmin[n]>dmin[n+1])///
+		{
+		  dtmp=dmin[n];
+		  dmin[n]=dmin[n+1];
+		  dmin[n+1]=dtmp;
+		  itmp=index[n];
+		  index[n]=index[n+1];
+		  index[n+1]=itmp;
+		}
+	  }
+	}
+    
+
+	//Initial Setting before searching
+	//The start point is j=min{p-low+1,high-p+1}
+	j=p-low+1;
+	if(j>(int)(high-p+1))j=high-p+1;
+    if(low==0)j=high-p+1;
+	if(high==(LONG)I-1)j=p-low+1;
+	//Get the sqrt distance for vector[K-1]
+	dsqrt=sqrt(dmin[K-1]/VectorDimension);
+	//The mmax and mmin
+	mmax=mx+dsqrt;
+	mmin=mx-dsqrt;
+    if(iteratived==FALSE)
+	{
+	  for(w=0;w<(int)(I-K+2);w++)
+	  {
+        //The terminate flags
+	    if(flagup==TRUE&&flagdown==TRUE)break;
+        ////If we need search in the low direction
+	    if(flagdown==FALSE)
+		{
+		  if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
+		  else if((int)p-j<low)
+		  {
+		    if(lpFeatureVector[p-j].m_dNAverage<=mmin) //The flag set when special condition is satisfied
+		     flagdown=TRUE;
+		    else
+			{
+              ///Computing the distance by PDS
+			  pds=0.0;
+			  for(k=0;k<VectorDimension;k++)
+			  {
+			    dtmp=QueryImageFeatureVector.m_dNormalizedFeature[k]-lpFeatureVector[p-j].m_dNormalizedFeature[k];
+			    pds+=dtmp*dtmp;
+			    if(pds>=dmin[K-1])break;
+			  }
+			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
+			  {
+			    //initial pds as the dmin[K-1]
+			    index[K-1]=p-j;
+                dmin[K-1]=pds;
+			    for(m=K-1;m>=1;m--)//insearting
+				{
+			      if(dmin[m]<dmin[m-1])
+				  {
+				    dtmp=dmin[m];
+				    dmin[m]=dmin[m-1];
+				    dmin[m-1]=dtmp;
+				    itmp=index[m];
+				    index[m]=index[m-1];
+				    index[m-1]=itmp;
+				  }
+				  else
+				    break;
+				}
+			    //update the mmax mmin
+			    //The new dsqrt
+			    dsqrt=sqrt(dmin[K-1]/VectorDimension);
+	            //The new mmax and mmin
+	            mmax=mx+dsqrt;
+	            mmin=mx-dsqrt;
+			  }   
+			}
+		  }
+		}
+        ////If we need search in the low direction
+	    if(flagup==FALSE)
+		{
+		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
+		  else if((int)p+j>high)
+		  {
+		    if(lpFeatureVector[p+j].m_dNAverage>=mmax) //The flag set when special condition is satisfied
+		      flagup=TRUE;
+		    else
+			{
+              ///Computing the distance by PDS
+			  pds=0.0;
+			  for(k=0;k<VectorDimension;k++)
+			  {
+			   	 dtmp=QueryImageFeatureVector.m_dNormalizedFeature[k]-lpFeatureVector[p+j].m_dNormalizedFeature[k];
+			     pds+=dtmp*dtmp;
+			     if(pds>=dmin[K-1])break;
+			  }
+			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
+			  {
+			    //initial pds as the dmin[K-1]
+			    index[K-1]=p+j;
+                dmin[K-1]=pds;
+			    for(m=K-1;m>=1;m--)//insearting
+				{
+			      if(dmin[m]<dmin[m-1])
+				  {
+				    dtmp=dmin[m];
+				    dmin[m]=dmin[m-1];
+				    dmin[m-1]=dtmp;
+				    itmp=index[m];
+				    index[m]=index[m-1];
+				    index[m-1]=itmp;
+				  }
+				  else
+				   break;
+				}
+			    //update the mmax mmin
+			    //The new dsqrt
+			    dsqrt=sqrt(dmin[K-1]/VectorDimension);
+	            //The new mmax and mmin
+	            mmax=mx+dsqrt;
+	            mmin=mx-dsqrt;
+			  }   
+			}
+		  }
+		}
+	    j=j+1;
+	  }
+    }
+	else
+	{
+	  for(w=0;w<(int)(I-K+2);w++)
+	  {
+        //The terminate flags
+	    if(flagup==TRUE&&flagdown==TRUE)break;
+        ////If we need search in the low direction
+	    if(flagdown==FALSE)
+		{
+		  if(p<(DWORD)j)flagdown=TRUE;//The flag set when no search in this direction
+		  else
+		  {
+		    if(lpFeatureVector[searchindexlist[p-j]].m_dNAverage<=mmin) //The flag set when special condition is satisfied
+		     flagdown=TRUE;
+		    else if((int)p-j<low)
+			{
+              ///Computing the distance by PDS
+			  pds=0.0;
+			  for(k=0;k<VectorDimension;k++)
+			  {
+				 dtmp=QueryImageFeatureVector.m_dNormalizedFeature[k]-lpFeatureVector[searchindexlist[p-j]].m_dNormalizedFeature[k];
+			     pds+=dtmp*dtmp;
+			     if(pds>=dmin[K-1])break;
+			  }
+			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
+			  {
+			    //initial pds as the dmin[K-1]
+			    index[K-1]=p-j;
+                dmin[K-1]=pds;
+			    for(m=K-1;m>=1;m--)//insearting
+				{
+			      if(dmin[m]<dmin[m-1])
+				  {
+				    dtmp=dmin[m];
+				    dmin[m]=dmin[m-1];
+				    dmin[m-1]=dtmp;
+				    itmp=index[m];
+				    index[m]=index[m-1];
+				    index[m-1]=itmp;
+				  }
+				  else
+				    break;
+				}
+			    //update the mmax mmin
+			    //The new dsqrt
+			    dsqrt=sqrt(dmin[K-1]/VectorDimension);
+	            //The new mmax and mmin
+	            mmax=mx+dsqrt;
+	            mmin=mx-dsqrt;
+			  }   
+			}
+		  }
+		}
+        ////If we need search in the upper direction
+	    if(flagup==FALSE)
+		{
+		  if(p+j>=I)flagup=TRUE;//The flag set when no search in this direction
+		  else if((int)p+j>high)
+		  {
+		    if(lpFeatureVector[searchindexlist[p+j]].m_dNAverage>=mmax) //The flag set when special condition is satisfied
+		      flagup=TRUE;
+		    else
+			{
+              ///Computing the distance by PDS
+			  pds=0.0;
+			  for(k=0;k<VectorDimension;k++)
+			  {
+			    dtmp=QueryImageFeatureVector.m_dNormalizedFeature[k]-lpFeatureVector[searchindexlist[p+j]].m_dNormalizedFeature[k];
+			    pds+=dtmp*dtmp;
+			    if(pds>=dmin[K-1])break;
+			  }
+			  if(pds<dmin[K-1])// If it is less than dmin[K-1], updating the dmin[i]
+			  {
+			    //initial pds as the dmin[K-1]
+			    index[K-1]=p+j;
+                dmin[K-1]=pds;
+			    for(m=K-1;m>=1;m--)//insearting
+				{
+			      if(dmin[m]<dmin[m-1])
+				  {
+				    dtmp=dmin[m];
+				    dmin[m]=dmin[m-1];
+				    dmin[m-1]=dtmp;
+				    itmp=index[m];
+				    index[m]=index[m-1];
+				    index[m-1]=itmp;
+				  }
+				  else
+				    break;
+				}
+			    //update the mmax mmin
+			    //The new dsqrt
+			    dsqrt=sqrt(dmin[K-1]/VectorDimension);
+	            //The new mmax and mmin
+	            mmax=mx+dsqrt;
+	            mmin=mx-dsqrt;
+			  }   
+			}
+		  }
+		}
+	    j=j+1;
+	  }
+	}
   }
-  //get the initial time
-  time1=clock();
+  //get the finished time
+  time2=clock();
   
-  //Perform the EEKNNS
   if(iteratived==FALSE)
   {
-    for(i=0;i<(int)(TotalVectorNumber-(*RetrievedNumber));i++)
-	{
-		means[i]=lpFeatureVector[i].m_dNAverage;
-		variances[i]=lpFeatureVector[i].m_dNVariance;
-	}
-	k=EEKNNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-	lpFeatureVector->m_dNormalizedFeature,means,variances,TotalVectorNumber-(*RetrievedNumber),
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
+   for(n=0;n<(int)VectorNumberTobeSearched;n++)
+   {
+     RetrievedResult[n+(*RetrievedNumber)].m_fDistance=(float)dmin[n];
+     RetrievedResult[n+(*RetrievedNumber)].m_dwImageIndex=index[n];
+   }
   }
   else
   {
-	for(i=0;i<(int)(TotalVectorNumber-(*RetrievedNumber));i++)
+    for(n=0;n<(int)VectorNumberTobeSearched;n++)
 	{
-		means[i]=lpFeatureVector[searchindexlist[i]].m_dNAverage;
-		variances[i]=lpFeatureVector[searchindexlist[i]].m_dNVariance;
+	  RetrievedResult[n+(*RetrievedNumber)].m_fDistance=(float)dmin[n];
+	  RetrievedResult[n+(*RetrievedNumber)].m_dwImageIndex=searchindexlist[index[n]];
 	}
-    k=EEKNNSMethodForIterative(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-	lpFeatureVector->m_dNormalizedFeature,means,variances,TotalVectorNumber-(*RetrievedNumber),
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber),searchindexlist);
   }
-  
+  //updating the searchindexlist if it is iteratived based
+  if(iteratived==TRUE)
+  {
+    for(m=1;m<(int)K;m++)
+	{
+	  for(n=0;n<(int)K-m;n++)
+	  {
+	    if(index[n]<index[n+1])///
+		{
+		  itmp=index[n];
+		  index[n]=index[n+1];
+		  index[n+1]=itmp;
+		}
+	  }
+	}
+	for(m=0;m<(int)K;m++)
+	{
+	  for(n=(int)index[m];n<(int)I-m-1;n++)
+	  {
+		searchindexlist[n]=searchindexlist[n+1];
+	  }
+	}
+  }
   //get the finished time
   time2=clock();
-  
   //sum the retrieved vectors
   (*RetrievedNumber)+=VectorNumberTobeSearched;
   //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  
-  delete []means;
-  delete []variances;
-  return k;
+  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0/pp;
+  //////////////////////////////////////////////////////////////////////////
+  delete []dmin;
+  delete []index;
+  return 0;
 }
 
-/**************************************
-        *   Public function: EEEKNNSRetrieveKeyMethod(...
-        *
-        *   This function is used to EEEKNNS algorithm based retrieval only the first page
-        *   
-	    *   input
-		    -QueryImageFeatureVector  The query image feature vector
-			-lpFeatureVector  The database feature vectors
-            -VectorDimension, The dimension of feature vector
-			-TotalVectorNumber,The total number of vectors to be compared
-			-RetrievedNumber, Current retrieved number of images
-			-VectorNumberTobeSearched, the number of vectors to be compared this time
-		    -RetrieveList, the current index list
-			output
-			-RetrievedNumber, retrieved number of images up to now
-			-RetrievedResult, the retrieval results
-			-RetrieveTime, the retrieval time up to now?
-			-RetrieveList, the remaining index list
-			return
-			0: normal
-			-1: parameter error
-			-2: memory error
-			-3: Retrieved number overflow
-**************************************/
-int CRetrieveMethod::EEEKNNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,long int *RetrievedNumber,DWORD VectorNumberTobeSearched,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime, BOOL iteratived,DWORD *searchindexlist)
+//// function GetInitialLeastMeanDistanceIndex : ///
+//// using bisecting method to find the index (in the remained list) of the initial vector with 
+//least mean distance from that of the query vector ////
+//// based on their means ////
+//input -QueryImageFeatureVector  we only use its m_dNAverage
+//input -lpFeatureVector  we only use its m_dNAverage[]
+//input -RemainedMeanListLength  the remained mean list length
+//input -searchindexlist the current version of whole mean list, only first RemainedMeanListLength mean indecise s are valid
+//return the index 
+DWORD CRetrieveMethod::GetInitialLeastMeanDistanceIndex(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,DWORD RemainedMeanListLength,BOOL iteratived,DWORD *searchindexlist)
 {
-  clock_t time1,time2; ///Define the time variable
-  int i,k;
-	
-  //Judge the parameter
-  if(iteratived==TRUE&&searchindexlist==NULL)return -1;
-  if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-  if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-  if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-  if((*RetrievedNumber)>=(long int)TotalVectorNumber)return -3;
-  if(VectorNumberTobeSearched>TotalVectorNumber||VectorNumberTobeSearched<1)return -3;//Larger than 50% of the whole database
-  if(VectorNumberTobeSearched+(*RetrievedNumber)>TotalVectorNumber)return -3;
-  
-  double *means=new double [TotalVectorNumber-(*RetrievedNumber)];
-  if(means==NULL) return -2;
-  
-  double *variances=new double [TotalVectorNumber-(*RetrievedNumber)];
-  if(variances==NULL)
-  {
-	 delete [] means;
-	 return -2;
-  }
-  //get the initial time
-  time1=clock();
-  
-  //Perform the EEEKNNS
-  if(iteratived==FALSE)
-  {
-    for(i=0;i<(int)(TotalVectorNumber-(*RetrievedNumber));i++)
+	DWORD p;
+	DWORD I=RemainedMeanListLength;
+    double mx=QueryImageFeatureVector.m_dNAverage;
+	//The low
+	DWORD i=0;
+	//The upper
+	DWORD j=I-1;
+	if(iteratived==FALSE)
 	{
-		means[i]=lpFeatureVector[i].m_dNAverage;
-		variances[i]=lpFeatureVector[i].m_dNVariance;
+	  //If smaller than the minimum mean
+	  if(mx<=lpFeatureVector[i].m_dNAverage)return i;
+	  //If smaller than the maximum mean
+	  if(mx>=lpFeatureVector[j].m_dNAverage)return j;
+	  while(j-i>1)
+	  {
+	    p=(i+j)/2;
+	    if(mx<=lpFeatureVector[p].m_dNAverage)
+		  j=p;
+	    else 
+		  i=p;
+	    if(fabs(mx-lpFeatureVector[j].m_dNAverage)>=fabs(mx-lpFeatureVector[i].m_dNAverage))
+		  p=i;
+	    else
+		  p=j;
+	  }	
 	}
-	k=EEEKNNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-	lpFeatureVector->m_dNormalizedFeature,means,variances,TotalVectorNumber-(*RetrievedNumber),
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
-  }
-  else
-  {
-	for(i=0;i<(int)(TotalVectorNumber-(*RetrievedNumber));i++)
+	else
 	{
-		means[i]=lpFeatureVector[searchindexlist[i]].m_dNAverage;
-		variances[i]=lpFeatureVector[searchindexlist[i]].m_dNVariance;
+	  //If smaller than the minimum mean
+	  if(mx<=lpFeatureVector[searchindexlist[i]].m_dNAverage)return i;
+	  //If smaller than the maximum mean
+	  if(mx>=lpFeatureVector[searchindexlist[j]].m_dNAverage)return j;
+	  while(j-i>1)
+	  {
+	    p=(i+j)/2;
+	    if(mx<=lpFeatureVector[searchindexlist[p]].m_dNAverage)
+		  j=p;
+	    else 
+		  i=p;
+	    if(fabs(mx-lpFeatureVector[searchindexlist[j]].m_dNAverage)>=fabs(mx-lpFeatureVector[searchindexlist[i]].m_dNAverage))
+		  p=i;
+	    else
+		  p=j;
+	  }
 	}
-    k=EEEKNNSMethodForIterative(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-	lpFeatureVector->m_dNormalizedFeature,means,variances,TotalVectorNumber-(*RetrievedNumber),
-	VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber),searchindexlist);
-  }
-  
-  //get the finished time
-  time2=clock();
-  
-  //sum the retrieved vectors
-  (*RetrievedNumber)+=VectorNumberTobeSearched;
-  //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  
-  delete []means;
-  delete []variances;
-  return k;
+	return p;
 }
-
-/**************************************
-        *   Public function: EEEKNNSinVQNNRetrieveKeyMethod(...
-        *
-        *   This function is used to EEEKNNS algorithm based retrieval only in VQ nearest cluster
-        *   
-	    *   input
-		    -QueryImageFeatureVector  The query image feature vector
-			-lpFeatureVector  The database feature vectors
-            -VectorDimension, The dimension of feature vector
-			-TotalVectorNumber,The total number of vectors to be compared
-			-RetrievedNumber, Current retrieved number of images
-			-VectorNumberTobeSearched, the number of vectors to be compared this time
-		    -codeword, with mean and variances
-			-booksize, the size of codebook
-			-numincluster
-			output
-			-RetrievedNumber, retrieved number of images up to now
-			-RetrievedResult, the retrieval results
-			-RetrieveTime, the retrieval time up to now?
-			return
-			0: normal
-			-1: parameter error
-			-2: memory error
-			-3: Retrieved number overflow
-**************************************/
-
-int CRetrieveMethod::EEEKNNSinVQNNRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,WORD booksize,long int *RetrievedNumber,DWORD VectorNumberTobeSearched,double *codeword,DWORD *numincluster,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime)
-{
-  clock_t time1,time2; ///Define the time variable
-  int i,k,sum;
-  RETRIEVEDRESULT p;
-  //Judge the parameter
-  if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-  if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-  if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-  if((*RetrievedNumber)>=(long int)TotalVectorNumber)return -3;
-  if(VectorNumberTobeSearched>TotalVectorNumber||VectorNumberTobeSearched<1)return -3;//Larger than 50% of the whole database
-  if(VectorNumberTobeSearched+(*RetrievedNumber)>TotalVectorNumber)return -3;
-  
-  //get the initial time
-  time1=clock();
-  //find the best-match codeword of the query image
-  EEENNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,codeword,booksize,VectorDimension,&p);
-  //get the position of the first vector in this cluster
-  sum=0;
-  for(i=0;i<(int)p.m_dwImageIndex;i++)
-  {
-	sum+=numincluster[i];
-  }
-  
-  //if the vector number is less than to be searched
-  if(numincluster[p.m_dwImageIndex]<=VectorNumberTobeSearched)
-  {
-    VectorNumberTobeSearched=numincluster[p.m_dwImageIndex];
-	FullSearchMethod(QueryImageFeatureVector.m_dNormalizedFeature,(lpFeatureVector+sum)->m_dNormalizedFeature,VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
-  }
-  else
-  {
-    double *means=new double [numincluster[p.m_dwImageIndex]];
-    if(means==NULL) return -2;
-    double *variances=new double [numincluster[p.m_dwImageIndex]];
-    if(variances==NULL)
-	{
-	 delete [] means;
-	 return -2;
-	}
-    //Perform the EEEKNNS
-    for(i=0;i<(int)numincluster[p.m_dwImageIndex];i++)
-	{
-	  means[i]=lpFeatureVector[sum+i].m_dNAverage;
-	  variances[i]=lpFeatureVector[sum+i].m_dNVariance;
-	}
-    k=EEEKNNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-    (lpFeatureVector+sum)->m_dNormalizedFeature,means,variances,numincluster[p.m_dwImageIndex],
-    VectorNumberTobeSearched,VectorDimension,RetrievedResult+(*RetrievedNumber));
-	delete []means;
-    delete []variances;
-  }
-  for(i=0;i<(int)VectorNumberTobeSearched;i++)
-  {
-     RetrievedResult[(*RetrievedNumber)+i].m_dwImageIndex+=sum;
-  }
-  //get the finished time
-  time2=clock();
-  //sum the retrieved vectors
-  (*RetrievedNumber)+=VectorNumberTobeSearched;
-  //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  return k;
-}
-
 
 /**************************************
         *   Public function: ENNSRetrieveMethod(...
         *
-        *   This function is used to ENNS algorithm based retrieval only the first image 
+        *   This function is used to EKNNS algorithm based retrieval only the first page
         *   
 	    *   input
 		    -QueryImageFeatureVector  The query image feature vector
 			-lpFeatureVector  The database feature vectors
             -VectorDimension, The dimension of feature vector
 			-TotalVectorNumber,The total number of vectors to be compared
+			-RetrievedNumber, Current retrieved number of images
+			-VectorNumberTobeSearched, the number of vectors to be compared this time
+		    -RetrieveList, the current index list
 			output
+			-RetrievedNumber, retrieved number of images up to now
 			-RetrievedResult, the retrieval results
-			-RetrieveTime, the retrieval time
+			-RetrieveTime, the retrieval time up to now?
+			-RetrieveList, the remaining index list
 			return
 			0: normal
 			-1: parameter error
 			-2: memory error
+			-3: Retrieved number overflow
 **************************************/
-int CRetrieveMethod::ENNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime)
+//矢量检索，方法2:快速检索最相似的一幅图像
+///pFeatureVector图像库矢量结构体指针，iCurrentFeature:检索矢量的数量，
+//iRetrieveImageNumber图像库图像数目， QueryImageFeatureVector :关键图像的结构
+//pOutFeatureVector：输出结构体的头指针，maxOutNumber＝1输出图像的最多数目,*pOutImageNumber:输出图像的数目的地址
+//pDistance检索图像和关键图像的距离输出的头指针，RetrieveTime检索时间
+int CRetrieveMethod::ENNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,long int *RetrievedNumber,DWORD VectorNumberTobeSearched,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime)
+//(LPFEATUREVECTOR lpFeatureVector,int iCurrentFeature, long int iRetrieveImageNumber,FEATUREVECTOR QueryImageFeatureVector, PFEATUREVECTOR pOutFeatureVector, unsigned char maxOutNumber,unsigned char *pOutImageNumber, double *pOutDistance, CString *RetrieveTime)
 {
-  clock_t time1,time2; ///Define the time variable
-  int i;
-  //Judge the parameter
-  if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-  if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-  if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-  double *means=new double [TotalVectorNumber];
-  if(means==NULL)return -2;
-  //get the initial time
-  time1=clock();
-  
-  //means initialization
-  for(i=0;i<(int)TotalVectorNumber;i++)
-    means[i]=lpFeatureVector[i].m_dNAverage;
-  
-  //ENNS method
-  ENNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,
-  QueryImageFeatureVector.m_dNAverage,
-  lpFeatureVector->m_dNormalizedFeature,
-  means,TotalVectorNumber,
-  VectorDimension,RetrievedResult);
-  
-  //get the finished time
-  time2=clock();
-  //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  
-  delete []means;
-  return 0;
+	///下面我们采用快速检索
+////我们的矢量是按照均值排序的，而且，均值在矢量的最后一维分量上,从小到大的排序
+////1.找和关键图的矢量最接近的矢量均值
+////采用二分法
+
+/*FEATUREVECTOR testvq;
+testvq.m_dNormalizedFeature;
+	clock_t time1,time2;       ///定义时间变量 
+	double timecost;
+	time1=clock();
+	int min=0,max=iRetrieveImageNumber;////二分法中的前后两个数
+	int iFindNumber;
+	int i,j;
+	while(1)
+	  {
+   //如果关键图的均值比中间的小
+		  if (QueryImageFeatureVector.m_dNAverage<(lpFeatureVector+(min+max)/2)->m_dNAverage)
+		  {
+				max=(min+max)/2;
+		  }
+		  else
+				min=(min+max)/2;
+   //上下限相等后相差一个单位，结束我们取均值较小的那个
+		  if (min==max||(min==(max-1)))
+		  {
+				double distance1=0;
+				double distance2=0;
+				for(i=0;i<iCurrentFeature;i++)
+					  distance1=distance1+pow(QueryImageFeatureVector.m_dNormalizedFeature[i]-(lpFeatureVector+min)->m_dNormalizedFeature[i],2.0);
+					  distance2=distance2+pow(QueryImageFeatureVector.m_dNormalizedFeature[i]-(lpFeatureVector+max)->m_dNormalizedFeature[i],2.0);
+				if(distance1<distance2)
+				  iFindNumber=min;
+				else 
+					  iFindNumber=max;
+				break;
+		  }
+	  }
+
+///找到最接近的那个，我们开始对它的附近检索
+///具体的算法参考《矢量量化编码算法及应用研究》，陆哲明，2001，1
+/////这里给出程序
+	double dDistanceCurrent=0,dDistanceMin=0;//当前的距离
+	int index=iFindNumber;              ///检索结果的索引
+	for(i=0;i<iCurrentFeature;i++)
+		  dDistanceCurrent=dDistanceCurrent+pow(QueryImageFeatureVector.m_dNormalizedFeature[i]-(lpFeatureVector+iFindNumber)->m_dNormalizedFeature[i],2.0);
+	dDistanceMin=dDistanceCurrent;   ///初始值
+	double mmin=QueryImageFeatureVector.m_dNAverage-sqrt(dDistanceCurrent/iCurrentFeature);  ///快速检索的上下限
+	double mmax=QueryImageFeatureVector.m_dNAverage+sqrt(dDistanceCurrent/iCurrentFeature);            ///快速检索的上下限
+	////检索开始
+	 BOOL flagup=FALSE,flagdown=FALSE;         ///上下检索标志是否继续标志
+	 double distancevarible=0;      ///变量
+	 if (dDistanceCurrent==0)
+	 {
+		   flagup=true;
+		   flagdown=true;
+	 }
+for(i=0;i<iRetrieveImageNumber;i++)
+{
+////如果向上检索还需进行
+ if(flagup==TRUE&&flagdown==TRUE)  
+	  break;
+ if(flagup==FALSE)
+	  {
+		if((iFindNumber-i)<0||(lpFeatureVector+iFindNumber-i)->m_dNAverage<mmin)       ///如果向上不能再检索
+		{
+			  flagup=TRUE;         
+		}
+		else
+		{
+      ///计算距离
+			  distancevarible=0;
+			  for(j=0;j<iCurrentFeature;j++)
+					distancevarible=distancevarible+pow(QueryImageFeatureVector.m_dNormalizedFeature[j]-(lpFeatureVector+iFindNumber-i)->m_dNormalizedFeature[j],2.0);
+			  if (distancevarible<dDistanceCurrent)
+			  {
+				  index=iFindNumber-i;
+				  dDistanceCurrent=distancevarible;
+			  }
+			 
+		}
+			   
+	  }
+ if(flagdown==FALSE)
+	  {
+			if((iFindNumber+i)>=iRetrieveImageNumber||(lpFeatureVector+iFindNumber+i)->m_dNAverage>mmax)       ///如果向上不能再检索
+		{
+			  flagdown=TRUE;         
+		}
+		else
+		{
+      ///计算距离
+			  distancevarible=0;
+			  distancevarible=0;
+			  for(j=0;j<iCurrentFeature;j++)
+					distancevarible=distancevarible+pow(QueryImageFeatureVector.m_dNormalizedFeature[j]-(lpFeatureVector+iFindNumber+i)->m_dNormalizedFeature[j],2.0);
+			  if (distancevarible<dDistanceCurrent)
+			  {
+				  index=iFindNumber+i;
+				  dDistanceCurrent=distancevarible;
+			  }
+			 
+		}
+	  }
+	  if(dDistanceCurrent==dDistanceMin)
+			continue;
+	   dDistanceMin=dDistanceCurrent;
+	  if(flagup==FALSE)
+	  	mmin=QueryImageFeatureVector.m_dNAverage-sqrt(dDistanceMin/iCurrentFeature);  ///快速检索的上下限
+	  if (flagdown==FALSE) 
+	    mmax=QueryImageFeatureVector.m_dNAverage+sqrt(dDistanceMin/iCurrentFeature);
+
+}
+///事后处理
+	time2=clock();
+	timecost=(double)(time2-time1)/CLOCKS_PER_SEC;
+	RetrieveTime->Empty();
+	RetrieveTime->Format("%s%f",*RetrieveTime,timecost); 
+///为显示文件名作准备，
+	*pOutImageNumber=1;
+*(pOutDistance+0)=dDistanceCurrent;
+*(pOutFeatureVector+0)=*(lpFeatureVector+index);*/
+//////////////////////////////////////////////////////////////////////////
+ 	return true;
+	
+}
+//矢量检索，方法3：对矢量的某一维分量进行检索：vector维分量
+///直接的检索矢量，对图像的矢量进行检索
+///lpFeatureVector图像库矢量结构体指针，iCurrentFeature:检索矢量的数量，
+//iRetrieveImageNumber图像库图像数目， QueryImageFeatureVector :关键图像的结构
+//pOutFeatureVector：输出结构体的头指针，maxOutNumber输出图像的最多数目,*pOutImageNumber:输出图像的数目的地址
+//pDistance检索图像和关键图像的距离输出的头指针，RetrieveTime检索时间
+///int vector:分量值0～iCurrentFeature-1
+//0～100
+bool CRetrieveMethod::RetrieveKeyVqMethod_3Single(LPFEATUREVECTOR lpFeatureVector,int iCurrentFeature, long int iRetrieveImageNumber,FEATUREVECTOR QueryImageFeatureVector, PFEATUREVECTOR pOutFeatureVector, unsigned char maxOutNumber,unsigned char *pOutImageNumber, double *pOutDistance, CString *RetrieveTime,int vector)
+{
+	if (vector>iCurrentFeature-1)
+	{
+		MessageBox(NULL,"this vector is not exist!","error",MB_OK);
+		return false;
+	}
+	double *pDistance=new double[iRetrieveImageNumber];//开辟内存空间保存距离数据
+	///开辟内存，载入颜色几何均值
+	////初始化////
+	clock_t time1,time2;       ///定义时间变量 
+	double timecost;
+	time1=clock();
+	for(long int number=0;number<iRetrieveImageNumber;number++)
+		pDistance[number]=pow((QueryImageFeatureVector.m_dNormalizedFeature[vector]-(lpFeatureVector+number)->m_dNormalizedFeature[vector]),2); ///第k种检索方式  
+	
+///到现在为止,pDistance[]保存了各个图象和关键图的颜色距离,绝对值
+///排序,按着从小到大排序
+//基本方法,找到最小的欧式距离后,将它所对应的图象路径给显示数组,然后将赋值256
+//由于归一化后的图象的欧式距离不可能为256,故在找下一个图象时不会重复
+			int sign=0;            ///做最相似图象的标号
+			for(int displaynumber=0;displaynumber<maxOutNumber;displaynumber++)//16个显示图象
+			{
+				if(displaynumber>iRetrieveImageNumber-1)        //如果图像数目不够，退出
+					{
+					
+						displaynumber=iRetrieveImageNumber;
+						break;
+					}	
+					for(int check=0;check<iRetrieveImageNumber;check++)
+					{
+						if(pDistance[sign]>pDistance[check])  //要最小的
+						{
+							sign=check;
+						}
+					}
+					FEATUREVECTOR* pFeatureVectorvar;  //临时
+					pFeatureVectorvar=(FEATUREVECTOR*)(pOutFeatureVector+displaynumber);
+					*pFeatureVectorvar=*(lpFeatureVector+sign);///save the PathName for display
+					*(pOutDistance+displaynumber)=pDistance[sign];
+					pDistance[sign]=100*9;             //给最大值100 个食量*9
+
+		}
+///事后处理
+	delete[] pDistance;               //释放保存欧式距离内存
+	time2=clock();
+	timecost=(double)(time2-time1)/CLOCKS_PER_SEC;
+	RetrieveTime->Empty();
+	RetrieveTime->Format("%s%f",*RetrieveTime,timecost); 
+///为显示文件名作准备，
+	*pOutImageNumber=maxOutNumber;
+	for(displaynumber=0;displaynumber<maxOutNumber;displaynumber++)//16个显示图象
+		  {
+			if(displaynumber>iRetrieveImageNumber-1)        //如果图像数目不够，退出
+			{
+				  *pOutImageNumber=(unsigned char)iRetrieveImageNumber;
+				 break;
+			  }
+		  }
+//////////////////////////////////////////////////////////////////////////
+
+	return true;
 }
 
-/**************************************
-        *   Public function: EENNSRetrieveMethod(...
-        *
-        *   This function is used to EENNS algorithm based retrieval only the first image 
-        *   
-	    *   input
-		    -QueryImageFeatureVector  The query image feature vector
-			-lpFeatureVector  The database feature vectors
-            -VectorDimension, The dimension of feature vector
-			-TotalVectorNumber,The total number of vectors to be compared
-			output
-			-RetrievedResult, the retrieval results
-			-RetrieveTime, the retrieval time
-			return
-			0: normal
-			-1: parameter error
-			-2: memory error
-**************************************/
-int CRetrieveMethod::EENNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime)
-{
-  clock_t time1,time2; ///Define the time variable
-  int i;
-  //Judge the parameter
-  if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-  if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-  if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-  double *means=new double [TotalVectorNumber];
-  if(means==NULL)return -2;
-  double *variances=new double [TotalVectorNumber];
-  if(variances==NULL)
-  {
-	delete []means;
-	return -2;
-  }
-  //get the initial time
-  time1=clock();
-  
-  //means initialization
-  for(i=0;i<(int)TotalVectorNumber;i++)
-  {
-	  means[i]=lpFeatureVector[i].m_dNAverage;
-  	  variances[i]=lpFeatureVector[i].m_dNVariance;
-  }
-  
-  //EENNS method
-  EENNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,
-  QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-  lpFeatureVector->m_dNormalizedFeature,
-  means,variances,TotalVectorNumber,
-  VectorDimension,RetrievedResult);
-  
-  //get the finished time
-  time2=clock();
-  //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  
-  delete []means;
-  delete []variances;
-  return 0;
-}
-
-/**************************************
-        *   Public function: EEENNSRetrieveMethod(...
-        *
-        *   This function is used to EEENNS algorithm based retrieval only the first image 
-        *   
-	    *   input
-		    -QueryImageFeatureVector  The query image feature vector
-			-lpFeatureVector  The database feature vectors
-            -VectorDimension, The dimension of feature vector
-			-TotalVectorNumber,The total number of vectors to be compared
-			output
-			-RetrievedResult, the retrieval results
-			-RetrieveTime, the retrieval time
-			return
-			0: normal
-			-1: parameter error
-			-2: memory error
-**************************************/
-int CRetrieveMethod::EEENNSRetrieveMethod(FEATUREVECTOR QueryImageFeatureVector,LPFEATUREVECTOR lpFeatureVector,WORD VectorDimension,DWORD TotalVectorNumber,LPRETRIEVEDRESULT RetrievedResult,double *RetrieveTime)
-{
-  clock_t time1,time2; ///Define the time variable
-  int i;
-  //Judge the parameter
-  if(TotalVectorNumber<1||TotalVectorNumber>MAX_IMAGE_NUMBER)return -1;
-  if(VectorDimension<1||VectorDimension>MAX_FEATUREVECTOR_DIMENSION)return -1;
-  if(lpFeatureVector==NULL||RetrievedResult==NULL)return -2;
-  double *means=new double [TotalVectorNumber];
-  if(means==NULL)return -2;
-  //get the initial time
-  time1=clock();
-  
-  double *variances=new double [TotalVectorNumber];
-  if(variances==NULL)
-  {
-	delete []means;
-	return -2;
-  }
-  //get the initial time
-  time1=clock();
-  
-  //means initialization
-  for(i=0;i<(int)TotalVectorNumber;i++)
-  {
-	  means[i]=lpFeatureVector[i].m_dNAverage;
-  	  variances[i]=lpFeatureVector[i].m_dNVariance;
-  }
-  
-  //EEENNS method
-  EEENNSMethod(QueryImageFeatureVector.m_dNormalizedFeature,
-  QueryImageFeatureVector.m_dNAverage,QueryImageFeatureVector.m_dNVariance,
-  lpFeatureVector->m_dNormalizedFeature,
-  means,variances,TotalVectorNumber,
-  VectorDimension,RetrievedResult);
-  
-  //get the finished time
-  time2=clock();
-  //sum the retrieved time
-  (*RetrieveTime)+=(double)(time2-time1)/CLOCKS_PER_SEC*1000000.0;
-  
-  delete []means;
-  delete []variances;
-  return 0;
-}
 
 /*****************************************
         *
@@ -7503,2009 +4369,98 @@ int CRetrieveMethod::QueryFeatureNormalization(PFEATUREVECTOR QueryImageFeatureV
    return 0;
 }
 
-/////////////////////////////////////////////////////////////////////////////////
-///////////The Program of DCT and the IDCT in Unsigned Char Format//////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
-//The Define of DCT--Discrete Cosine Transform
-//F(k1,k2)=DCT(f(n1,n2))=c1[k1]c2[k2]∑(i=0:1:N1-1)∑(j=0:1:N2-1)f(i,j)
-//						*cos(((2*n1+1)/(2*N1))*PI*k1)*cos(((2*n2+1)/(2*N2))*PI*k2)
-//c1[i]=sqrt(1/N1)	if i==0; c1[i]=sqrt(2/N1)	if i!=0; 
-//c2[i]=sqrt(1/N2)	if i==0; c2[j]=sqrt(2/N2)	if i!=0; 
-void CRetrieveMethod::DCT(unsigned char *OriginalImageBlock[BLOCKHEIGHT],double *DCTBlock[BLOCKHEIGHT],int blockheight,int blockwidth)	//input[0]	the row pointer of the input matrix
+///方法2:计算基于颜色的三个的三个中心矩
+//计算高：dataheigth，datawidth首地址为*pdata的特征矢量存在结构体中：FeatureVector
+//Featurefirst:为特征矢量结构体的存入的第一个的编号，Featurenumber:该算法提取参数的个数
+///本算法中,Featurenumber必须等于3
+bool CRetrieveMethod::FeatureVectorExtractMethod_2_3(unsigned char *pdata, int datawidth, int dataheigth, double *OrgFeature, int Featurefirst, int Featurenumber)
 {
-	int i;                        //Define the repeating variable
-	int timerow,timecolumn;		  //Define the input interative variable(Time Domain)
-	int	frerow,frecolumn;		  //Define the output interative variable(Frequency Domain)
-	double row[BLOCKHEIGHT];	  //Define the parameter of the first parameter
-	double column[BLOCKWIDTH]; //Define the parameter of the second parameter
-	double temp;	              //Define the temporary variable 
-	double temp1;	              //Define the first temporary variable 
-	double temp2;	              //Define the second temporary variable 
-	
-	//Initiaize the transform parameters
-	row[0]=sqrt(1.0/blockheight);
-	column[0]=sqrt(1.0/blockwidth);	
-	for(i=1;i<blockheight;i++)
+	if(Featurenumber!=3) 
 	{
-	  row[i]=sqrt(2.0/blockheight);
+		MessageBox(NULL,"FeatureExtract Number error","error!",MB_OK);
+		return false;
 	}
-	for(i=1;i<blockwidth;i++)
+////add your word here
+//////////////////////////////////////////////////////////////////////////
+	////////Par 1：//The average
+	int width,height;           
+	long int length=dataheigth*datawidth;
+	int i;			
+	double M1=0,M2=0,M3=0;
+	double *pihistogram=new double[256];
+	for(i=0;i<256;i++)
 	{
-	  column[i]=sqrt(2.0/blockwidth);
+		pihistogram[i]=0;
 	}
-	
-	//Calculate the DCT of blockheight*blockwidth points 
-	for(frerow=0;frerow<blockheight;frerow++)
+	for(height=0;height<dataheigth;height++)  ///Get the Histogram
+		for(width=0;width<datawidth;width++)
+			pihistogram[(unsigned char)(*(pdata+height*datawidth+width))]=pihistogram[(unsigned char)(*(pdata+height*datawidth+width))]+1;
+	for(i=0;i<256;i++)
 	{
-		for(frecolumn=0;frecolumn<blockwidth;frecolumn++)
-		{
-			//Calculate the DCT for one point 
-			temp1=0.0;
-			for(timerow=0;timerow<blockheight;timerow++)
-			{
-				temp2=0;
-				for(timecolumn=0;timecolumn<blockwidth;timecolumn++)
-				{
-					temp=(2.0*timecolumn+1.0)/(2.0*blockwidth)*frecolumn*PI;
-					temp2=temp2+OriginalImageBlock[timerow][timecolumn]*cos(temp);
-				}
-				temp=(2.0*timerow+1.0)/(2.0*blockheight)*frerow*PI;
-				temp1=temp1+temp2*cos(temp);
-			}
-			DCTBlock[frerow][frecolumn]=temp1*row[frerow]*column[frecolumn];
-		}
+		pihistogram[i]=pihistogram[i]/length;  //Normalization
+		M1=M1+pihistogram[i]*i;   
 	}
+			
+	for(i=0;i<256;i++) ///The variance of Histogram
+		M2=M2+pow(pihistogram[i]-1/256.0,2);
+	for(i=0;i<256;i++)
+		M3=M3+pow( pihistogram[i]-1/256.0,3);
+	M3=pow(fabs(M3),double(1.0/3.0));
+	OrgFeature[Featurefirst+0]=M1;
+	OrgFeature[Featurefirst+1]=M2;
+	OrgFeature[Featurefirst+2]=M3;
+//////////////////////////////////////////////////////////////////////////
+///end of computation
+///delete the memory
+	delete[]pihistogram;
+	return true;
 }
 
-//IDCT(F(k1,k2))=(1/N1)*(1/N2)∑(k1=0:1:N1-1)∑(k2=0:1:N2-1)c1[k1]c2[k2]*F(k1,k2)
-//			*cos(((2*n1+1)/(2*N1))*PI*k1)*cos(((2*n2+1)/(2*N2))*PI*k2)
-//c1[i]=sqrt(1/N1)	if i==0; c1[i]=sqrt(2/N1)	if i!=0; 
-//c2[i]=sqrt(1/N2)	if i==0; c2[j]=sqrt(2/N2)	if i!=0; 
-void CRetrieveMethod::IDCT(double *DCTBlock[BLOCKHEIGHT],unsigned char *ReconstructedImageBlock[BLOCKHEIGHT],int blockheight,int blockwidth)	//input[0]	the row pointer of the input matrix
+///The third moment computation
+bool CRetrieveMethod::FeatureVectorExtractMethod_3_1(unsigned char *pdata, int datawidth, int dataheigth, double *OrgFeature, int Featurefirst, int Featurenumber)
 {
-	int i;                        //Define the repeating variable
-	int	frerow,frecolumn;		  //Define the input interative variable(Frequency Domain)
-	int timerow,timecolumn;		  //Define the output interative variable(Time Domain)
-	double row[BLOCKHEIGHT];	  //Define the parameter of the first parameter
-	double column[BLOCKWIDTH]; //Define the parameter of the second parameter
-	double temp;	              //Define the temporary variable 
-	double temp1;	              //Define the first temporary variable 
-	double temp2;	              //Define the second temporary variable 
-
-	//Initiaize the transform parameters
-	row[0]=sqrt(1.0/blockheight);
-	column[0]=sqrt(1.0/blockwidth);	
-	for(i=1;i<blockheight;i++)
+	if(Featurenumber!=1) 
 	{
-	  row[i]=sqrt(2.0/blockheight);
+		MessageBox(NULL,"FeatureExtract Number error","error!",MB_OK);
+		return false;
 	}
-	for(i=1;i<blockwidth;i++)
+////add your word here
+//////////////////////////////////////////////////////////////////////////
+	double M_00=0.0,M_01=0.0,M_10=0.0,M_12=0.0,M_30=0.0,M_03=0.0;//P+Q
+    double U_00=0.0,U_21=0,U_12=0.0,U_30=0.0,U_03=0.0;//P+Q order
+	double m_00,n_00;//The centure 
+	double u_00,u_12,u_21,u_30,u_03;//Normalized P+Q order moment
+
+    unsigned char * pBits = pdata;
+	for(int l=0; l<dataheigth; l++)
 	{
-	  column[i]=sqrt(2.0/blockwidth);
+		for(int k=0; k<datawidth; k++)
+		{ 
+		  M_00+=*(pBits + l*datawidth + k);
+		  M_01+=*(pBits + l*datawidth + k)*l;
+          M_10+=*(pBits + l*datawidth + k)*k;	
+		}
 	}
-    //Calculate the IDCT of blockheight*blockwidth points 
-	for(timerow=0;timerow<blockheight;timerow++)
+
+	m_00=M_10/M_00;
+	n_00=M_01/M_00;
+	U_00=M_00;
+	for(int j=0; j<dataheigth; j++)
 	{
-		for(timecolumn=0;timecolumn<blockwidth;timecolumn++)
-		{
-			//Calculate the IDCT of one point
-			temp1=0.0;
-			for(frerow=0;frerow<blockheight;frerow++)
-			{
-				temp2=0.0;
-				for(frecolumn=0;frecolumn<blockwidth;frecolumn++)
-				{
-					temp=(2.0*timecolumn+1.0)/(2.0*blockwidth)*frecolumn*PI;
-					temp2=temp2+DCTBlock[frerow][frecolumn]*cos(temp)*column[frecolumn];
-				}
-				temp=(2.0*timerow+1.0)/(2.0*blockheight)*frerow*PI;				
-				temp1=temp1+temp2*cos(temp)*row[frerow];
-			}
-			//The Rounding Operation (To The Nearest Integer Number)
-			if(temp1>=254.5)
-			{
-				ReconstructedImageBlock[timerow][timecolumn]=255;
-			}
-			else 
-			{
-				if(temp1<0.5)
-				{
-				  ReconstructedImageBlock[timerow][timecolumn]=0;
-				}
-				else
-				{
-				  ReconstructedImageBlock[timerow][timecolumn]=(unsigned char)(temp1+0.5);
-				}
-			}
-		}
+	   for(int i=0; i<datawidth; i++)
+	   {
+		    
+			U_12+=(i-m_00)*(j-n_00)*(j-n_00)*(*(pBits + j*datawidth + i));
+			U_21+=(i-m_00)*(i-m_00)*(j-n_00)*(*(pBits + j*datawidth + i));
+			U_30+=(i-m_00)*(i-m_00)*(i-m_00)*(*(pBits + j*datawidth + i));
+			U_03+=(j-n_00)*(j-n_00)*(j-n_00)*(*(pBits + j*datawidth + i));
+	   }
 	}
+	u_00=U_00;
+	u_12=U_12/pow(u_00,2.5);
+	u_21=U_21/pow(u_00,2.5);
+	u_03=U_03/pow(u_00,2.5);
+	u_30=U_30/pow(u_00,2.5);
+	OrgFeature[Featurefirst+0]=pow((u_30-3*u_12),2.0)+pow((3*u_21-u_03),2.0);
+	return true;
 }
-void CRetrieveMethod::DCT2To1Or1To2(double *DCT2[BLOCKHEIGHT],double *DCT1,int blockheight,int blockwidth,int flag)
-{
-  int i,length;
-  int x,y;
-  length=blockwidth*blockheight;
-  x=0;
-  y=0;
-  for(i=0;i<length;i++) 
-  {
-	  if(flag==0)
-	  DCT1[i]=DCT2[x][y];
-	  else
-	  DCT2[x][y]=DCT1[i];
-	  if(x==0)
-	  {
-		  if(y==0)
-		  {
-			  y=y+1;
-		  }
-		  else
-		  {
-			  if(y%2==0)
-			  {
-				  y=y+1;
-			  }
-			  else
-			  {
-				  x=x+1;
-				  y=y-1;
-			  }
-		  }
-	  }
-	  else
-	  {
-		  if(x==7)
-		  {
-			  if(y!=7)
-			  {
-			  	  if(y%2==0)
-				  {
-					  y=y+1;
-				  }
-				  else
-				  {
-					  x=x-1;
-					  y=y+1;
-				  }
-			  }
-		  }
-		  else
-		  {
-			  if(y==0)
-			  {
-				  if(x%2==0)
-				  {
-					  x=x-1;
-					  y=y+1;
-				  }
-				  else
-				  {
-					  x=x+1;
-				  }
-			  }
-			  else
-			  {
-				  if (y==7)
-				  {
-					  if(x%2==0)
-					  {
-						  x=x+1;
-						  y=y-1;
-					  }
-					  else
-					  {
-						  x=x+1;
-					  }
-				  }
-				  else
-				  {
-					  if((x+y)%2==0)
-					  {
-						  x=x-1;
-						  y=y+1;
-					  }
-					  else
-					  {
-						  x=x+1;
-						  y=y-1;
-					  }
-				  }
-
-			  }
-		  }
-	  }
-  }
-}
-
-short int CRetrieveMethod::FSDCTVQ256GrayImageEncode(unsigned long int blocks,unsigned short int booksize,unsigned short int dimension,float *SourceVector[MAXENCODEVECTORS],float (*CodeVector)[DIMENSION1],unsigned short int *index,double *Time)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//blockwidth: stands for the width of the image block
-//blockheight: stands for the height of the image block
-//         the vector dimension=blockwidth*blockheight
-//         the vector dimension should be smaller than 64
-// SourceVector[MAXENCODEVECTORS][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXENCODEVECTORS]: each element stands for 
-//                       the index for a trainning vector
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-{
-   unsigned long int i;
-   unsigned short int j,k;
-   double d1,d,min;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   if(booksize>MAXBOOKSIZE)return -1;
-   if(blocks>MAXENCODEVECTORS)return -2;
-   if(dimension>VECTORDIMENSION||dimension<=0)return -3;
-   
-   ltime1=clock();
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     index[i]=0;
-  	 min=0.0;
-     for(k=0;k<dimension;k++)
-	 {   
-       min=min+((double)SourceVector[i][k]-(double)CodeVector[0][k])*((double)SourceVector[i][k]-(double)CodeVector[0][k]);
-	 } 
-	 for(j=1;j<booksize;j++)
-	 {
-	   d=0.0;
-       for(k=0;k<dimension;k++)
-	   {  
-         d=d+((double)SourceVector[i][k]-(double)CodeVector[j][k])*((double)SourceVector[i][k]-(double)CodeVector[j][k]);
-	   }
-	   if(d<min)
-	   {
-	     min=d;
-	     index[i]=(unsigned short int)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-   ltime2=clock();
-   *Time+=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   return 0;
-}
-
-short int CRetrieveMethod::FSVQ256GrayImageEncode(unsigned long int blocks,unsigned short int booksize,unsigned short int dimension,unsigned char *SourceVector[VQMAXENCODEVECTORS],unsigned char (*CodeVector)[VQDIMENSION],unsigned short int *index,double *Time)
-{
-   unsigned long int i;
-   unsigned short int j,k;
-   double d1,d,min;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   if(booksize>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-   if(dimension>VQDIMENSION||dimension<=0)return -3;
-   
-   ltime1=clock();
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     index[i]=0;
-  	 min=0.0;
-     for(k=0;k<dimension;k++)
-	 {   
-       min=min+((double)SourceVector[i][k]-(double)CodeVector[0][k])*((double)SourceVector[i][k]-(double)CodeVector[0][k]);
-	 } 
-	 for(j=1;j<booksize;j++)
-	 {
-	   d=0.0;
-       for(k=0;k<dimension;k++)
-	   {  
-         d=d+((double)SourceVector[i][k]-(double)CodeVector[j][k])*((double)SourceVector[i][k]-(double)CodeVector[j][k]);
-	   }
-	   if(d<min)
-	   {
-	     min=d;
-	     index[i]=(unsigned short int)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-   ltime2=clock();
-   *Time+=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   return 0;
-
-}
-
-
-
-short int CRetrieveMethod::FSDCTVQScalar256GrayImageEncode(unsigned long int blocks,unsigned short int booksize,float *SourceVector,float *CodeVector,unsigned short int *index,double *Time)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//blockwidth: stands for the width of the image block
-//blockheight: stands for the height of the image block
-//         the vector dimension=blockwidth*blockheight
-//         the vector dimension should be smaller than 64
-// SourceVector[MAXENCODEVECTORS][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXENCODEVECTORS]: each element stands for 
-//                       the index for a trainning vector
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-{
-   unsigned long int i;
-   unsigned short int j;
-   double d1,d,min;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   if(booksize>MAXBOOKSIZE)return -1;
-   if(blocks>MAXENCODEVECTORS)return -2;
-      
-   ltime1=clock();
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     index[i]=0;
-  	 min=((double)SourceVector[i]-(double)CodeVector[0])*((double)SourceVector[i]-(double)CodeVector[0]);
-	 for(j=1;j<booksize;j++)
-	 {
-	   d=((double)SourceVector[i]-(double)CodeVector[j])*((double)SourceVector[i]-(double)CodeVector[j]);
-	   if(d<min)
-	   {
-	     min=d;
-	     index[i]=(unsigned short int)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-   ltime2=clock();
-   *Time+=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   return 0;
-}
-
-short int CRetrieveMethod::FSVQScalar256GrayImageEncode(unsigned long int blocks,unsigned short int booksize,unsigned char *SourceVector,unsigned char *CodeVector,unsigned short int *index,double *Time)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//blockwidth: stands for the width of the image block
-//blockheight: stands for the height of the image block
-//         the vector dimension=blockwidth*blockheight
-//         the vector dimension should be smaller than 64
-// SourceVector[MAXENCODEVECTORS][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXENCODEVECTORS]: each element stands for 
-//                       the index for a trainning vector
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-{
-   unsigned long int i;
-   unsigned short int j;
-   double d1,d,min;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   if(booksize>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-      
-   ltime1=clock();
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     index[i]=0;
-  	 min=((double)SourceVector[i]-(double)CodeVector[0])*((double)SourceVector[i]-(double)CodeVector[0]);
-	 for(j=1;j<booksize;j++)
-	 {
-	   d=((double)SourceVector[i]-(double)CodeVector[j])*((double)SourceVector[i]-(double)CodeVector[j]);
-	   if(d<min)
-	   {
-	     min=d;
-	     index[i]=(unsigned short int)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-   ltime2=clock();
-   *Time+=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   return 0;
-}
-
-
-short int CRetrieveMethod::FSDCTVQ256GrayImageEncode(unsigned long int blocks,unsigned short int booksize,unsigned short int dimension,float *SourceVector[MAXENCODEVECTORS],float (*CodeVector)[DIMENSION2],unsigned short int *index,double *Time)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//blockwidth: stands for the width of the image block
-//blockheight: stands for the height of the image block
-//         the vector dimension=blockwidth*blockheight
-//         the vector dimension should be smaller than 64
-// SourceVector[MAXENCODEVECTORS][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXENCODEVECTORS]: each element stands for 
-//                       the index for a trainning vector
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-{
-   unsigned long int i;
-   unsigned short int j,k;
-   double d1,d,min;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   if(booksize>MAXBOOKSIZE)return -1;
-   if(blocks>MAXENCODEVECTORS)return -2;
-   if(dimension>VECTORDIMENSION||dimension<=0)return -3;
-   
-   ltime1=clock();
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     index[i]=0;
-  	 min=0.0;
-     for(k=0;k<dimension;k++)
-	 {   
-       min=min+((double)SourceVector[i][k]-(double)CodeVector[0][k])*((double)SourceVector[i][k]-(double)CodeVector[0][k]);
-	 } 
-	 for(j=1;j<booksize;j++)
-	 {
-	   d=0.0;
-       for(k=0;k<dimension;k++)
-	   {  
-         d=d+((double)SourceVector[i][k]-(double)CodeVector[j][k])*((double)SourceVector[i][k]-(double)CodeVector[j][k]);
-	   }
-	   if(d<min)
-	   {
-	     min=d;
-	     index[i]=(unsigned short int)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-   ltime2=clock();
-   *Time+=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   return 0;
-}
-
-short int CRetrieveMethod::DCTVQ256GrayImageDecode(unsigned long int blocks,unsigned short int booksize0,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,unsigned short int width,unsigned short int *index1,unsigned short int *index2,unsigned short int *index3,float *DCTSourceVector[MAXENCODEVECTORS],float *CodeVector1,float (*CodeVector2)[DIMENSION1],float (*CodeVector3)[DIMENSION2],unsigned char *pixel,int component)
-{
-   unsigned long int i,j,k,l;
-   unsigned short int dimension,height;
-   unsigned short int la,lb,ba,bb;
-   double DCT1D[VECTORDIMENSION],DCTBlock[BLOCKHEIGHT][BLOCKWIDTH];
-   unsigned char IDCTBlock[BLOCKHEIGHT][BLOCKWIDTH];
-   double *DCTBlock1[BLOCKHEIGHT];
-   unsigned char *IDCTBlock1[BLOCKHEIGHT];
-   dimension=blockwidth*blockheight;
-   if(booksize0<16||booksize0>MAXBOOKSIZE||booksize1<16||booksize1>MAXBOOKSIZE||booksize2<16||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks>MAXENCODEVECTORS)return -2;
-   if(dimension>VECTORDIMENSION)return -3;
-
-   ba=blockwidth;
-   bb=blockheight;
-   height=(unsigned short int)(blocks*(unsigned long int)dimension/(unsigned long)width);
-   la=width/ba;
-   lb=height/bb;
-   for(i=0;i<bb;i++)
-   {
-	 DCTBlock1[i]=DCTBlock[i];
-	 IDCTBlock1[i]=IDCTBlock[i];
-   }
-   for(l=0;l<lb;l++)
-   {
-	 for(k=0;k<la;k++)
-	 {
-	   for(i=0;i<dimension;i++)
-	     DCT1D[i]=DCTSourceVector[l*la+k][i];
-	   DCT1D[0]=CodeVector1[index1[k+l*la]];
-	   for(i=0;i<DIMENSION1;i++)
-		 DCT1D[i+POSITION1]=CodeVector2[index2[k+l*la]][i];
-	   for(i=0;i<DIMENSION2;i++)
-		DCT1D[i+POSITION2]=CodeVector3[index3[k+l*la]][i];
-	   //for(i=20;i<64;i++)
-		//DCT1D[i]=0.0;
-       DCT2To1Or1To2(DCTBlock1,DCT1D,bb,ba,1);
-	   IDCT(DCTBlock1,IDCTBlock1,bb,ba);
-	   long int linebytes;
-	   linebytes=(width+3)/4*4;
-	   for(j=0;j<bb;j++)
-	   {
-	     for(i=0;i<ba;i++)
-		 {
-		   if(component==0)
-		   {
-		     if(IDCTBlock1[j][i]<16)IDCTBlock1[j][i]=16;
-		     if(IDCTBlock1[j][i]>240)IDCTBlock1[j][i]=240;
-		   }
-		   else if(component==1)
-		   {
-		     if(IDCTBlock1[j][i]<16)IDCTBlock1[j][i]=16;
-		     if(IDCTBlock1[j][i]>240)IDCTBlock1[j][i]=240;
-		   }
-		   else if(component==2)
-		   {
-		     if(IDCTBlock1[j][i]<16)IDCTBlock1[j][i]=16;
-		     if(IDCTBlock1[j][i]>235)IDCTBlock1[j][i]=235;
-		   }
-		   else
-		   {
-		     if(IDCTBlock1[j][i]<0)IDCTBlock1[j][i]=0;
-		     if(IDCTBlock1[j][i]>255)IDCTBlock1[j][i]=255;
-		   }
-		   
-		   pixel[i+k*ba+(j+l*bb)*linebytes]=(unsigned char)IDCTBlock1[j][i];
-		 }
-	   }
-	 }
-   }
-   return 0;
-}
-
-short int CRetrieveMethod::VQ256GrayImageDecode(unsigned long int blocks,unsigned short int booksize,unsigned short int blockwidth,unsigned short int blockheight,unsigned short int width,unsigned short int *index,unsigned char (*CodeVector)[VQDIMENSION],unsigned char *pixel,int component)
-{
-   unsigned long int i,j,k,l;
-   unsigned short int dimension,height;
-   unsigned short int la,lb,ba,bb;
-   unsigned char Block[VQBLOCKHEIGHT][VQBLOCKWIDTH],bit[VQDIMENSION];
-   
-   dimension=blockwidth*blockheight;
-   if(booksize<64||booksize>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-   if(dimension>VQDIMENSION)return -3;
-
-   ba=blockwidth;
-   bb=blockheight;
-   height=(unsigned short int)(blocks*(unsigned long int)dimension/(unsigned long)width);
-   la=width/ba;
-   lb=height/bb;
-   for(l=0;l<lb;l++)
-   {
-	 for(k=0;k<la;k++)
-	 {
-	   for(i=0;i<VQDIMENSION;i++)
-		bit[i]=CodeVector[index[k+l*la]][i];
-	   long int linebytes;
-	   linebytes=(width+3)/4*4;
-	   for(j=0;j<bb;j++)
-	   {
-	     for(i=0;i<ba;i++)
-		 {
-		   Block[j][i]=bit[i+j*ba];
-		   if(component==0)
-		   {
-		     if(Block[j][i]<16)Block[j][i]=16;
-		     if(Block[j][i]>240)Block[j][i]=240;
-		   }
-		   else if(component==1)
-		   {
-		     if(Block[j][i]<16)Block[j][i]=16;
-		     if(Block[j][i]>240)Block[j][i]=240;
-		   }
-		   else if(component==2)
-		   {
-		     if(Block[j][i]<16)Block[j][i]=16;
-		     if(Block[j][i]>235)Block[j][i]=235;
-		   }
-		   else
-		   {
-		     if(Block[j][i]<0)Block[j][i]=0;
-		     if(Block[j][i]>255)Block[j][i]=255;
-		   }
-		   pixel[i+k*ba+(j+l*bb)*linebytes]=(unsigned char)Block[j][i];
-		 }
-	   }
-	 }
-   }
-   return 0;
-}
-
-////The Design Methods implemetation begins////
-short int CRetrieveMethod::DCTVQLBGCodebookDesign(unsigned long int blocks,unsigned short int booksize,unsigned short int dimension,double e,float (*TrainVector)[DIMENSION1],float (*CodeVector)[DIMENSION1],unsigned short int *index,unsigned long int *number,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//dimension: stands for the dimension of DCT coefficient block
-//         the vector dimension should be smaller than 64
-//e:  stands for the distortion threshold 
-//         e should be larger than 0
-// TrainVector[MAXSOURCESIZE][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXSOURCESIZE]: each element stands for 
-//                       the index for a trainning vector
-// number[MAXBOOKSIZE]: each element stands for 
-//                     the number of training vectors 
-//                     that close to a codeword
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-// return -4: e set error
-{
-   int i,l;
-   unsigned short int j,k;
-
-   double d0,d1,d,min,dd[DIMENSION1],par;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   float tt[DIMENSION1];
-   double ms[MAXBOOKSIZE],ttt;
-   int iindex; 
-   if(booksize>MAXBOOKSIZE||booksize<16)return -1;
-   if(blocks<booksize||blocks>MAXINPUTVECTORS)return -2;
-   if(dimension>DIMENSION1||dimension<=0)return -3;
-   if(e<=0) return -4;   
-   
-   //Initial codevector Using random number generator
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector[i],TrainVector[l],DIMENSION1*sizeof(float));
-   }
-   d0=9.99e+60;   
-   *iterations=0;
-   ltime1=clock();
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize;j++)
-	   number[j]=0;
-	 for(i=0;i<(int)blocks;i++)
-	 {
-	    index[i]=0;
-		min=0.0;
-        for(k=0;k<dimension;k++)
-		{   
-          min=min+((double)TrainVector[i][k]-(double)CodeVector[0][k])*((double)TrainVector[i][k]-(double)CodeVector[0][k]);
-		}
-		for(j=1;j<booksize;j++)
-		{
-		  d=0.0;
-		  for(k=0;k<dimension;k++)
-		  {			  
-		    d=d+((double)TrainVector[i][k]-(double)CodeVector[j][k])*((double)TrainVector[i][k]-(double)CodeVector[j][k]);
-		    if(d>=min)break;
-		  }
-		  if(d<min)
-		  {
-		    min=d;
-		    index[i]=j;
-		  }
-		}
-	    number[index[i]]=number[index[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize;j++)
-	 {
-	    if(number[j]!=0)
-		{
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=0.0;
-		  }
-		  for(l=0;l<(int)blocks;l++)
-		  {
-		    if(index[l]==j)
-			{
-			  for(k=0;k<dimension;k++)
-			  {
-		        dd[k]=dd[k]+(double)TrainVector[l][k];
-			  }
-			}
-		  }
-		  for(k=0;k<dimension;k++)
-		  {
-		    CodeVector[j][k]=(float)(dd[k]/(double)number[j]);
-		  }
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector[j],TrainVector[l],DIMENSION1*sizeof(float));
-		}
-	 }
-
-	 //codebook sorted by mean of codeword
-	 
-	 for(i=0;i<booksize;i++)
-	 {
-	   ms[i]=0.0;
-	   for(j=0;j<DIMENSION1;j++)
-	   {
-	     ms[i]+=CodeVector[i][j];
-	   }
-	 }
-	 for(i=0;i<(int)(booksize-1);i++)
-	 {
-	   iindex=i;
-	   for(l=i+1;l<booksize;l++)
-	   {
-	     if(ms[iindex]>ms[l])
-		 {
-			iindex=l;
-		 } //end of for j,get the index  
-	   }
-	   if(iindex==i)
-	   {
-	     continue;
-	   }
-	   ttt=ms[i];
-	   ms[i]=ms[iindex];
-	   ms[iindex]=ttt;
-	   memcpy(tt,CodeVector[i],DIMENSION1*sizeof(float));
-	   memcpy(CodeVector[i],CodeVector[iindex],DIMENSION1*sizeof(float));
-	   memcpy(CodeVector[iindex],tt,DIMENSION1*sizeof(float));
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)dimension*(double)blocks);
-   *MSE=d1/(double)dimension/(double)blocks;
-   return 0;
-}
-
-
-////The Design Methods implemetation begins////
-short int CRetrieveMethod::DCTVQLBGCodebookDesign(unsigned long int blocks,unsigned short int booksize,unsigned short int dimension,double e,float (*TrainVector)[DIMENSION2],float (*CodeVector)[DIMENSION2],unsigned short int *index,unsigned long int *number,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//dimension: stands for the dimension of DCT coefficient block
-//         the vector dimension should be smaller than 64
-//e:  stands for the distortion threshold 
-//         e should be larger than 0
-// TrainVector[MAXSOURCESIZE][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXSOURCESIZE]: each element stands for 
-//                       the index for a trainning vector
-// number[MAXBOOKSIZE]: each element stands for 
-//                     the number of training vectors 
-//                     that close to a codeword
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-// return -4: e set error
-{
-   int i,l;
-   unsigned short int j,k;
-
-   double d0,d1,d,min,dd[DIMENSION2],par;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   float tt[DIMENSION2];
-   double ms[MAXBOOKSIZE],ttt;
-   int iindex; 
-     
-   if(booksize>MAXBOOKSIZE)return -1;
-   if(blocks<booksize||blocks>MAXINPUTVECTORS)return -2;
-   if(dimension>DIMENSION2||dimension<=0)return -3;
-   if(e<=0) return -4;   
-   
-   //Initial codevector Using random number generator
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector[i],TrainVector[l],DIMENSION2*sizeof(float));
-   }
-   d0=9.99e+60;   
-   *iterations=0;
-   ltime1=clock();
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize;j++)
-	   number[j]=0;
-	 for(i=0;i<(int)blocks;i++)
-	 {
-	    index[i]=0;
-		min=0.0;
-        for(k=0;k<dimension;k++)
-		{   
-          min=min+((double)TrainVector[i][k]-(double)CodeVector[0][k])*((double)TrainVector[i][k]-(double)CodeVector[0][k]);
-		}
-		for(j=1;j<booksize;j++)
-		{
-		  d=0.0;
-		  for(k=0;k<dimension;k++)
-		  {			  
-		    d=d+((double)TrainVector[i][k]-(double)CodeVector[j][k])*((double)TrainVector[i][k]-(double)CodeVector[j][k]);
-		    if(d>=min)break;
-		  }
-		  if(d<min)
-		  {
-		    min=d;
-		    index[i]=j;
-		  }
-		}
-	    number[index[i]]=number[index[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize;j++)
-	 {
-	    if(number[j]!=0)
-		{
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=0.0;
-		  }
-		  for(l=0;l<(int)blocks;l++)
-		  {
-		    if(index[l]==j)
-			{
-			  for(k=0;k<dimension;k++)
-			  {
-		        dd[k]=dd[k]+(double)TrainVector[l][k];
-			  }
-			}
-		  }
-		  for(k=0;k<dimension;k++)
-		  {
-		    CodeVector[j][k]=(float)(dd[k]/(double)number[j]);
-		  }
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector[j],TrainVector[l],DIMENSION2*sizeof(float));
-		}
-	 }
-	 for(i=0;i<booksize;i++)
-	 {
-	   ms[i]=0.0;
-	   for(j=0;j<DIMENSION2;j++)
-	   {
-	     ms[i]+=CodeVector[i][j];
-	   }
-	 }
-	 for(i=0;i<(int)(booksize-1);i++)
-	 {
-	   iindex=i;
-	   for(l=i+1;l<booksize;l++)
-	   {
-	     if(ms[iindex]>ms[l])
-		 {
-			iindex=l;
-		 } //end of for j,get the index  
-	   }
-	   if(iindex==i)
-	   {
-	     continue;
-	   }
-	   ttt=ms[i];
-	   ms[i]=ms[iindex];
-	   ms[iindex]=ttt;
-	   memcpy(tt,CodeVector[i],DIMENSION2*sizeof(float));
-	   memcpy(CodeVector[i],CodeVector[iindex],DIMENSION2*sizeof(float));
-	   memcpy(CodeVector[iindex],tt,DIMENSION2*sizeof(float));
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)dimension*(double)blocks);
-   *MSE=d1/(double)dimension/(double)blocks;
-   return 0;
-}
-
-
-////The Design Methods implemetation begins////
-short int CRetrieveMethod::VQLBGCodebookDesign(unsigned long int blocks,unsigned short int booksize,unsigned short int dimension,double e,unsigned char (*TrainVector)[VQDIMENSION],unsigned char (*CodeVector)[VQDIMENSION],unsigned short int *index,unsigned long int *number,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//dimension: stands for the dimension of DCT coefficient block
-//         the vector dimension should be smaller than 64
-//e:  stands for the distortion threshold 
-//         e should be larger than 0
-// TrainVector[MAXSOURCESIZE][blockwidth*blockheight]: 
-//         stands for the training vectors(two-dimensional array)
-// CodeVector[MAXBOOKSIZE][blockwidth*blockheight]: 
-//         stands for the codewords(two-dimensional array)
-// index[MAXSOURCESIZE]: each element stands for 
-//                       the index for a trainning vector
-// number[MAXBOOKSIZE]: each element stands for 
-//                     the number of training vectors 
-//                     that close to a codeword
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-// return -4: e set error
-{
-   int i,l;
-   unsigned short int j,k;
-
-   double d0,d1,d,min,dd[VQDIMENSION],par;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   unsigned char tt[VQDIMENSION];
-   double ms[MAXBOOKSIZE],ttt;
-   int iindex; 
-   if(booksize>MAXBOOKSIZE||booksize<16)return -1;
-   if(blocks<booksize||blocks>VQMAXINPUTVECTORS)return -2;
-   if(dimension>VQDIMENSION||dimension<=0)return -3;
-   if(e<=0) return -4;   
-   
-   //Initial codevector Using random number generator
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector[i],TrainVector[l],VQDIMENSION*sizeof(unsigned char));
-   }
-   d0=9.99e+60;   
-   *iterations=0;
-   ltime1=clock();
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize;j++)
-	   number[j]=0;
-	 for(i=0;i<(int)blocks;i++)
-	 {
-	    index[i]=0;
-		min=0.0;
-        for(k=0;k<dimension;k++)
-		{   
-          min=min+((double)TrainVector[i][k]-(double)CodeVector[0][k])*((double)TrainVector[i][k]-(double)CodeVector[0][k]);
-		}
-		for(j=1;j<booksize;j++)
-		{
-		  d=0.0;
-		  for(k=0;k<dimension;k++)
-		  {			  
-		    d=d+((double)TrainVector[i][k]-(double)CodeVector[j][k])*((double)TrainVector[i][k]-(double)CodeVector[j][k]);
-		    if(d>=min)break;
-		  }
-		  if(d<min)
-		  {
-		    min=d;
-		    index[i]=j;
-		  }
-		}
-	    number[index[i]]=number[index[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize;j++)
-	 {
-	    if(number[j]!=0)
-		{
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=0.0;
-		  }
-		  for(l=0;l<(int)blocks;l++)
-		  {
-		    if(index[l]==j)
-			{
-			  for(k=0;k<dimension;k++)
-			  {
-		        dd[k]=dd[k]+(double)TrainVector[l][k];
-			  }
-			}
-		  }
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=dd[k]/(double)number[j];
-			if(dd[k]>255)dd[k]=255;
-			if(dd[k]<0)dd[k]=0;
-			CodeVector[j][k]=(unsigned char)dd[k];
-		  }
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector[j],TrainVector[l],VQDIMENSION*sizeof(unsigned char));
-		}
-	 }
-
-	 //codebook sorted by mean of codeword
-	 
-	 for(i=0;i<booksize;i++)
-	 {
-	   ms[i]=0.0;
-	   for(j=0;j<VQDIMENSION;j++)
-	   {
-	     ms[i]+=CodeVector[i][j];
-	   }
-	 }
-	 for(i=0;i<(int)(booksize-1);i++)
-	 {
-	   iindex=i;
-	   for(l=i+1;l<booksize;l++)
-	   {
-	     if(ms[iindex]>ms[l])
-		 {
-			iindex=l;
-		 } //end of for j,get the index  
-	   }
-	   if(iindex==i)
-	   {
-	     continue;
-	   }
-	   ttt=ms[i];
-	   ms[i]=ms[iindex];
-	   ms[iindex]=ttt;
-	   memcpy(tt,CodeVector[i],VQDIMENSION*sizeof(unsigned char));
-	   memcpy(CodeVector[i],CodeVector[iindex],VQDIMENSION*sizeof(unsigned char));
-	   memcpy(CodeVector[iindex],tt,VQDIMENSION*sizeof(unsigned char));
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)dimension*(double)blocks);
-   *MSE=d1/(double)dimension/(double)blocks;
-   return 0;
-}
-
-short int CRetrieveMethod::TwoStageVQ256GrayImageCodebookDesign(unsigned long int blocks,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,double e,unsigned char (*TrainVector)[VQDIMENSION],short int (*ErrorTrainVector)[VQDIMENSION],unsigned char (*CodeVector1)[VQDIMENSION],short int (*CodeVector2)[VQDIMENSION],unsigned short int *index1,unsigned short int *index2,unsigned long int *number1,unsigned long int *number2,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-{
-   unsigned long int i,l;
-   unsigned short int j;
-   unsigned short int k;
-   unsigned short int dimension;
-   double d0,d1,d,min,dd[64],par;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   dimension=blockwidth*blockheight;
-   if(booksize1<4||booksize2<4||booksize1>MAXBOOKSIZE||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks<booksize1||blocks<booksize2||blocks>VQMAXINPUTVECTORS)return -2;
-   if(dimension>VQDIMENSION||dimension<=0)return -3;
-   if(e<=0) return -4;   
-   
-   //Initial the iteration times and get the start time
-   *iterations=0;
-   ltime1=clock();
-   
-   //The first stage
-   //Initial codevector Using random number generator
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize1;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector1[i],TrainVector[l],dimension);
-   }
-   d0=9.99e+60;   
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize1;j++)
-	   number1[j]=0;
-	 for(i=0;i<blocks;i++)
-	 {
-	    index1[i]=0;
-		min=0.0;
-        for(k=0;k<dimension;k++)
-		{   
-          min=min+((double)TrainVector[i][k]-(double)CodeVector1[0][k])*((double)TrainVector[i][k]-(double)CodeVector1[0][k]);
-		}
-		for(j=1;j<booksize1;j++)
-		{
-		  d=0.0;
-		  for(k=0;k<dimension;k++)
-		  {			  
-		    d=d+((double)TrainVector[i][k]-(double)CodeVector1[j][k])*((double)TrainVector[i][k]-(double)CodeVector1[j][k]);
-		    if(d>=min)break;
-		  }
-		  if(d<min)
-		  {
-		    min=d;
-		    index1[i]=j;
-		  }
-		}
-	    number1[index1[i]]=number1[index1[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize1;j++)
-	 {
-	    if(number1[j]!=0)
-		{
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=0.0;
-		  }
-		  for(l=0;l<blocks;l++)
-		  {
-		    if(index1[l]==j)
-			{
-			  for(k=0;k<dimension;k++)
-			  {
-		        dd[k]=dd[k]+(double)TrainVector[l][k];
-			  }
-			}
-		  }
-		  for(k=0;k<dimension;k++)
-		  {
-		    CodeVector1[j][k]=(unsigned char)(dd[k]/(double)number1[j]);
-		  }
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector1[j],TrainVector[l],dimension);
-		}
-	 }
-   }
-   
-   //The second stage
-   for(i=0;i<blocks;i++)
-   { 
-	 for(k=0;k<dimension;k++)
-	 {   
-       ErrorTrainVector[i][k]=(short int)TrainVector[i][k]-(short int)CodeVector1[index1[i]][k];
-	 }
-   }
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize2;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector2[i],ErrorTrainVector[l],2*dimension);
-   }
-   d0=9.99e+60;   
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize2;j++)
-	   number2[j]=0;
-	 for(i=0;i<blocks;i++)
-	 {
-	    index2[i]=0;
-		min=0.0;
-        for(k=0;k<dimension;k++)
-		{   
-          min=min+((double)ErrorTrainVector[i][k]-(double)CodeVector2[0][k])*((double)ErrorTrainVector[i][k]-(double)CodeVector2[0][k]);
-		}
-		for(j=1;j<booksize2;j++)
-		{
-		  d=0.0;
-		  for(k=0;k<dimension;k++)
-		  {			  
-		    d=d+((double)ErrorTrainVector[i][k]-(double)CodeVector2[j][k])*((double)ErrorTrainVector[i][k]-(double)CodeVector2[j][k]);
-		    if(d>=min)break;
-		  }
-		  if(d<min)
-		  {
-		    min=d;
-		    index2[i]=j;
-		  }
-		}
-	    number2[index2[i]]=number2[index2[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize2;j++)
-	 {
-	    if(number2[j]!=0)
-		{
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=0.0;
-		  }
-		  for(l=0;l<blocks;l++)
-		  {
-		    if(index2[l]==j)
-			{
-			  for(k=0;k<dimension;k++)
-			  {
-		        dd[k]=dd[k]+(double)ErrorTrainVector[l][k];
-			  }
-			}
-		  }
-		  for(k=0;k<dimension;k++)
-		  {
-		    CodeVector2[j][k]=(short int)(dd[k]/(double)number2[j]);
-		  }
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector2[j],ErrorTrainVector[l],2*dimension);
-		}
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)dimension*(double)blocks);
-   *MSE=d1/(double)dimension/(double)blocks;
-   return 0;
-}
-
-
-////The Design Methods implemetation begins////
-short int CRetrieveMethod::DCTVQScalarCodebookDesign(unsigned long int blocks,unsigned short int booksize,double e,float *TrainVector,float *CodeVector,unsigned short int *index,unsigned long int *number,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//dimension: stands for the dimension of DCT coefficient block
-//         the vector dimension should be smaller than 64
-//e:  stands for the distortion threshold 
-//         e should be larger than 0
-// TrainVector[MAXSOURCESIZE]: 
-//         stands for the training scalars
-// CodeVector[MAXBOOKSIZE]: 
-//         stands for the codewords
-// index[MAXSOURCESIZE]: each element stands for 
-//                       the index for a trainning vector
-// number[MAXBOOKSIZE]: each element stands for 
-//                     the number of training vectors 
-//                     that close to a codeword
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-// return -4: e set error
-{
-   int i,l;
-   unsigned short int j;
-
-   double d0,d1,d,min,dd,par;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   float tt;
-   int iindex; 
-   if(booksize>MAXBOOKSIZE||booksize<16)return -1;
-   if(blocks<booksize||blocks>MAXINPUTVECTORS)return -2;
-   if(e<=0) return -4;   
-   
-   //Initial codevector Using random number generator
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector+i,TrainVector+l,sizeof(float));
-   }
-   d0=9.99e+60;   
-   *iterations=0;
-   ltime1=clock();
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize;j++)
-	   number[j]=0;
-	 for(i=0;i<(int)blocks;i++)
-	 {
-	    index[i]=0;
-		min=((double)TrainVector[i]-(double)CodeVector[0])*((double)TrainVector[i]-(double)CodeVector[0]);
-		for(j=1;j<booksize;j++)
-		{
-		  d=((double)TrainVector[i]-(double)CodeVector[j])*((double)TrainVector[i]-(double)CodeVector[j]);
-		  if(d<min)
-		  {
-		    min=d;
-		    index[i]=j;
-		  }
-		}
-	    number[index[i]]=number[index[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize;j++)
-	 {
-	    if(number[j]!=0)
-		{
-		  dd=0.0;
-		  for(l=0;l<(int)blocks;l++)
-		  {
-		    if(index[l]==j)
-			  dd=dd+(double)TrainVector[l];
-		  }
-		  CodeVector[j]=(float)(dd/(double)number[j]);
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector+j,TrainVector+l,sizeof(float));
-		}
-	 }
-
-	 //codebook sorted by mean of codeword
-	 
-	 for(i=0;i<(int)(booksize-1);i++)
-	 {
-	   iindex=i;
-	   for(l=i+1;l<booksize;l++)
-	   {
-	     if(CodeVector[iindex]>CodeVector[l])
-		 {
-			iindex=l;
-		 } //end of for j,get the index  
-	   }
-	   if(iindex==i)
-	   {
-	     continue;
-	   }
-	   tt=CodeVector[i];
-	   CodeVector[i]=CodeVector[iindex];
-	   CodeVector[iindex]=tt;
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)blocks);
-   *MSE=d1/(double)blocks;
-   return 0;
-}
-
-////The Design Methods implemetation begins////
-short int CRetrieveMethod::VQScalarCodebookDesign(unsigned long int blocks,unsigned short int booksize,double e,unsigned char *TrainVector,unsigned char *CodeVector,unsigned short int *index,unsigned long int *number,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-//blocks : stands for the number of traning vectors, 
-//         it should be smaller than MAXSOURCESZIE
-//booksize: stands for the number of codewords
-//         it should be smaller than MAXBOOKSZIE
-//         and blocks should be larger than booksize
-//dimension: stands for the dimension of DCT coefficient block
-//         the vector dimension should be smaller than 64
-//e:  stands for the distortion threshold 
-//         e should be larger than 0
-// TrainVector[MAXSOURCESIZE]: 
-//         stands for the training scalars
-// CodeVector[MAXBOOKSIZE]: 
-//         stands for the codewords
-// index[MAXSOURCESIZE]: each element stands for 
-//                       the index for a trainning vector
-// number[MAXBOOKSIZE]: each element stands for 
-//                     the number of training vectors 
-//                     that close to a codeword
-// *MSE:  the pointer to the variable MSE which 
-//        stands for the mean squared error
-// *PSNR: the pointer to the variable PSNR which 
-//        stands for peak signal-noise ratio
-// return 0: normal
-// return -1: booksize set error
-// return -2: blocks set error
-// return -3: blockwidth and blockheight set error
-// return -4: e set error
-{
-   int i,l;
-   unsigned short int j;
-
-   double d0,d1,d,min,dd,par;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   unsigned char tt;
-   int iindex; 
-   if(booksize>MAXBOOKSIZE||booksize<16)return -1;
-   if(blocks<booksize||blocks>VQMAXINPUTVECTORS)return -2;
-   if(e<=0) return -4;   
-   
-   //Initial codevector Using random number generator
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector+i,TrainVector+l,sizeof(unsigned char));
-   }
-   d0=9.99e+60;   
-   *iterations=0;
-   ltime1=clock();
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize;j++)
-	   number[j]=0;
-	 for(i=0;i<(int)blocks;i++)
-	 {
-	    index[i]=0;
-		min=((double)TrainVector[i]-(double)CodeVector[0])*((double)TrainVector[i]-(double)CodeVector[0]);
-		for(j=1;j<booksize;j++)
-		{
-		  d=((double)TrainVector[i]-(double)CodeVector[j])*((double)TrainVector[i]-(double)CodeVector[j]);
-		  if(d<min)
-		  {
-		    min=d;
-		    index[i]=j;
-		  }
-		}
-	    number[index[i]]=number[index[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize;j++)
-	 {
-	    if(number[j]!=0)
-		{
-		  dd=0.0;
-		  for(l=0;l<(int)blocks;l++)
-		  {
-		    if(index[l]==j)
-			  dd=dd+(double)TrainVector[l];
-		  }
-		  CodeVector[j]=(unsigned char)(dd/(double)number[j]);
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector+j,TrainVector+l,sizeof(unsigned char));
-		}
-	 }
-
-	 //codebook sorted by mean of codeword
-	 
-	 for(i=0;i<(int)(booksize-1);i++)
-	 {
-	   iindex=i;
-	   for(l=i+1;l<booksize;l++)
-	   {
-	     if(CodeVector[iindex]>CodeVector[l])
-		 {
-			iindex=l;
-		 } //end of for j,get the index  
-	   }
-	   if(iindex==i)
-	   {
-	     continue;
-	   }
-	   tt=CodeVector[i];
-	   CodeVector[i]=CodeVector[iindex];
-	   CodeVector[iindex]=tt;
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)blocks);
-   *MSE=d1/(double)blocks;
-   return 0;
-}
-
-////The Encode Methods and Decode implemetation begins////
-//The function for twostage VQ search encode method
-short int CRetrieveMethod::TwoStageVQ256GrayImageEncode(unsigned long int blocks,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,unsigned char (*SourceVector)[VQDIMENSION],short int (*ErrorSourceVector)[VQDIMENSION],unsigned char (*CodeVector1)[VQDIMENSION],short int (*CodeVector2)[VQDIMENSION],unsigned short int *index1,unsigned short int *index2)
-{
-   unsigned long int i;
-   unsigned short int k,dimension;
-   unsigned short int j;
-   double d1,d,min;
-   
-   dimension=blockwidth*blockheight;
-   if(booksize1<4||booksize2<4||booksize1>MAXBOOKSIZE||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-   if(dimension>VQDIMENSION||dimension<=0)return -3;
-   d1=0.0;
-   //First Stage
-   for(i=0;i<blocks;i++)
-   {
-     index1[i]=0;
-  	 min=0.0;
-     for(k=0;k<dimension;k++)
-	 {   
-       min=min+((double)SourceVector[i][k]-(double)CodeVector1[0][k])*((double)SourceVector[i][k]-(double)CodeVector1[0][k]);
-	 }
-	 for(j=1;j<booksize1;j++)
-	 {
-	   d=0.0;
-       for(k=0;k<dimension;k++)
-	   {  
-         d=d+((double)SourceVector[i][k]-(double)CodeVector1[j][k])*((double)SourceVector[i][k]-(double)CodeVector1[j][k]);
-	   }
-	   if(d<min)
-	   {
-	     min=d;
-	     index1[i]=(unsigned char)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-//Second Stage
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     for(k=0;k<dimension;k++)
-	 {   
-       ErrorSourceVector[i][k]=SourceVector[i][k]-CodeVector1[index1[i]][k];
-	 }
-     index2[i]=0;
-  	 min=0.0;
-     for(k=0;k<dimension;k++)
-	 {   
-       min=min+((double)ErrorSourceVector[i][k]-(double)CodeVector2[0][k])*((double)ErrorSourceVector[i][k]-(double)CodeVector2[0][k]);
-	 }
-	 for(j=1;j<booksize2;j++)
-	 {
-	   d=0.0;
-       for(k=0;k<dimension;k++)
-	   {  
-         d=d+((double)ErrorSourceVector[i][k]-(double)CodeVector2[j][k])*((double)ErrorSourceVector[i][k]-(double)CodeVector2[j][k]);
-	   }
-	   if(d<min)
-	   {
-	     min=d;
-	     index2[i]=(unsigned char)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-
-   return 0;
-}
-//The function for decode
-short int CRetrieveMethod::TwoStageVQ256GrayImageDecode(unsigned long int blocks,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,unsigned short int width,unsigned short int *index1,unsigned short int *index2,unsigned char (*CodeVector1)[VQDIMENSION],short int (*CodeVector2)[VQDIMENSION],unsigned char *pixel,int component)
-{
-   unsigned long int i,j,k,l;
-   unsigned short int dimension,height;
-   unsigned short int la,lb,ba,bb;
-   short int a;
-
-   dimension=blockwidth*blockheight;
-   if(booksize1<4||booksize1>MAXBOOKSIZE||booksize2<4||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-   if(dimension>VQDIMENSION)return -3;
-
-   ba=blockwidth;
-   bb=blockheight;
-   height=(unsigned short int)(blocks*(unsigned long int)dimension/(unsigned long)width);
-   la=width/ba;
-   lb=height/bb;
-   for(l=0;l<lb;l++)
-   {
-	 for(k=0;k<la;k++)
-	 {
-	   for(j=0;j<bb;j++)
-	   {
-	      for(i=0;i<ba;i++)
-		  {
-	        a=CodeVector1[index1[k+l*la]][i+j*ba]+CodeVector2[index2[k+l*la]][i+j*ba];
-			if(component==0)
-			{
-		     if(a<16)a=16;
-		     if(a>240)a=240;
-			}
-		    else if(component==1)
-			{
-		     if(a<16)a=16;
-		     if(a>240)a=240;
-			}
-		    else if(component==2)
-			{
-		     if(a<16)a=16;
-		     if(a>235)a=235;
-			}
-		    else
-			{
-		     if(a<0)a=0;
-		     if(a>255)a=255;
-			}
-			pixel[i+k*ba+(j+l*bb)*width]=(unsigned char)a;
-
-		  }
-	   }
-	 }
-   }
-   return 0;
-}
-
-
-short int CRetrieveMethod::MeanRemovedVQ256GrayImageCodebookDesign(unsigned long int blocks,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,double e,unsigned char (*TrainVector)[VQDIMENSION],unsigned char *Means,short int (*ErrorTrainVector)[VQDIMENSION],unsigned char (*CodeVector1)[VQDIMENSION],short int (*CodeVector2)[VQDIMENSION],unsigned short int *index1,unsigned short int *index2,unsigned long int *number1,unsigned long int *number2,double *MSE,double *PSNR,double *Time,unsigned short int *iterations)
-{
-   unsigned long int i,l;
-   unsigned short int j;
-   unsigned short int k;
-   double d0,d1,d,min,dd[64],par;
-   unsigned short int dimension;
-   //Define starttime and finishtime
-   clock_t ltime1,ltime2;      
-   //compute the dimension
-   dimension=blockwidth*blockheight;
-   
-   //judge the booksizes and blocks and dimensions and error threshold
-   if(booksize1<4||booksize2<4||booksize1>MAXBOOKSIZE||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks<booksize1||blocks<booksize2||blocks>VQMAXINPUTVECTORS)return -2;
-   if(dimension>VQDIMENSION||dimension<=0)return -3;
-   if(e<=0) return -4;   
-   
-   //Initial the iteration times and get the start time
-   *iterations=0;
-   ltime1=clock();
-   
-   //The mean codebook generation//////////////////
-   //The randomize parameter
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   
-   //compute the means
-   for(i=0;i<blocks;i++)
-   {
-     d0=0.0;
-	 for(j=0;j<dimension;j++)
-	   d0=d0+TrainVector[i][j];
-	 d0=d0/(double)dimension;
-	 if(d0>255)d0=255;
-	 if(d0<0)d0=0;
-	 Means[i]=(unsigned char)d0;
-   }
-   
-   //Initial mean codevector Using random number generator
-   for(i=0;i<booksize1;i++)
-   {
-     l=(int)((double)rand()*par);
-	 for(j=0;j<dimension;j++)
- 	   CodeVector1[i][j]=Means[l];
-   }
-
-   d0=9.99e+60;   
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize1;j++)
-	   number1[j]=0;
-	 for(i=0;i<blocks;i++)
-	 {
-	    index1[i]=0;
-		min=fabs((double)Means[i]-(double)CodeVector1[0][0]);
-		for(j=1;j<booksize1;j++)
-		{
-		  d=fabs((double)Means[i]-(double)CodeVector1[j][0]);
-		  if(d<min)
-		  {
-		    min=d;
-		    index1[i]=j;
-		  }
-		}
-		number1[index1[i]]=number1[index1[i]]+1;
-	    d1=d1+min;
-	 }
-     if((d0-d1)/d1<=e)break;
-     (*iterations)++;
-     d0=d1;
-     for(j=0;j<booksize1;j++)
-	 { 
-       if(number1[j]!=0)
-	   {
-	     for(k=0;k<dimension;k++)
-		 {
-	       dd[k]=0.0;
-		 }
-	     for(l=0;l<blocks;l++)
-		 { 
-	       if(index1[l]==j)
-		   {
-		     for(k=0;k<dimension;k++)
-			 { 
-		       dd[k]=dd[k]+(double)Means[l];
-			 }
-		   }
-		 }
-	     for(k=0;k<dimension;k++)
-		 { 
-	       CodeVector1[j][k]=(unsigned char)(dd[k]/(double)number1[j]);
-		 }
-	   }
-	   else
-	   {
-	     l=(int)((double)rand()*par);
-         for(k=0;k<dimension;k++)
- 	       CodeVector1[j][k]=Means[l];
-	   }
-	 }
-   }
-   
-   //The residual codebook generation//////////////////
-   for(i=0;i<blocks;i++)
-   { 
-	 for(k=0;k<dimension;k++)
-	 {   
-       ErrorTrainVector[i][k]=(short int)TrainVector[i][k]-(short int)CodeVector1[index1[i]][k];
-	 }
-   }
-   par=(double)(blocks-1)/(double)0x7fff;
-   srand((unsigned)time(NULL));
-   for(i=0;i<booksize2;i++)
-   {
-     l=(int)((double)rand()*par);
- 	 memcpy(CodeVector2[i],ErrorTrainVector[l],2*dimension);
-   }
-   d0=9.99e+60;   
-   for(;;)
-   {  
-     d1=0.0;
- 	 for(j=0;j<booksize2;j++)
-	   number2[j]=0;
-	 for(i=0;i<blocks;i++)
-	 {
-	    index2[i]=0;
-		min=0.0;
-        for(k=0;k<dimension;k++)
-		{   
-          min=min+((double)ErrorTrainVector[i][k]-(double)CodeVector2[0][k])*((double)ErrorTrainVector[i][k]-(double)CodeVector2[0][k]);
-		}
-		for(j=1;j<booksize2;j++)
-		{
-		  d=0.0;
-		  for(k=0;k<dimension;k++)
-		  {			  
-		    d=d+((double)ErrorTrainVector[i][k]-(double)CodeVector2[j][k])*((double)ErrorTrainVector[i][k]-(double)CodeVector2[j][k]);
-		    if(d>=min)break;
-		  }
-		  if(d<min)
-		  {
-		    min=d;
-		    index2[i]=j;
-		  }
-		}
-	    number2[index2[i]]=number2[index2[i]]+1;
-		d1=d1+min;
-	 }
-	 if((d0-d1)/d1<=e)break;
-	 (*iterations)++;
-	 d0=d1;
-	 for(j=0;j<booksize2;j++)
-	 {
-	    if(number2[j]!=0)
-		{
-		  for(k=0;k<dimension;k++)
-		  {
-		    dd[k]=0.0;
-		  }
-		  for(l=0;l<blocks;l++)
-		  {
-		    if(index2[l]==j)
-			{
-			  for(k=0;k<dimension;k++)
-			  {
-		        dd[k]=dd[k]+(double)ErrorTrainVector[l][k];
-			  }
-			}
-		  }
-		  for(k=0;k<dimension;k++)
-		  {
-		    CodeVector2[j][k]=(short int)(dd[k]/(double)number2[j]);
-		  }
-		}
-		else
-		{
-		  l=(int)((double)rand()*par);
-          memcpy(CodeVector2[j],ErrorTrainVector[l],2*dimension);
-		}
-	 }
-   }
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     for(j=0;j<dimension;j++)
-	 {
-	   d1=d1+((double)TrainVector[i][j]-CodeVector1[index1[i]][j]-CodeVector2[index2[i]][j])*((double)TrainVector[i][j]-CodeVector1[index1[i]][j]-CodeVector2[index2[i]][j]);
-	 }
-   }
-   ltime2=clock();
-   *Time=double(ltime2-ltime1)/CLOCKS_PER_SEC;
-   *PSNR=10*log10(255.0*255.0/d1*(double)dimension*(double)blocks);
-   *MSE=d1/(double)dimension/(double)blocks;
-   return 0;
-}
-////The Design Methods implemetation ends////
-
-short int CRetrieveMethod::MeanRemovedVQ256GrayImageEncode(unsigned long int blocks,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,unsigned char (*SourceVector)[VQDIMENSION],unsigned char *Means,short int (*ErrorSourceVector)[VQDIMENSION],unsigned char (*CodeVector1)[VQDIMENSION],short int (*CodeVector2)[VQDIMENSION],unsigned short int*index1,unsigned short int *index2)
-{
-   unsigned long int i;
-   unsigned short int k,dimension;
-   unsigned short int j;
-   double d1,d,min;
-
-   dimension=blockwidth*blockheight;
-   if(booksize1<4||booksize2<4||booksize1>MAXBOOKSIZE||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-   if(dimension>VQDIMENSION||dimension<=0)return -3;
-   for(i=0;i<blocks;i++)
-   {
-     d1=0.0;
-	 for(j=0;j<dimension;j++)
-	 d1=d1+SourceVector[i][j];
-	 d1=d1/(double)dimension;
-	 if(d1>255)d1=255;
-	 if(d1<0)d1=0;
-	 Means[i]=(unsigned char)d1;
-   }
-   
- 
-   d1=0.0;
-   //First Stage
-   for(i=0;i<blocks;i++)
-   {
-     index1[i]=0;
-  	 min=fabs((double)Means[i]-(double)CodeVector1[0][0]);
-	 for(j=1;j<booksize1;j++)
-	 {
-	   d=fabs((double)Means[i]-(double)CodeVector1[j][0]);
-	   if(d<min)
-	   {
-	     min=d;
-	     index1[i]=(unsigned char)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-//Second Stage
-   d1=0.0;
-   for(i=0;i<blocks;i++)
-   {
-     for(k=0;k<dimension;k++)
-	 {   
-       ErrorSourceVector[i][k]=SourceVector[i][k]-CodeVector1[index1[i]][k];
-	 }
-     index2[i]=0;
-  	 min=0.0;
-     for(k=0;k<dimension;k++)
-	 {   
-       min=min+((double)ErrorSourceVector[i][k]-(double)CodeVector2[0][k])*((double)ErrorSourceVector[i][k]-(double)CodeVector2[0][k]);
-	 }
-	 for(j=1;j<booksize2;j++)
-	 {
-	   d=0.0;
-       for(k=0;k<dimension;k++)
-	   {  
-         d=d+((double)ErrorSourceVector[i][k]-(double)CodeVector2[j][k])*((double)ErrorSourceVector[i][k]-(double)CodeVector2[j][k]);
-	   }
-	   if(d<min)
-	   {
-	     min=d;
-	     index2[i]=(unsigned char)j;
-	   }
-	 }
-	 d1=d1+min;
-   }
-  
-   return 0;
-}
-short int CRetrieveMethod::MeanRemovedVQ256GrayImageDecode(unsigned long int blocks,unsigned short int booksize1,unsigned short int booksize2,unsigned short int blockwidth,unsigned short int blockheight,unsigned short int width,unsigned short int *index1,unsigned short int *index2,unsigned char (*CodeVector1)[VQDIMENSION],short int (*CodeVector2)[VQDIMENSION],unsigned char *pixel,int component)
-{
-   unsigned long int i,j,k,l;
-   unsigned short int dimension,height;
-   unsigned short int la,lb,ba,bb;
-   short int a;
-
-   dimension=blockwidth*blockheight;
-   if(booksize1<4||booksize1>MAXBOOKSIZE||booksize2<4||booksize2>MAXBOOKSIZE)return -1;
-   if(blocks>VQMAXENCODEVECTORS)return -2;
-   if(dimension>VQDIMENSION)return -3;
-
-   ba=blockwidth;
-   bb=blockheight;
-   height=(unsigned short int)(blocks*(unsigned long int)dimension/(unsigned long)width);
-   la=width/ba;
-   lb=height/bb;
-   for(l=0;l<lb;l++)
-   {
-	 for(k=0;k<la;k++)
-	 {
-	   for(j=0;j<bb;j++)
-	   {
-	      for(i=0;i<ba;i++)
-		  {
-	        a=CodeVector1[index1[k+l*la]][i+j*ba]+CodeVector2[index2[k+l*la]][i+j*ba];
-			if(component==0)
-			{
-		     if(a<16)a=16;
-		     if(a>240)a=240;
-			}
-		    else if(component==1)
-			{
-		     if(a<16)a=16;
-		     if(a>240)a=240;
-			}
-		    else if(component==2)
-			{
-		     if(a<16)a=16;
-		     if(a>235)a=235;
-			}
-		    else
-			{
-		     if(a<0)a=0;
-		     if(a>255)a=255;
-			}
-			pixel[i+k*ba+(j+l*bb)*width]=(unsigned char)a;
-		  }
-	   }
-	 }
-   }
-   return 0;
-}
-
-double CRetrieveMethod::ComputePSNR(unsigned char *Original,unsigned char *Result,long int width,long int height)
-{
-	int i,j;
-	double d,d1,MSE,PSNR;
-	d=0;
-	long int linebytes;
-	linebytes=(width+3)/4*4;
-    for(i=0;i<height;i++)
-    {
-     for(j=0;j<width;j++)
-     {
-       d1=(double)Original[i*linebytes+j]-(double)Result[i*linebytes+j];
-	   d=d+d1*d1;
-	 } 
-	}
-   MSE=d/(double)width/(double)height;
-   if(MSE!=0.0)
-     PSNR=10*log10(255.0*255.0/d*(double)width*(double)height);
-   else
-     PSNR=-1.0;
-   return PSNR;
-}
-

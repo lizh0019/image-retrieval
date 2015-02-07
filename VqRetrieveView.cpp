@@ -77,10 +77,12 @@ CVqRetrieveView::CVqRetrieveView()
 	m_clusters = 0;
 	m_savedfeaturefile = _T("");
 	m_savedcodebookfile = _T("");
+	m_savedindexfile = _T("");
 	m_db10 = _T("");
 	m_vectornumber = 0;
 	m_readfeaturename = _T("");
 	m_readbookname = _T("");
+	m_readindexname = _T("");
 	m_clustersused = 0;
 	m_retrievednum = 0;
 	m_everinterrupted = _T("");
@@ -89,8 +91,6 @@ CVqRetrieveView::CVqRetrieveView()
 	m_status = _T("");
 	m_feedbackinfo = _T("");
 	m_otherinfo = _T("");
-	m_featuredimension = 0;
-	m_savedvqfeaturefile = _T("");
 	//}}AFX_DATA_INIT
 	// TODO: add construction code here
 	moved=0;
@@ -173,10 +173,12 @@ void CVqRetrieveView::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_DB6, m_clusters);
 	DDX_Text(pDX, IDC_EDIT_DB7, m_savedfeaturefile);
 	DDX_Text(pDX, IDC_EDIT_DB8, m_savedcodebookfile);
+	DDX_Text(pDX, IDC_EDIT_DB9, m_savedindexfile);
 	DDX_Text(pDX, IDC_EDIT_DB10, m_db10);
 	DDX_Text(pDX, IDC_EDIT_DB11, m_vectornumber);
 	DDX_Text(pDX, IDC_EDIT_DB13, m_readfeaturename);
 	DDX_Text(pDX, IDC_EDIT_DB14, m_readbookname);
+	DDX_Text(pDX, IDC_EDIT_DB15, m_readindexname);
 	DDX_Text(pDX, IDC_EDIT_DB17, m_clustersused);
 	DDX_Text(pDX, IDC_EDIT_DB18, m_retrievednum);
 	DDX_Text(pDX, IDC_EDIT_DB12, m_everinterrupted);
@@ -185,8 +187,6 @@ void CVqRetrieveView::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_DB20, m_status);
 	DDX_Text(pDX, IDC_EDIT_DB21, m_feedbackinfo);
 	DDX_Text(pDX, IDC_EDIT_DB22, m_otherinfo);
-	DDX_Text(pDX, IDC_EDIT_DB15, m_featuredimension);
-	DDX_Text(pDX, IDC_EDIT_DB9, m_savedvqfeaturefile);
 	//}}AFX_DATA_MAP
 }
 
@@ -909,7 +909,7 @@ int CVqRetrieveView::GetRetrievalImageFile(char m_sOriginalFileName[MAX_PATH],in
             bitinfo->biWidth=info.imgWidth;
 		    linebytes=(info.imgWidth*24+31)/32*4;
 		    bitfile->bfSize=info.imgHeight*linebytes+54;
-		    bitinfo->biSizeImage=info.imgHeight*linebytes;
+		    bitinfo->biSizeImage=info.imgHeight*info.imgWidth;
 		    p1=info.image[0];
 		    p2=info.image[1];
 		    p3=info.image[2];
@@ -946,7 +946,7 @@ int CVqRetrieveView::GetRetrievalImageFile(char m_sOriginalFileName[MAX_PATH],in
             bitinfo->biWidth=info.imgWidth;
 			linebytes=(info.imgWidth+3)/4*4;
 		    bitfile->bfSize=info.imgHeight*linebytes+1078;
-		    bitinfo->biSizeImage=info.imgHeight*linebytes;
+		    bitinfo->biSizeImage=info.imgHeight*info.imgWidth;
 		    Imageh[num]=GlobalAlloc(GMEM_FIXED,bitfile->bfSize);//Apply the required memory
             ////If memory is not enough, return directly
             if(Imageh[num]==NULL)
@@ -1008,7 +1008,7 @@ int CVqRetrieveView::DisplayJpegFile(char m_sOriginalFileName[MAX_PATH],int num,
             bitinfo->biWidth=info.imgWidth;
 		    linebytes=(info.imgWidth*24+31)/32*4;
 		    bitfile->bfSize=info.imgHeight*linebytes+54;
-		    bitinfo->biSizeImage=info.imgHeight*linebytes;
+		    bitinfo->biSizeImage=info.imgHeight*info.imgWidth;
 		    p1=info.image[0];
 		    p2=info.image[1];
 		    p3=info.image[2];
@@ -1046,7 +1046,7 @@ int CVqRetrieveView::DisplayJpegFile(char m_sOriginalFileName[MAX_PATH],int num,
             bitinfo->biWidth=info.imgWidth;
 			linebytes=(info.imgWidth+3)/4*4;
 		    bitfile->bfSize=info.imgHeight*linebytes+1078;
-		    bitinfo->biSizeImage=info.imgHeight*linebytes;
+		    bitinfo->biSizeImage=info.imgHeight*info.imgWidth;
 		    Imagehg=GlobalAlloc(GMEM_FIXED,bitfile->bfSize);//Apply the required memory
             ////If memory is not enough, return directly
             if(Imagehg==NULL)
@@ -1489,7 +1489,7 @@ void CVqRetrieveView::DisplayInitialParameters()
 	m_clusters=pDoc->m_clusters;
 	m_savedfeaturefile=pDoc->m_savedfeaturefile;
 	m_savedcodebookfile=pDoc->m_savedcodebookfile;
-	m_savedvqfeaturefile=pDoc->m_savedvqfeaturefile;
+	m_savedindexfile=pDoc->m_savedindexfile;
     m_db=pDoc->m_sDatabasePath;///Database Directory
 
 	//The retrieval parameters
@@ -1498,7 +1498,7 @@ void CVqRetrieveView::DisplayInitialParameters()
 	m_everinterrupted=pDoc->m_everinterrupted;
 	m_readfeaturename=pDoc->m_readfeaturename;
 	m_readbookname=pDoc->m_readbookname;
-	m_featuredimension=pDoc->m_featuredimension;
+	m_readindexname=pDoc->m_readindexname;
 	m_basedonnormalized=pDoc->m_basedonnormalized;
 	m_clustersused=pDoc->m_clustersused;
 	m_retrievednum=pDoc->m_retrievednum;
@@ -1558,4 +1558,5 @@ void CVqRetrieveView::DisplayInitialParameters()
 	m_dis15=-1;
 	m_dis16=-1;	
 }
+
 

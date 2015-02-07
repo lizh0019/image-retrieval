@@ -77,10 +77,12 @@ public:
 	int		m_clusters;
 	CString	m_savedfeaturefile;
 	CString	m_savedcodebookfile;
+	CString	m_savedindexfile;
 	CString	m_db10;
 	long	m_vectornumber;
 	CString	m_readfeaturename;
 	CString	m_readbookname;
+	CString	m_readindexname;
 	int		m_clustersused;
 	long	m_retrievednum;
 	CString	m_everinterrupted;
@@ -89,8 +91,6 @@ public:
 	CString	m_status;
 	CString	m_feedbackinfo;
 	CString	m_otherinfo;
-	int		m_featuredimension;
-	CString	m_savedvqfeaturefile;
 	//}}AFX_DATA
 
 // Attributes

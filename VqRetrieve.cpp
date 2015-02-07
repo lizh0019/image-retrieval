@@ -18,7 +18,7 @@ static char THIS_FILE[] = __FILE__;
 
 //++++++++++++++++++++++++++++++++++++++Inserted code begin
 //All types of image files to be opened/*.* is considered as the raw file
-char szFilter[]= "BMP图像文件(*.bmp)|*.BMP|RAW图像文件(*.raw)|*.RAW|Jpeg图像文件(*.jpg)|*.JPG|GIF图像文件(*.gif)|*.GIF|PCX图像文件(*.pcx)|*.PCX|Tif图像文件(*.tif)|*.TIF|各种图像文件(*.bmp,*.raw,*.jpg,*.gif,*.pcx,*.tif)|*.BMP;*.RAW;*.JPG;*.GIF;*.PCX;*.TIF|所有文件(*.*)|*.*||";
+char szFilter[]= "BMP图像文件(*.bmp)|*.BMP|RAW图像文件(*.raw)|*.RAW|Jpeg图像文件(*.jpg)|*.JPG|JPG图像文件(*.jpeg)|*.jpeg|GIF图像文件(*.gif)|*.GIF|PCX图像文件(*.pcx)|*.PCX|Tif图像文件(*.tif)|*.TIF|各种图像文件(*.bmp,*.raw,*.jpg,*.gif,*.pcx,*.tif)|*.BMP;*.RAW;*.JPG;*.GIF;*.PCX;*.TIF|所有文件(*.*)|*.*||";
 char szFilter1[]= "BMP图像文件(*.bmp)|*.BMP||";
 //++++++++++++++++++++++++++++++++++++++Inserted code end
 /////////////////////////////////////////////////////////////////////////////

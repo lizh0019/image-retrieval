@@ -1,13 +1,17 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
 [OPTIONS]
-LCID=0x409 0x0 0x0 ;English (U.S.)
+COMPRESS=60 Hall Zeck
+ERRORLOG=VqRetrieve.LOG
+LCID=0x409 0x0 0x0 ; English (United States)
+REPORT=Yes
 CONTENTS=main_index
 TITLE=VQRETRIEVE Application Help
-COMPRESS=true
-WARNING=2
-BMROOT= ..,.
-ROOT= ..,.
+BMROOT=..
+BMROOT=.
+ROOT=..
+ROOT=.
 HLP=VqRetrieve.HLP
-ERRORLOG=VqRetrieve.LOG
 
 [FILES]
 afxcore.rtf
@@ -16,7 +20,6 @@ afxprint.rtf
 [ALIAS]
 HIDR_MAINFRAME = main_index
 HIDD_ABOUTBOX = HID_APP_ABOUT
-
 HID_HT_SIZE = HID_SC_SIZE
 HID_HT_HSCROLL = scrollbars
 HID_HT_VSCROLL = scrollbars
@@ -57,5 +60,4 @@ AFX_HIDP_FAILED_TO_REGISTER       = AFX_HIDP_default
 AFX_HIDP_FAILED_TO_AUTO_REGISTER  = AFX_HIDP_default
 
 [MAP]
-#include <D:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\afxhelp.hm>
 #include <VqRetrieve.hm>

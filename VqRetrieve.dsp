@@ -106,10 +106,6 @@ SOURCE=.\DialogDrawCurve.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\DialogEvaluation.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\DialogFeatureSelection.cpp
 # End Source File
 # Begin Source File
@@ -134,19 +130,11 @@ SOURCE=.\idct.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\ImageShow.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\Jpeg.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\MainFrm.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\SourceDlg.cpp
 # End Source File
 # Begin Source File
 
@@ -244,10 +232,6 @@ SOURCE=.\DialogDrawCurve.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\DialogEvaluation.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\DialogFeatureSelection.h
 # End Source File
 # Begin Source File
@@ -265,10 +249,6 @@ SOURCE=.\DialogImageInformation.h
 # Begin Source File
 
 SOURCE=.\DrawCurve.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\ImageShow.h
 # End Source File
 # Begin Source File
 
@@ -336,10 +316,6 @@ InputPath=.\Resource.h
 
 !ENDIF 
 
-# End Source File
-# Begin Source File
-
-SOURCE=.\SourceDlg.h
 # End Source File
 # Begin Source File
 

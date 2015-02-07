@@ -116,7 +116,7 @@ int CDialogDisplayImage::DisplayJpegFile(char m_sFileName[MAX_PATH])
             bitinfo->biWidth=info.imgWidth;
 		    linebytes=(info.imgWidth*24+31)/32*4;
 		    bitfile->bfSize=info.imgHeight*linebytes+54;
-		    bitinfo->biSizeImage=info.imgHeight*linebytes;
+		    bitinfo->biSizeImage=info.imgHeight*info.imgWidth;
 		    p1=info.image[0];
 		    p2=info.image[1];
 		    p3=info.image[2];
@@ -155,7 +155,7 @@ int CDialogDisplayImage::DisplayJpegFile(char m_sFileName[MAX_PATH])
             bitinfo->biWidth=info.imgWidth;
 			linebytes=(info.imgWidth+3)/4*4;
 		    bitfile->bfSize=info.imgHeight*linebytes+1078;
-		    bitinfo->biSizeImage=info.imgHeight*linebytes;
+		    bitinfo->biSizeImage=info.imgHeight*info.imgWidth;
 		    Imagehg=GlobalAlloc(GMEM_FIXED,bitfile->bfSize);//Apply the required memory
             ////If memory is not enough, return directly
             if(Imagehg==NULL)
@@ -251,7 +251,7 @@ void CDialogDisplayImage::OnSavechooseimage()
 {
 	// TODO: Add your command handler code here
 	CFile myfile;
-	char BASED_CODE szFilter[]="Bitmap Files(*.bmp)|*.bmp|JPG Files(*.jpg)|*.jpg|Text files(*.txt)|*.txt||";
+	char BASED_CODE szFilter[]="Bitmap Files(*.bmp)|*.bmp|JPG Files(*.jpg)|*.jpg|JPG Files(*.jpeg)|*.jpeg|Text files(*.txt)|*.txt||";
 	CFileDialog m_ldFile(FALSE,"*.bmp",NULL,OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT,szFilter);
 	if(m_ldFile.DoModal()==IDOK)
 	{

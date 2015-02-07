@@ -62,302 +62,6 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Menu
-//
-
-IDR_IMAGE MENU DISCARDABLE 
-BEGIN
-    MENUITEM "",                            65535
-    POPUP "&File"
-    BEGIN
-        MENUITEM "&Save As",                    ID_SAVECHOOSEIMAGE
-        MENUITEM "&Change As Query Image",      ID_CHANGEASQUERY
-        MENUITEM "&Exit",                       ID_EXIT
-    END
-    POPUP "&Move"
-    BEGIN
-        MENUITEM "&Left",                       ID_BUTTONLEFT
-        MENUITEM "&Up",                         ID_BUTTONUP
-        MENUITEM "&Right",                      ID_BUTTONRITHT
-        MENUITEM "&Down",                       ID_BUTTONDOWN
-        MENUITEM "&Move",                       ID_MOVE
-    END
-    POPUP "&Information"
-    BEGIN
-        MENUITEM "&Information",                ID_IMAGEINFORMATION
-        POPUP "HSV"
-        BEGIN
-            MENUITEM "&H Histogram",                ID_IMAGE_HHIST
-            MENUITEM "&S Histogram",                ID_IMAGE_SHIST
-            MENUITEM "&V Histogram",                ID_IMAGE_VHIST
-        END
-        POPUP "RGB"
-        BEGIN
-            MENUITEM "&R Histogram",                ID_IMAGE_RHIST
-            MENUITEM "&G Histogram",                ID_IMAGE_GHIST
-            MENUITEM "&B Histogram",                ID_IMAGE_BHIST
-        END
-        POPUP "YCbCr"
-        BEGIN
-            MENUITEM "&Y Histogram",                ID_IMAGE_YHIST
-            MENUITEM "C&b Histogram",               ID_IMAGE_CbHIST
-            MENUITEM "C&r Histogram",               ID_IMAGE_CrHIST
-        END
-        POPUP "YIQ"
-        BEGIN
-            MENUITEM "&Y Histogram",                ID_IMAGE_Y1HIST
-            MENUITEM "&I Histogram",                ID_IMAGE_IHIST
-            MENUITEM "&Q Histogram",                ID_IMAGE_QHIST
-        END
-        POPUP "Lab"
-        BEGIN
-            MENUITEM "&L Histogram",                ID_IMAGE_LHIST
-            MENUITEM "&a Histogram",                ID_IMAGE_AHIST
-            MENUITEM "&b Histogram",                ID_IMAGE_B1HIST
-        END
-        POPUP "HCV"
-        BEGIN
-            MENUITEM "&H Histogram",                ID_IMAGE_H1HIST
-            MENUITEM "&C Histogram",                ID_IMAGE_CHIST
-            MENUITEM "&V Histogram",                ID_IMAGE_V1HIST
-        END
-    END
-END
-
-#endif    // Chinese (P.R.C.) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////////////////////////
-// German (Germany) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
-#ifdef _WIN32
-LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
-#pragma code_page(1252)
-#endif //_WIN32
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDI_ICON_SINGLELINE1    ICON    DISCARDABLE     "res\\icon_sin.ico"
-IDI_ICON_SINGLELINE     ICON    DISCARDABLE     "res\\icon1.ico"
-IDI_ICON_LINENOARROW    ICON    DISCARDABLE     "res\\ico00005.ico"
-IDI_ICON_LINEARROW      ICON    DISCARDABLE     "res\\icon_lin.ico"
-IDI_ICON_HISTOGRAM1     ICON    DISCARDABLE     "res\\icon_his.ico"
-IDI_ICON_HISTOGRAM      ICON    DISCARDABLE     "res\\ico00001.ico"
-IDI_ICON_DASHNOARROW    ICON    DISCARDABLE     "res\\ico00007.ico"
-IDI_ICON_DASHARROW      ICON    DISCARDABLE     "res\\ico00006.ico"
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// String Table
-//
-
-STRINGTABLE DISCARDABLE 
-BEGIN
-    IDR_TEST_TMPL           "test\n\ntest\ntest Files (*.tes)\n.tes\ntest.Document\ntest Document"
-END
-
-#endif    // German (Germany) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-#endif //_WIN32
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Menu
-//
-
-IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
-BEGIN
-    POPUP "&Query"
-    BEGIN
-        MENUITEM "&Open Query Image\tCtrl+O",   ID_FILE_OPEN
-        MENUITEM "&Feature Computation",        ID_QUERY_FEATURECOMPUTE
-        MENUITEM "Feature &Normalization",      ID_QUERY_FEATURENORMALIZATION
-
-        MENUITEM SEPARATOR
-        POPUP "&Content to be Printed"
-        BEGIN
-            MENUITEM "&Only Query Image",           ID_PRINT_QUERY
-            MENUITEM "&Current Page (With Query Image)", 
-                                                    ID_PRINT_PAGEWITHQUERY
-            MENUITEM "Current &Page (Without Query Image)", 
-                                                    ID_PRINT_PAGENOQUERY
-        END
-        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
-        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
-        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
-        MENUITEM SEPARATOR
-        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
-        MENUITEM SEPARATOR
-        MENUITEM "E&xit",                       ID_APP_EXIT
-    END
-    POPUP "Data&base"
-    BEGIN
-        MENUITEM "Select DataBase Path (Ctrl+S)", ID_DATABASE_PATH
-        MENUITEM "Feature Selection (VK_F10)",  ID_DATABASE_FEATURESELECTION
-        MENUITEM "Generate Codebook for DCTVQ (Ctrl+G)", 
-                                                ID_DATABASE_CODEBOOKFORDCTVQ
-        MENUITEM "Generate Codebook for VQ (Shift+B)", 
-                                                ID_DATABASE_CODEBOOKFORVQ
-        MENUITEM "Generate Codebook for MSVQ (Shift+Q)", 
-                                                ID_DATABASE_CODEBOOKFORMSVQ
-        MENUITEM "Generate Codebook for MRVQ (Shift+G)", 
-                                                ID_DATABASE_CODEBOOKFORMRVQ
-        MENUITEM SEPARATOR
-        MENUITEM "Obtain Feature DataBase (Ctrl+C)", 
-                                                ID_DATABASE_FEATURECOMPUTE
-        MENUITEM "Stop (Ctrl+Q)",               ID_DATABASE_STOP
-        MENUITEM "Feature Normalization and Weighting(Ctrl+N)", 
-                                                ID_DATABASE_FEATURENORMALIZATION
-
-        MENUITEM "Normalized Feature Read From File(Ctrl+F)", 
-                                                ID_DATABASE_READFROMFILE
-        MENUITEM "Feature Vector Sorting(VK_F2)", ID_DATABASE_SORTING
-        MENUITEM "Save Feature Database As (VK_F3)", ID_DATABASE_FEATURESAVE
-        MENUITEM SEPARATOR
-        MENUITEM "Feature Space Clustering(VK_F4)", 
-                                                ID_DATABASE_NFEATURESPACEVQ
-        MENUITEM "Cluster Sorting(VK_F5)",      ID_DATABASE_CLUSTERSORTING
-        MENUITEM "Save Clustering VQ Codebook As (VK_F6)", 
-                                                ID_DATABASE_CODEWORDSSAVE
-        MENUITEM "Save VQ Feature Database As (VK_F7)", 
-                                                ID_DATABASE_VQFEATURESAVE
-    END
-    POPUP "&Retrieve"
-    BEGIN
-        MENUITEM "Open Feature Database(Ctrl+D)", ID_RETRIEVE_FEATUREFILE
-        MENUITEM "Open VQ Feature Database (Ctrl+V)", 
-                                                ID_RETRIEVE_VQFEATUREFILE
-        MENUITEM "Open Clustering Codebook (Ctrl+B)", 
-                                                ID_RETRIEVE_CLUSTERINGBOOK
-        MENUITEM "View Feature Selected (VK_F8)", 
-                                                ID_RETRIEVE_FEATURESELECTED
-        MENUITEM SEPARATOR
-        POPUP "Simple Feedback Options"
-        BEGIN
-            MENUITEM "Memory&Less",                 ID_RETRIEVE_FEEDBACKNOMEMORY
-
-            MENUITEM "&With Memory",                ID_RETRIEVE_FEEDBACKWITHMEMORY
-
-        END
-        POPUP "Number of Return Pages "
-        BEGIN
-            MENUITEM "Only the best-match image",   ID_RETRIEVE_PAGES1AND1Image
-
-            MENUITEM "1",                           ID_RETRIEVE_PAGES1
-            MENUITEM "2",                           ID_RETRIEVE_PAGES2
-            MENUITEM "3",                           ID_RETRIEVE_PAGES3
-            MENUITEM "4",                           ID_RETRIEVE_PAGES4
-            MENUITEM "5",                           ID_RETRIEVE_PAGES5
-            MENUITEM "6",                           ID_RETRIEVE_PAGES6
-            MENUITEM "7",                           ID_RETRIEVE_PAGES7
-            MENUITEM "8",                           ID_RETRIEVE_PAGES8
-            MENUITEM "9",                           ID_RETRIEVE_PAGES9
-            MENUITEM "10",                          ID_RETRIEVE_PAGES10
-            MENUITEM "15",                          ID_RETRIEVE_PAGES15
-            MENUITEM "20",                          ID_RETRIEVE_PAGES20
-            MENUITEM "25",                          ID_RETRIEVE_PAGES25
-            MENUITEM "All",                         ID_RETRIEVE_PAGESALL
-        END
-        POPUP "Retrieve Scheme"
-        BEGIN
-            MENUITEM "Normal Full Search(Ctr+1)",   ID_RETRIEVE_NORMAL
-            MENUITEM "Full Search with Updating Display(Ctrl +2)", 
-                                                    ID_RETRIEVE_UPDATINGFS
-            MENUITEM SEPARATOR
-            MENUITEM "Equal-average K Nearest Neighbor Search (EKNNS,Ctrl+3)", 
-                                                    ID_RETRIEVE_EKNNS
-            MENUITEM "Iterative EKNNS User Controlling (IEKNNSU,Ctrl+4)", 
-                                                    ID_RETRIEVE_IEKNNSUSER
-            MENUITEM "Iterative EKNNS Background Mode(IEKNNSB,Ctrl+5)", 
-                                                    ID_RETRIEVE_IEKNNSBACK
-            MENUITEM SEPARATOR
-            MENUITEM "Equal-average Equal-variance KNNS (EEKNNS,Ctrl+6)", 
-                                                    ID_RETRIEVE_EEKNNS
-            MENUITEM "Iterative EEKNNS User Controlling (IEEKNNSU,Ctrl+7)", 
-                                                    ID_RETRIEVE_IEEKNNSUSER
-            MENUITEM "Iterative EEKNNS Background Mode(IEEKNNSB,Ctrl+8)", 
-                                                    ID_RETRIEVE_IEEKNNSBACK
-            MENUITEM SEPARATOR
-            MENUITEM "Enhanced Equal-average Equal-variance KNNS (EEEKNNS,Ctrl+9)", 
-                                                    ID_RETRIEVE_EEEKNNS
-            MENUITEM "Iterative EEEKNNS User Controlling (IEEEKNNSU,Ctrl+0)", 
-                                                    ID_RETRIEVE_IEEEKNNSUSER
-            MENUITEM "Iterative EEEKNNS Background Mode(IEEEKNNSB,Ctrl+A)", 
-                                                    ID_RETRIEVE_IEEEKNNSBACK
-            MENUITEM SEPARATOR
-            MENUITEM "MEEKNNS only in VQ-NN Cluster(Ctrl+M)", 
-                                                    ID_RETRIEVE_VQONLYNNC
-            MENUITEM "Updating MEEKNNS only in VQ-KNNCs(Ctrl+U)", 
-                                                    ID_RETRIEVE_VQONLYKNNCS
-            MENUITEM "Updating MEEKNNS in all VQ-Clusters(Ctrl+W)", 
-                                                    ID_RETRIEVE_VQALLCLUSTERS
-
-        END
-        MENUITEM SEPARATOR
-        MENUITEM "Start (Ctrl+R)",              ID_RETRIEVE_START
-        MENUITEM "Stop (Ctrl+T)",               ID_RETRIEVE_STOP
-    END
-    POPUP "&FeedBack"
-    BEGIN
-        MENUITEM "Feedback Scheme1",            ID_FEEDBACK_SCHEME1
-        MENUITEM "Feedback Scheme2",            ID_FEEDBACK_SCHEME2
-        MENUITEM "Feedback Scheme3",            ID_FEEDBACK_SCHEME3
-        MENUITEM "Feedback Scheme4",            ID_FEEDBACK_SCHEME4
-        MENUITEM "Feedback Scheme5",            ID_FEEDBACK_SCHEME5
-        MENUITEM "Feedback Scheme6",            ID_FEEDBACK_SCHEME6
-        MENUITEM "Feedback Scheme7",            ID_FEEDBACK_SCHEME7
-        MENUITEM "Feedback Scheme8",            ID_FEEDBACK_SCHEME8
-    END
-    POPUP "&Display"
-    BEGIN
-        POPUP "Bar &View"
-        BEGIN
-            MENUITEM "ToolBar(&T)",                 ID_VIEW_TOOLBAR
-            MENUITEM "StatusBar(&S)",               ID_VIEW_STATUS_BAR
-        END
-        MENUITEM "&First Page  (VK_HOME)",      ID_DISPLAY_FIRST
-        MENUITEM "&Next Page  (VK_NEXT)",       ID_DISPLAY_NEXT
-        MENUITEM "&Previous Page (VK_PRIOR)",   ID_DISPLAY_PREVIOUS
-        MENUITEM "&Last Page (VK_END)",         ID_DISPLAY_LAST
-    END
-    MENUITEM "&Evaluation",                 ID_EVALUATION
-    POPUP "&Help"
-    BEGIN
-        MENUITEM "&Help Topics",                ID_HELP_FINDER
-        MENUITEM SEPARATOR
-        MENUITEM "&About VqRetrieve...",        ID_APP_ABOUT
-    END
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\VqRetrieve.ico"
-IDR_VQRETRTYPE          ICON    DISCARDABLE     "res\\VqRetrieveDoc.ico"
-
-/////////////////////////////////////////////////////////////////////////////
-//
 // Dialog
 //
 
@@ -451,6 +155,132 @@ BEGIN
                     BS_AUTORADIOBUTTON,19,42,92,10
 END
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG_DATABASE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_DISPLAYIMAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 564
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 415
+    END
+
+    IDD_INFORMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 258
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 135
+    END
+
+    IDD_DIALOG_FEEDBACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 137
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_IMAGE MENU DISCARDABLE 
+BEGIN
+    MENUITEM "",                            65535
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Save As",                    ID_SAVECHOOSEIMAGE
+        MENUITEM "&Change As Query Image",      ID_CHANGEASQUERY
+        MENUITEM "&Exit",                       ID_EXIT
+    END
+    POPUP "&Move"
+    BEGIN
+        MENUITEM "&Left",                       ID_BUTTONLEFT
+        MENUITEM "&Up",                         ID_BUTTONUP
+        MENUITEM "&Right",                      ID_BUTTONRITHT
+        MENUITEM "&Down",                       ID_BUTTONDOWN
+        MENUITEM "&Move",                       ID_MOVE
+    END
+    POPUP "&Information"
+    BEGIN
+        MENUITEM "&Information",                ID_IMAGEINFORMATION
+        POPUP "HSV"
+        BEGIN
+            MENUITEM "&H Histogram",                ID_IMAGE_HHIST
+            MENUITEM "&S Histogram",                ID_IMAGE_SHIST
+            MENUITEM "&V Histogram",                ID_IMAGE_VHIST
+        END
+        POPUP "RGB"
+        BEGIN
+            MENUITEM "&R Histogram",                ID_IMAGE_RHIST
+            MENUITEM "&G Histogram",                ID_IMAGE_GHIST
+            MENUITEM "&B Histogram",                ID_IMAGE_BHIST
+        END
+        POPUP "YCbCr"
+        BEGIN
+            MENUITEM "&Y Histogram",                ID_IMAGE_YHIST
+            MENUITEM "C&b Histogram",               ID_IMAGE_CbHIST
+            MENUITEM "C&r Histogram",               ID_IMAGE_CrHIST
+        END
+        POPUP "YIQ"
+        BEGIN
+            MENUITEM "&Y Histogram",                ID_IMAGE_Y1HIST
+            MENUITEM "&I Histogram",                ID_IMAGE_IHIST
+            MENUITEM "&Q Histogram",                ID_IMAGE_QHIST
+        END
+        POPUP "Lab"
+        BEGIN
+            MENUITEM "&L Histogram",                ID_IMAGE_LHIST
+            MENUITEM "&a Histogram",                ID_IMAGE_AHIST
+            MENUITEM "&b Histogram",                ID_IMAGE_B1HIST
+        END
+        POPUP "HCV"
+        BEGIN
+            MENUITEM "&H Histogram",                ID_IMAGE_H1HIST
+            MENUITEM "&C Histogram",                ID_IMAGE_CHIST
+            MENUITEM "&V Histogram",                ID_IMAGE_V1HIST
+        END
+    END
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
 IDD_DIALOG_FEATURESELECTION DIALOG DISCARDABLE  0, 0, 471, 216
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Feature Selection"
@@ -535,8 +365,7 @@ BEGIN
     LTEXT           "Feature4:",IDC_STATIC_FEATURE4,320,68,32,11
     LTEXT           "Feature Dimensions:",IDC_STATIC_DIMENSION4,152,173,65,
                     10
-    EDITTEXT        IDC_EDIT_FEATURE1,354,27,91,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
+    EDITTEXT        IDC_EDIT_FEATURE1,354,27,91,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT_FEATURE2,354,40,91,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT_FEATURE3,353,53,91,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT_FEATURE4,353,66,91,12,ES_AUTOHSCROLL
@@ -598,388 +427,6 @@ BEGIN
                     ES_READONLY | WS_VSCROLL
 END
 
-IDD_DIALOG_EVALUATION DIALOGEX 0, 0, 410, 335
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Evaluation Dialog"
-FONT 8, "Times New Roman", 0, 0, 0x1
-BEGIN
-    GROUPBOX        "Feature Database File",IDC_STATIC_DATABASEFILE,3,9,281,
-                    116,BS_CENTER
-    PUSHBUTTON      "Open",IDC_OPEN_DATABASE,5,19,35,9
-    LTEXT           "Feature Database File:",IDC_STATIC_TESTFEATUREFILE,54,
-                    19,78,8
-    EDITTEXT        IDC_DBPATH,142,19,118,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Standard image database?",IDC_STATIC_STANDARD,5,34,90,8
-    EDITTEXT        IDC_EDIT_STANDARD,101,33,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Sorted image database?",IDC_STATIC_SORTED,142,37,94,8
-    EDITTEXT        IDC_EDIT_SORTED,237,34,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Clustered image database?",IDC_STATIC_CLUSTERED,5,48,94,
-                    8
-    EDITTEXT        IDC_EDIT_CLUSTERED,101,48,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Number of Classes:",IDC_STATIC_CLASSES,142,51,67,8
-    EDITTEXT        IDC_EDIT_CLASSES,237,49,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Images in each Classes",IDC_STATIC_IMAGESINCLASS,5,62,
-                    84,9
-    EDITTEXT        IDC_EDIT_IMAGEEACHCLASS,101,63,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Total Number of images",IDC_STATIC_TOTALIMAGENUMBER,142,
-                    65,84,9
-    EDITTEXT        IDC_EDIT_IMAGENUMBER,237,64,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Total Feature Dimension:",IDC_STATIC_VECTORDIMENSION5,5,
-                    77,84,8
-    EDITTEXT        IDC_EDIT_DIMENSIONTOTAL,101,78,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Color Feature Dimension:",IDC_STATIC_VECTORDIMENSION,
-                    142,80,86,8
-    EDITTEXT        IDC_EDIT_DIMENSION1,237,79,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Invariant Feature Dimension:",
-                    IDC_STATIC_VECTORDIMENSION1,5,91,95,11
-    EDITTEXT        IDC_EDIT_DIMENSION2,101,93,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Texture Feature Dimension:",IDC_STATIC_VECTORDIMENSION2,
-                    142,94,92,8
-    EDITTEXT        IDC_EDIT_DIMENSION3,237,94,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Shape Feature Dimension:",IDC_STATIC_VECTORDIMENSION3,5,
-                    108,88,8
-    EDITTEXT        IDC_EDIT_DIMENSION4,101,108,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Other Feature Dimension:",IDC_STATIC_VECTORDIMENSION4,
-                    142,108,87,8
-    EDITTEXT        IDC_EDIT_DIMENSION5,237,109,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    GROUPBOX        "Test Conditions",IDC_STATIC_TESTCONDITION,290,11,116,
-                    117,BS_CENTER
-    LTEXT           "Retrieval Method:",IDC_STATIC_METHOD,296,27,60,8
-    COMBOBOX        IDC_METHOD,353,23,40,26,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
-    LTEXT           "Random queries from each class:",IDC_STATIC_QUERIES,297,
-                    40,52,20
-    COMBOBOX        IDC_QUERIES,355,41,40,36,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
-    LTEXT           "min num of returned images:",IDC_STATIC_MINRETURN,298,
-                    60,54,16
-    COMBOBOX        IDC_MIN,353,62,40,28,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
-    LTEXT           "max num of returned images:",IDC_STATIC_MAXRETURN,297,
-                    78,50,17
-    COMBOBOX        IDC_MAX,353,78,40,28,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
-    LTEXT           "Increasing Step:",IDC_STATIC_STEP,297,98,50,12
-    COMBOBOX        IDC_STEP,351,94,40,28,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
-    LTEXT           "Num of clusters to search:",IDC_STATIC_NUMCLUSTERSEARCH,
-                    297,111,50,18
-    COMBOBOX        IDC_NUMCLUSTERTOSEARCH,351,113,40,28,CBS_DROPDOWNLIST | 
-                    WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Codebook File",IDC_STATIC_CODEBOOK,4,133,401,47,
-                    BS_CENTER
-    PUSHBUTTON      "Open",IDC_OPEN_CODEBOOK,12,147,35,9
-    LTEXT           "Feature Codebook File:",IDC_STATIC_TESTCODEBOOK,53,147,
-                    78,8
-    EDITTEXT        IDC_BKPATH,135,143,118,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Number of Clusters:",IDC_STATIC_CLUSTERS,259,144,67,8
-    EDITTEXT        IDC_EDIT_CLUSTERS,331,142,36,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Vector number in each Cluster:",
-                    IDC_STATIC_CLUSTERNUMBERS,11,163,99,8
-    EDITTEXT        IDC_NUMINCLUSTER,135,158,232,17,ES_MULTILINE | 
-                    ES_READONLY | WS_VSCROLL
-    GROUPBOX        "Test and Results",IDC_STATIC_TESTING,8,182,391,134,
-                    BS_CENTER
-    PUSHBUTTON      "Generate Random Queries",IDC_RANDOMQUERY,15,191,87,11
-    LTEXT           "Some information of latest test",IDC_STATIC_TESTINFO,
-                    172,193,104,8
-    PUSHBUTTON      "Start Test",IDC_STARTTEST,15,209,52,11
-    EDITTEXT        IDC_TESTINFODISPLAY,80,204,306,17,ES_MULTILINE | 
-                    ES_READONLY | WS_VSCROLL
-    LTEXT           "[Query No.] [Class No.] [Num of Re. Images] [Time] [Precision] [Recall]",
-                    IDC_STATIC_RESULTDISPLAYSTYLE,18,230,233,8
-    LISTBOX         IDC_RESULT_LIST,18,240,368,44,NOT LBS_NOTIFY | 
-                    LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | 
-                    WS_HSCROLL | WS_TABSTOP,WS_EX_ACCEPTFILES
-    LTEXT           "Average: [Num of Re. Images] [Time] [Precision] [Recall]",
-                    IDC_STATIC_RESULTDISPLAYSTYLE2,20,286,185,8
-    PUSHBUTTON      "Clear",IDC_CLEAR,51,299,39,9
-    PUSHBUTTON      "Save to file",IDC_RESULTSAVE,119,299,42,10
-    PUSHBUTTON      "Draw P-R Curve",IDC_DRAWPR,189,299,55,10
-    PUSHBUTTON      "Draw Time Curve",IDC_DRAWTIME,272,299,65,10
-    DEFPUSHBUTTON   "Close Window",IDOK,173,320,72,12
-END
-
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 239, 70
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About VqRetrieve"
-FONT 8, "MS Sans Serif"
-BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
-    LTEXT           "VqRetrieve Version 1.0",IDC_STATIC,40,10,119,8,
-                    SS_NOPREFIX
-    LTEXT           "Copyright (C) 2005.3.27",IDC_STATIC,40,25,119,8
-    DEFPUSHBUTTON   "OK",IDOK,182,7,50,14,WS_GROUP
-    LTEXT           "The Copyright is retained by Prof. Dr. Zhe-Ming Lu",
-                    IDC_STATIC,41,40,181,17
-END
-
-IDD_VQRETRIEVE_FORM DIALOGEX 1024, 768, 649, 375
-STYLE DS_CENTER | WS_CHILD
-EXSTYLE WS_EX_TRANSPARENT
-FONT 8, "MS Sans Serif", 0, 0, 0x1
-BEGIN
-    CONTROL         "",IDC_STATICQUERY,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,24,45,158,73
-    CONTROL         "",IDC_STATICRETRIEVAL1,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,23,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL2,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,98,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL3,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,175,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL4,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,250,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL5,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,325,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL6,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,399,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL7,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,475,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL8,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,550,190,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL9,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,25,278,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL10,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,100,278,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL11,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,175,278,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL12,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,250,278,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL14,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,400,278,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL15,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,475,278,51,45
-    CONTROL         "",IDC_STATICRETRIEVAL16,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,550,278,51,45
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME1,29,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME2,105,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME3,181,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME4,257,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME5,333,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME6,409,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME7,485,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME8,561,246,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME9,29,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME10,105,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME11,181,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME12,257,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME13,333,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME14,409,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME15,485,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_RETRIEVALNAME16,561,326,40,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Dis. 1=",IDC_STATIC_DIS1,26,262,30,14
-    LTEXT           "Dis. 2=",IDC_STATIC_DIS2,101,262,30,14
-    LTEXT           "Dis. 3=",IDC_STATIC_DIS3,176,262,30,14
-    LTEXT           "Dis. 4=",IDC_STATIC_DIS4,251,262,30,14
-    LTEXT           "Dis. 5=",IDC_STATIC_DIS5,326,262,30,14
-    LTEXT           "Dis. 6=",IDC_STATIC_DIS6,401,262,30,14
-    LTEXT           "Dis. 7=",IDC_STATIC_DIS7,476,262,30,14
-    LTEXT           "Dis. 8=",IDC_STATIC_DIS8,551,262,30,14
-    LTEXT           "Dis. 9=",IDC_STATIC_DIS9,26,341,30,14
-    LTEXT           "Dis. 10=",IDC_STATIC_DIS10,101,341,30,14
-    LTEXT           "Dis. 11=",IDC_STATIC_DIS11,176,341,30,14
-    LTEXT           "Dis. 12=",IDC_STATIC_DIS12,251,341,30,14
-    LTEXT           "Dis. 13=",IDC_STATIC_DIS13,326,341,30,14
-    LTEXT           "Dis. 14=",IDC_STATIC_DIS14,401,341,30,14
-    LTEXT           "Dis. 15=",IDC_STATIC_DIS15,476,341,30,14
-    LTEXT           "Dis. 16=",IDC_STATIC_DIS16,551,341,30,14
-    EDITTEXT        IDC_EDIT_DIS1,57,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS2,132,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS3,207,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS4,282,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS5,357,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS6,432,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS7,507,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS8,582,262,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS9,57,341,37,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS10,132,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS11,207,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS12,282,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS13,582,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS14,357,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS15,432,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DIS16,507,341,37,13,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    EDITTEXT        IDC_EDIT_DB,341,16,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Image Database Path:",IDC_STATIC_DB,218,16,84,12
-    GROUPBOX        "Query Region",IDC_STATIC_QUERYREGION,11,7,174,150,
-                    BS_CENTER
-    GROUPBOX        "Database Region",IDC_STATIC_DATABASEREGION,199,7,223,
-                    150,BS_CENTER
-    GROUPBOX        "Retrieval Region",IDC_STATIC_RETRIEVALREGION,439,7,190,
-                    150,BS_CENTER
-    GROUPBOX        "Result Region",IDC_STATIC_RESULTREGION,11,161,618,203,
-                    BS_CENTER
-    EDITTEXT        IDC_EDIT_QUERYINFO,19,102,158,45,ES_MULTILINE | 
-                    ES_READONLY | WS_VSCROLL
-    LTEXT           "Number of Possible Images:",IDC_STATIC_DB2,218,31,113,
-                    12
-    LTEXT           "Number of 24/8 bits jpg bmps:",IDC_STATIC_DB3,218,46,
-                    108,12
-    EDITTEXT        IDC_EDIT_DB2,341,31,43,12,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DB3,341,46,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Number of images extracted:",IDC_STATIC_DB4,218,61,107,
-                    12
-    LTEXT           "Feature vectors normalized:",IDC_STATIC_DB5,218,76,105,
-                    12
-    EDITTEXT        IDC_EDIT_DB4,341,61,43,12,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DB5,341,76,43,12,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DB6,341,91,43,12,ES_AUTOHSCROLL
-    LTEXT           "Number of clusters:",IDC_STATIC_DB6,218,91,111,12
-    CONTROL         "",IDC_STATICRETRIEVAL13,"Static",SS_BITMAP | SS_NOTIFY | 
-                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,325,278,51,45
-    EDITTEXT        IDC_EDIT_DB7,341,106,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Saved feature file name:",IDC_STATIC_DB7,218,106,111,12
-    LTEXT           "Saved codebook file name:",IDC_STATIC_DB8,218,121,114,
-                    12
-    EDITTEXT        IDC_EDIT_DB8,341,121,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Saved vq feature file name:",IDC_STATIC_DB9,218,136,111,
-                    12
-    EDITTEXT        IDC_EDIT_DB9,341,136,43,12,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DB10,573,16,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Feature Database Path:",IDC_STATIC_DB10,451,16,84,12
-    LTEXT           "Number of Feature Vectors:",IDC_STATIC_DB11,451,31,113,
-                    12
-    EDITTEXT        IDC_EDIT_DB11,573,31,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Ever Interrupted in Extraction?",IDC_STATIC_DB12,451,46,
-                    113,12
-    EDITTEXT        IDC_EDIT_DB12,573,46,43,12,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DB13,573,61,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Read feature file name:",IDC_STATIC_DB13,451,61,111,12
-    LTEXT           "Read codebook file name:",IDC_STATIC_DB14,451,76,114,12
-    EDITTEXT        IDC_EDIT_DB14,573,76,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Feature vector dimension:",IDC_STATIC_DB15,451,91,111,
-                    12
-    EDITTEXT        IDC_EDIT_DB15,573,91,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Normalized features based?",IDC_STATIC_DB16,451,106,107,
-                    12
-    EDITTEXT        IDC_EDIT_DB17,573,121,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Number of clusters used:",IDC_STATIC_DB17,451,121,111,
-                    12
-    EDITTEXT        IDC_EDIT_DB16,573,106,43,12,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT_DB18,573,136,43,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Number of retrieved Images:",IDC_STATIC_DB18,451,136,
-                    111,12
-    EDITTEXT        IDC_EDIT_DB19,60,172,26,12,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Current Page:",IDC_STATIC_DB19,14,173,48,12
-    EDITTEXT        IDC_EDIT_DB20,140,172,43,12,ES_MULTILINE | ES_READONLY | 
-                    WS_VSCROLL
-    LTEXT           "Current Status:",IDC_STATIC_DB20,93,173,48,12
-    EDITTEXT        IDC_EDIT_DB21,325,173,43,12,ES_MULTILINE | ES_READONLY | 
-                    WS_VSCROLL
-    LTEXT           "Feedback Info:",IDC_STATIC_DB21,263,173,48,12
-    EDITTEXT        IDC_EDIT_DB22,445,173,43,12,ES_MULTILINE | ES_READONLY | 
-                    WS_VSCROLL
-    LTEXT           "Other Info:",IDC_STATIC_DB22,383,173,48,12
-    GROUPBOX        "",IDC_REGION_RETRIEVAL1,25,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL2,98,190,51,45,BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL3,175,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL4,250,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL5,324,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL6,399,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL7,475,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL8,549,190,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL9,26,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL10,99,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL11,175,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL12,248,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL13,325,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL14,399,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL15,473,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_RETRIEVAL16,549,278,51,45,BS_BITMAP | 
-                    BS_CENTER
-    GROUPBOX        "",IDC_REGION_QUERY,19,21,158,73,BS_BITMAP | BS_CENTER
-END
-
-IDD_DIALOG_SOURCE DIALOGEX 0, 0, 245, 226
-STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
-EXSTYLE WS_EX_CONTEXTHELP
-CAPTION "Select Training Images"
-FONT 10, "??", 0, 0, 0x1
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,49,202,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,175,201,50,14
-    DEFPUSHBUTTON   "Add",IDC_ADD_FILE,188,79,50,14
-    DEFPUSHBUTTON   "delete",IDC_DELETE_FILE,189,135,50,14
-    LTEXT           "No. images Selected",IDC_STATIC_NUMBER,81,11,85,15,
-                    SS_NOPREFIX
-    LISTBOX         IDC_LIST_FILE,22,66,153,120,LBS_NOINTEGRALHEIGHT | 
-                    LBS_DISABLENOSCROLL | WS_HSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_EDIT_NUMBER,63,27,77,15,ES_AUTOHSCROLL | ES_READONLY
-END
-
-IDD_DIALOG_SHOW DIALOG DISCARDABLE  0, 0, 456, 352
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Encoding Test Results"
-FONT 10, "System"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,195,321,50,14
-    LTEXT           "PSNR",IDC_STATIC_PSNR,225,293,32,15
-    EDITTEXT        IDC_EDIT_PSNR,260,291,48,14,ES_AUTOHSCROLL
-    LTEXT           "Component",IDC_STATIC_COMPO,99,290,40,15
-    EDITTEXT        IDC_EDIT_COMP,152,290,50,17,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "Original Image Path",IDC_STATIC_FILE,64,251,74,15
-    EDITTEXT        IDC_EDIT_FILEPATH,145,248,159,17,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Width",IDC_STATIC_IMAGEWIDTH,98,269,31,15
-    EDITTEXT        IDC_EDIT_IMWIDTH,144,267,50,17,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Height",IDC_STATIC_IMAGEHEIGHT,213,269,31,15
-    EDITTEXT        IDC_EDIT_IMHEIGHT,259,267,50,17,ES_AUTOHSCROLL | 
-                    ES_READONLY
-    LTEXT           "Original Image",IDC_STATIC_ORIGINAL,66,221,67,18
-    LTEXT           "Compressed Image",IDC_STATIC_DECODE,259,220,67,18
-END
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -989,57 +436,9 @@ END
 #ifdef APSTUDIO_INVOKED
 GUIDELINES DESIGNINFO DISCARDABLE 
 BEGIN
-    IDD_DIALOG_DATABASE, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 180
-        TOPMARGIN, 6
-        BOTTOMMARGIN, 87
-    END
-
-    IDD_DISPLAYIMAGE, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 564
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 415
-    END
-
-    IDD_INFORMATION, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 258
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 135
-    END
-
-    IDD_DIALOG_FEEDBACK, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 302
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 137
-    END
-
     IDD_DIALOG_FEATURESELECTION, DIALOG
     BEGIN
         RIGHTMARGIN, 468
-    END
-
-    IDD_ABOUTBOX, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 232
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 63
-    END
-
-    IDD_DIALOG_SHOW, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 449
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 345
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -1436,231 +835,457 @@ BEGIN
     0
 END
 
-IDD_DIALOG_EVALUATION DLGINIT
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_SINGLELINE1    ICON    DISCARDABLE     "res\\icon_sin.ico"
+IDI_ICON_SINGLELINE     ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_ICON_LINENOARROW    ICON    DISCARDABLE     "res\\ico00005.ico"
+IDI_ICON_LINEARROW      ICON    DISCARDABLE     "res\\icon_lin.ico"
+IDI_ICON_HISTOGRAM1     ICON    DISCARDABLE     "res\\icon_his.ico"
+IDI_ICON_HISTOGRAM      ICON    DISCARDABLE     "res\\ico00001.ico"
+IDI_ICON_DASHNOARROW    ICON    DISCARDABLE     "res\\ico00007.ico"
+IDI_ICON_DASHARROW      ICON    DISCARDABLE     "res\\ico00006.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
 BEGIN
-    IDC_METHOD, 0x403, 3, 0
-0x5346, "\000" 
-    IDC_METHOD, 0x403, 6, 0
-0x4b45, 0x4e4e, 0x0053, 
-    IDC_METHOD, 0x403, 8, 0
-0x4549, 0x4e4b, 0x534e, 0x0042, 
-    IDC_METHOD, 0x403, 7, 0
-0x4545, 0x4e4b, 0x534e, "\000" 
-    IDC_METHOD, 0x403, 9, 0
-0x4549, 0x4b45, 0x4e4e, 0x4253, "\000" 
-    IDC_METHOD, 0x403, 8, 0
-0x4545, 0x4b45, 0x4e4e, 0x0053, 
-    IDC_METHOD, 0x403, 10, 0
-0x4549, 0x4545, 0x4e4b, 0x534e, 0x0042, 
-    IDC_METHOD, 0x403, 16, 0
-0x4555, 0x4545, 0x4e4b, 0x534e, 0x6e69, 0x5156, 0x4e4b, 0x004e, 
-    IDC_QUERIES, 0x403, 2, 0
-0x0031, 
-    IDC_QUERIES, 0x403, 2, 0
-0x0032, 
-    IDC_QUERIES, 0x403, 2, 0
-0x0035, 
-    IDC_QUERIES, 0x403, 3, 0
-0x3031, "\000" 
-    IDC_QUERIES, 0x403, 3, 0
-0x3032, "\000" 
-    IDC_QUERIES, 0x403, 3, 0
-0x3035, "\000" 
-    IDC_QUERIES, 0x403, 4, 0
-0x3031, 0x0030, 
-    IDC_QUERIES, 0x403, 4, 0
-0x3032, 0x0030, 
-    IDC_QUERIES, 0x403, 4, 0
-0x3532, 0x0030, 
-    IDC_QUERIES, 0x403, 4, 0
-0x3034, 0x0030, 
-    IDC_MIN, 0x403, 2, 0
-0x0031, 
-    IDC_MIN, 0x403, 2, 0
-0x0032, 
-    IDC_MIN, 0x403, 2, 0
-0x0033, 
-    IDC_MIN, 0x403, 2, 0
-0x0034, 
-    IDC_MIN, 0x403, 2, 0
-0x0035, 
-    IDC_MIN, 0x403, 2, 0
-0x0036, 
-    IDC_MIN, 0x403, 2, 0
-0x0037, 
-    IDC_MIN, 0x403, 2, 0
-0x0038, 
-    IDC_MIN, 0x403, 2, 0
-0x0039, 
-    IDC_MIN, 0x403, 3, 0
-0x3031, "\000" 
-    IDC_MIN, 0x403, 3, 0
-0x3231, "\000" 
-    IDC_MIN, 0x403, 3, 0
-0x3531, "\000" 
-    IDC_MIN, 0x403, 3, 0
-0x3631, "\000" 
-    IDC_MIN, 0x403, 3, 0
-0x3831, "\000" 
-    IDC_MIN, 0x403, 3, 0
-0x3032, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3031, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3631, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3032, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3033, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3233, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3034, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3834, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3035, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3036, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3436, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3037, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3038, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3039, "\000" 
-    IDC_MAX, 0x403, 3, 0
-0x3639, "\000" 
-    IDC_MAX, 0x403, 4, 0
-0x3031, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3931, 0x0032, 
-    IDC_MAX, 0x403, 4, 0
-0x3032, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3832, 0x0038, 
-    IDC_MAX, 0x403, 4, 0
-0x3033, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3034, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3934, 0x0036, 
-    IDC_MAX, 0x403, 4, 0
-0x3035, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3935, 0x0032, 
-    IDC_MAX, 0x403, 4, 0
-0x3036, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3836, 0x0038, 
-    IDC_MAX, 0x403, 4, 0
-0x3037, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3038, 0x0030, 
-    IDC_MAX, 0x403, 4, 0
-0x3939, 0x0032, 
-    IDC_MAX, 0x403, 5, 0
-0x3031, 0x3030, "\000" 
-    IDC_STEP, 0x403, 2, 0
-0x0031, 
-    IDC_STEP, 0x403, 2, 0
-0x0032, 
-    IDC_STEP, 0x403, 2, 0
-0x0033, 
-    IDC_STEP, 0x403, 2, 0
-0x0034, 
-    IDC_STEP, 0x403, 2, 0
-0x0035, 
-    IDC_STEP, 0x403, 2, 0
-0x0036, 
-    IDC_STEP, 0x403, 2, 0
-0x0037, 
-    IDC_STEP, 0x403, 2, 0
-0x0038, 
-    IDC_STEP, 0x403, 2, 0
-0x0039, 
-    IDC_STEP, 0x403, 3, 0
-0x3031, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3231, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3531, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3631, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3831, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3032, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3233, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3034, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3035, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3436, "\000" 
-    IDC_STEP, 0x403, 3, 0
-0x3038, "\000" 
-    IDC_STEP, 0x403, 4, 0
-0x3031, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0031, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0032, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0033, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0034, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0035, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0036, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0037, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0038, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
-0x0039, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3031, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3631, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3032, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3233, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3034, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3035, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3436, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
-0x3038, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3031, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3231, 0x0038, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3032, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3532, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3532, 0x0036, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3034, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3035, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
-0x3038, 0x0030, 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 5, 0
-0x3031, 0x3030, "\000" 
-    IDC_NUMCLUSTERTOSEARCH, 0x403, 5, 0
-0x3031, 0x3432, "\000" 
-    0
+    IDR_TEST_TMPL           "test\n\ntest\ntest Files (*.tes)\n.tes\ntest.Document\ntest Document"
 END
 
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 239, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About VqRetrieve"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "VqRetrieve Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005.3.27",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,182,7,50,14,WS_GROUP
+    LTEXT           "The Copyright is retained by Prof. Dr. Zhe-Ming Lu",
+                    IDC_STATIC,41,40,181,17
+END
+
+IDD_VQRETRIEVE_FORM DIALOGEX 1024, 768, 649, 375
+STYLE DS_CENTER | WS_CHILD
+EXSTYLE WS_EX_TRANSPARENT
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_STATICQUERY,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,24,45,158,73
+    CONTROL         "",IDC_STATICRETRIEVAL1,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,23,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL2,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,98,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL3,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,175,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL4,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,250,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL5,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,325,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL6,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,399,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL7,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,475,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL8,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,550,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL9,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,25,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL10,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,100,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL11,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,175,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL12,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,250,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL14,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,400,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL15,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,475,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL16,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,550,278,51,45
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME1,29,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME2,105,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME3,181,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME4,257,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME5,333,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME6,409,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME7,485,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME8,561,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME9,29,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME10,105,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME11,181,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME12,257,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME13,333,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME14,409,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME15,485,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME16,561,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Dis. 1=",IDC_STATIC_DIS1,26,262,30,14
+    LTEXT           "Dis. 2=",IDC_STATIC_DIS2,101,262,30,14
+    LTEXT           "Dis. 3=",IDC_STATIC_DIS3,176,262,30,14
+    LTEXT           "Dis. 4=",IDC_STATIC_DIS4,251,262,30,14
+    LTEXT           "Dis. 5=",IDC_STATIC_DIS5,326,262,30,14
+    LTEXT           "Dis. 6=",IDC_STATIC_DIS6,401,262,30,14
+    LTEXT           "Dis. 7=",IDC_STATIC_DIS7,476,262,30,14
+    LTEXT           "Dis. 8=",IDC_STATIC_DIS8,551,262,30,14
+    LTEXT           "Dis. 9=",IDC_STATIC_DIS9,26,341,30,14
+    LTEXT           "Dis. 10=",IDC_STATIC_DIS10,101,341,30,14
+    LTEXT           "Dis. 11=",IDC_STATIC_DIS11,176,341,30,14
+    LTEXT           "Dis. 12=",IDC_STATIC_DIS12,251,341,30,14
+    LTEXT           "Dis. 13=",IDC_STATIC_DIS13,326,341,30,14
+    LTEXT           "Dis. 14=",IDC_STATIC_DIS14,401,341,30,14
+    LTEXT           "Dis. 15=",IDC_STATIC_DIS15,476,341,30,14
+    LTEXT           "Dis. 16=",IDC_STATIC_DIS16,551,341,30,14
+    EDITTEXT        IDC_EDIT_DIS1,57,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS2,132,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS3,207,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS4,282,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS5,357,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS6,432,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS7,507,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS8,582,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS9,57,341,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS10,132,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS11,207,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS12,282,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS13,582,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS14,357,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS15,432,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS16,507,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DB,341,16,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Image Database Path:",IDC_STATIC_DB,218,16,84,12
+    GROUPBOX        "Query Region",IDC_STATIC_QUERYREGION,11,7,174,150,
+                    BS_CENTER
+    GROUPBOX        "Database Region",IDC_STATIC_DATABASEREGION,199,7,223,
+                    150,BS_CENTER
+    GROUPBOX        "Retrieval Region",IDC_STATIC_RETRIEVALREGION,439,7,190,
+                    150,BS_CENTER
+    GROUPBOX        "Result Region",IDC_STATIC_RESULTREGION,11,161,618,203,
+                    BS_CENTER
+    EDITTEXT        IDC_EDIT_QUERYINFO,19,102,158,45,ES_MULTILINE | 
+                    ES_READONLY | WS_VSCROLL
+    LTEXT           "Number of Possible Images:",IDC_STATIC_DB2,218,31,113,
+                    12
+    LTEXT           "Number of 24/8 bits jpg bmps:",IDC_STATIC_DB3,218,46,
+                    108,12
+    EDITTEXT        IDC_EDIT_DB2,341,31,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB3,341,46,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of images extracted:",IDC_STATIC_DB4,218,61,107,
+                    12
+    LTEXT           "Feature vectors normalized:",IDC_STATIC_DB5,218,76,105,
+                    12
+    EDITTEXT        IDC_EDIT_DB4,341,61,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB5,341,76,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB6,341,91,43,12,ES_AUTOHSCROLL
+    LTEXT           "Number of clusters:",IDC_STATIC_DB6,218,91,111,12
+    CONTROL         "",IDC_STATICRETRIEVAL13,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,325,278,51,45
+    EDITTEXT        IDC_EDIT_DB7,341,106,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Saved feature file name:",IDC_STATIC_DB7,218,106,111,12
+    LTEXT           "Saved codebook file name:",IDC_STATIC_DB8,218,121,114,
+                    12
+    EDITTEXT        IDC_EDIT_DB8,341,121,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Saved index file name:",IDC_STATIC_DB9,218,136,111,12
+    EDITTEXT        IDC_EDIT_DB9,341,136,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB10,573,16,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Feature Database Path:",IDC_STATIC_DB10,451,16,84,12
+    LTEXT           "Number of Feature Vectors:",IDC_STATIC_DB11,451,31,113,
+                    12
+    EDITTEXT        IDC_EDIT_DB11,573,31,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Ever Interrupted in Extraction?",IDC_STATIC_DB12,451,46,
+                    113,12
+    EDITTEXT        IDC_EDIT_DB12,573,46,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB13,573,61,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Read feature file name:",IDC_STATIC_DB13,451,61,111,12
+    LTEXT           "Read codebook file name:",IDC_STATIC_DB14,451,76,114,12
+    EDITTEXT        IDC_EDIT_DB14,573,76,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Read index file name:",IDC_STATIC_DB15,451,91,111,12
+    EDITTEXT        IDC_EDIT_DB15,573,91,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Normalized features based?",IDC_STATIC_DB16,451,106,107,
+                    12
+    EDITTEXT        IDC_EDIT_DB17,573,121,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of clusters used:",IDC_STATIC_DB17,451,121,111,
+                    12
+    EDITTEXT        IDC_EDIT_DB16,573,106,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB18,573,136,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of retrieved Images:",IDC_STATIC_DB18,451,136,
+                    111,12
+    EDITTEXT        IDC_EDIT_DB19,60,172,26,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Current Page:",IDC_STATIC_DB19,14,173,48,12
+    EDITTEXT        IDC_EDIT_DB20,140,172,43,12,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "Current Status:",IDC_STATIC_DB20,93,173,48,12
+    EDITTEXT        IDC_EDIT_DB21,325,173,43,12,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "Feedback Info:",IDC_STATIC_DB21,263,173,48,12
+    EDITTEXT        IDC_EDIT_DB22,445,173,43,12,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "Other Info:",IDC_STATIC_DB22,383,173,48,12
+    GROUPBOX        "",IDC_REGION_RETRIEVAL1,25,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL2,98,190,51,45,BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL3,175,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL4,250,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL5,324,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL6,399,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL7,475,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL8,549,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL9,26,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL10,99,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL11,175,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL12,248,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL13,325,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL14,399,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL15,473,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL16,549,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_QUERY,19,21,158,73,BS_BITMAP | BS_CENTER
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Query"
+    BEGIN
+        MENUITEM "&Open Query Image\tCtrl+O",   ID_FILE_OPEN
+        MENUITEM "&Feature Computation",        ID_QUERY_FEATURECOMPUTE
+        MENUITEM "Feature &Normalization",      ID_QUERY_FEATURENORMALIZATION
+
+        MENUITEM SEPARATOR
+        POPUP "&Content to be Printed"
+        BEGIN
+            MENUITEM "&Only Query Image",           ID_PRINT_QUERY
+            MENUITEM "&Current Page (With Query Image)", 
+                                                    ID_PRINT_PAGEWITHQUERY
+            MENUITEM "Current &Page (Without Query Image)", 
+                                                    ID_PRINT_PAGENOQUERY
+        END
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "Data&base"
+    BEGIN
+        MENUITEM "Select DataBase &Path (Ctrl+S)", ID_DATABASE_PATH
+        MENUITEM "Feature &Selection (VK_F10)", ID_DATABASE_FEATURESELECTION
+        MENUITEM SEPARATOR
+        MENUITEM "&Obtain Feature DataBase (Ctrl+C)", 
+                                                ID_DATABASE_FEATURECOMPUTE
+        MENUITEM "S&top (Ctrl+Q)",              ID_DATABASE_STOP
+        MENUITEM "Feature &Normalization and Weighting(Ctrl+N)", 
+                                                ID_DATABASE_FEATURENORMALIZATION
+
+        MENUITEM "Save &Feature Database As (VK_F3)", 
+                                                ID_DATABASE_FEATURESAVE
+        MENUITEM SEPARATOR
+        POPUP "Feature Space &Clustering"
+        BEGIN
+            MENUITEM "Based on Normalized Features (VK_F4)", 
+                                                    ID_DATABASE_NFEATURESPACEVQ
+
+            MENUITEM "Based on Original Features (VK_F5)", 
+                                                    ID_DATABASE_OFEATURESPACEVQ
+
+        END
+        MENUITEM "Save Clustering &VQ Codebook As (VK_F6)", 
+                                                ID_DATABASE_CODEWORDSSAVE
+        MENUITEM "Save &Index File As (VK_F7)", ID_DATABASE_INDEXSAVE
+    END
+    POPUP "&Retrieve"
+    BEGIN
+        MENUITEM "Open Feature &Database(Ctrl+D)", ID_RETRIEVE_FEATUREFILE
+        MENUITEM "View Feature &Selected (VK_F2)", 
+                                                ID_RETRIEVE_FEATURESELECTED
+        MENUITEM "Feature Vector Sorting",      ID_RETRIEVE_SORTING
+        MENUITEM "Open &Clustering Codebook (Ctrl+B)", 
+                                                ID_RETRIEVE_CLUSTERINGBOOK
+        MENUITEM "Open &Index File (Ctrl+I)",   ID_RETRIEVE_INDEX
+        POPUP "Simple &Feedback Options"
+        BEGIN
+            MENUITEM "Memory&Less",                 ID_RETRIEVE_FEEDBACKNOMEMORY
+
+            MENUITEM "&With Memory",                ID_RETRIEVE_FEEDBACKWITHMEMORY
+
+        END
+        POPUP "Number of Return Pages "
+        BEGIN
+            MENUITEM "1",                           ID_RETRIEVE_PAGES1
+            MENUITEM "2",                           ID_RETRIEVE_PAGES2
+            MENUITEM "3",                           ID_RETRIEVE_PAGES3
+            MENUITEM "4",                           ID_RETRIEVE_PAGES4
+            MENUITEM "5",                           ID_RETRIEVE_PAGES5
+            MENUITEM "6",                           ID_RETRIEVE_PAGES6
+            MENUITEM "7",                           ID_RETRIEVE_PAGES7
+            MENUITEM "8",                           ID_RETRIEVE_PAGES8
+            MENUITEM "9",                           ID_RETRIEVE_PAGES9
+            MENUITEM "10",                          ID_RETRIEVE_PAGES10
+            MENUITEM "All",                         ID_RETRIEVE_PAGESALL
+            MENUITEM "Only the best-match image",   ID_RETRIEVE_PAGES1AND1Image
+
+        END
+        POPUP "&Retrieve Scheme"
+        BEGIN
+            MENUITEM "Normal Full Search(Ctr+1)",   ID_RETRIEVE_NORMAL
+            MENUITEM "Full Search with Updating Display(Ctrl +2)", 
+                                                    ID_RETRIEVE_UPDATINGFS
+            MENUITEM SEPARATOR
+            MENUITEM "Equal-average K Nearest Neighbor Search (EKNNS,Ctrl+3)", 
+                                                    ID_RETRIEVE_EKNNS
+            MENUITEM "Iterative EKNNS User Controlling (IEKNNSU,Ctrl+4)", 
+                                                    ID_RETRIEVE_IEKNNSUSER
+            MENUITEM "Iterative EKNNS Background Mode(IEKNNSB,Ctrl+5)", 
+                                                    ID_RETRIEVE_IEKNNSBACK
+            MENUITEM SEPARATOR
+            MENUITEM "KNNS only in VQ-NN Cluster(Ctrl+6)", 
+                                                    ID_RETRIEVE_VQONLYNNC
+            MENUITEM "Progressive KNNS only in VQ-KNNCs(Ctrl+7)", 
+                                                    ID_RETRIEVE_VQONLYKNNCS
+            MENUITEM "Progressive KNNS in all VQ-Clusters(Ctrl+8)", 
+                                                    ID_RETRIEVE_VQALLCLUSTERS
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "St&art (Ctrl+R)",             ID_RETRIEVE_START
+        MENUITEM "S&top (Ctrl+T)",              ID_RETRIEVE_STOP
+    END
+    POPUP "&FeedBack"
+    BEGIN
+        MENUITEM "Feedback Scheme1",            ID_FEEDBACK_SCHEME1
+        MENUITEM "Feedback Scheme2",            ID_FEEDBACK_SCHEME2
+        MENUITEM "Feedback Scheme3",            ID_FEEDBACK_SCHEME3
+        MENUITEM "Feedback Scheme4",            ID_FEEDBACK_SCHEME4
+        MENUITEM "Feedback Scheme5",            ID_FEEDBACK_SCHEME5
+        MENUITEM "Feedback Scheme6",            ID_FEEDBACK_SCHEME6
+        MENUITEM "Feedback Scheme7",            ID_FEEDBACK_SCHEME7
+        MENUITEM "Feedback Scheme8",            ID_FEEDBACK_SCHEME8
+    END
+    POPUP "&Display"
+    BEGIN
+        POPUP "Bar &View"
+        BEGIN
+            MENUITEM "ToolBar(&T)",                 ID_VIEW_TOOLBAR
+            MENUITEM "StatusBar(&S)",               ID_VIEW_STATUS_BAR
+        END
+        MENUITEM "&First Page  (VK_HOME)",      ID_DISPLAY_FIRST
+        MENUITEM "&Next Page  (VK_NEXT)",       ID_DISPLAY_NEXT
+        MENUITEM "&Previous Page (VK_PRIOR)",   ID_DISPLAY_PREVIOUS
+        MENUITEM "&Last Page (VK_END)",         ID_DISPLAY_LAST
+    END
+    POPUP "&Evaluation"
+    BEGIN
+        MENUITEM "&Recall vs Time",             ID_EVALUATION_RECALLWITHTIME
+        MENUITEM "&Precision vs Time",          ID_EVALUATION_PRECISIONWITHTIME
+
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About VqRetrieve...",        ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\VqRetrieve.ico"
+IDR_VQRETRTYPE          ICON    DISCARDABLE     "res\\VqRetrieveDoc.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1694,15 +1319,13 @@ BEGIN
     BUTTON      ID_DATABASE_FEATURESELECTION
     BUTTON      ID_DATABASE_FEATURECOMPUTE
     BUTTON      ID_DATABASE_FEATURENORMALIZATION
-    BUTTON      ID_DATABASE_SORTING
     BUTTON      ID_DATABASE_FEATURESAVE
     BUTTON      ID_DATABASE_NFEATURESPACEVQ
-    BUTTON      ID_DATABASE_CLUSTERSORTING
+    BUTTON      ID_DATABASE_OFEATURESPACEVQ
     BUTTON      ID_DATABASE_CODEWORDSSAVE
-    BUTTON      ID_DATABASE_VQFEATURESAVE
+    BUTTON      ID_DATABASE_INDEXSAVE
     SEPARATOR
     BUTTON      ID_RETRIEVE_FEATUREFILE
-    BUTTON      ID_RETRIEVE_VQFEATUREFILE
     BUTTON      ID_RETRIEVE_FEATURESELECTED
     BUTTON      ID_RETRIEVE_CLUSTERINGBOOK
     BUTTON      ID_RETRIEVE_START
@@ -1713,6 +1336,7 @@ BEGIN
     BUTTON      ID_DISPLAY_LAST
     SEPARATOR
     BUTTON      ID_APP_ABOUT
+    BUTTON      ID_CONTEXT_HELP
 END
 
 
@@ -1723,47 +1347,38 @@ END
 
 IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
 BEGIN
-    "0",            ID_RETRIEVE_VQONLYKNNCS, VIRTKEY, CONTROL, NOINVERT
     "1",            ID_RETRIEVE_NORMAL,     VIRTKEY, CONTROL, NOINVERT
     "2",            ID_RETRIEVE_UPDATINGFS, VIRTKEY, CONTROL, NOINVERT
     "3",            ID_RETRIEVE_EKNNS,      VIRTKEY, CONTROL, NOINVERT
     "4",            ID_RETRIEVE_IEKNNSUSER, VIRTKEY, CONTROL, NOINVERT
     "5",            ID_RETRIEVE_IEKNNSBACK, VIRTKEY, CONTROL, NOINVERT
-    "6",            ID_RETRIEVE_EEKNNS,     VIRTKEY, CONTROL, NOINVERT
-    "7",            ID_RETRIEVE_IEEKNNSUSER, VIRTKEY, CONTROL, NOINVERT
-    "8",            ID_RETRIEVE_IEEKNNSBACK, VIRTKEY, CONTROL, NOINVERT
-    "9",            ID_RETRIEVE_VQONLYNNC,  VIRTKEY, CONTROL, NOINVERT
-    "A",            ID_RETRIEVE_VQALLCLUSTERS, VIRTKEY, CONTROL, NOINVERT
+    "6",            ID_RETRIEVE_VQONLYKNNCS, VIRTKEY, CONTROL, NOINVERT
+    "7",            ID_RETRIEVE_VQALLCLUSTERS, VIRTKEY, CONTROL, NOINVERT
+    "8",            ID_RETRIEVE_VQONLYNNC,  VIRTKEY, CONTROL, NOINVERT
     "B",            ID_RETRIEVE_CLUSTERINGBOOK, VIRTKEY, CONTROL, NOINVERT
-    "B",            ID_DATABASE_CODEBOOKFORVQ, VIRTKEY, SHIFT, NOINVERT
     "C",            ID_DATABASE_FEATURECOMPUTE, VIRTKEY, CONTROL, NOINVERT
     "D",            ID_RETRIEVE_FEATUREFILE, VIRTKEY, CONTROL, NOINVERT
-    "F",            ID_DATABASE_READFROMFILE, VIRTKEY, CONTROL, NOINVERT
-    "G",            ID_DATABASE_CODEBOOKFORDCTVQ, VIRTKEY, CONTROL, NOINVERT
-    "G",            ID_DATABASE_CODEBOOKFORMRVQ, VIRTKEY, SHIFT, NOINVERT
+    "I",            ID_RETRIEVE_INDEX,      VIRTKEY, CONTROL, NOINVERT
     "I",            ID_IMAGEINFORMATION,    VIRTKEY, SHIFT, NOINVERT
     "N",            ID_DATABASE_FEATURENORMALIZATION, VIRTKEY, CONTROL, 
                                                     NOINVERT
     "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
     "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
     "Q",            ID_DATABASE_STOP,       VIRTKEY, CONTROL, NOINVERT
-    "Q",            ID_DATABASE_CODEBOOKFORMSVQ, VIRTKEY, SHIFT, NOINVERT
     "R",            ID_RETRIEVE_START,      VIRTKEY, CONTROL, NOINVERT
     "S",            ID_DATABASE_PATH,       VIRTKEY, CONTROL, NOINVERT
     "T",            ID_RETRIEVE_STOP,       VIRTKEY, CONTROL, NOINVERT
-    "V",            ID_RETRIEVE_VQFEATUREFILE, VIRTKEY, CONTROL, NOINVERT
     VK_DOWN,        ID_BUTTONDOWN,          VIRTKEY, NOINVERT
     VK_END,         ID_DISPLAY_LAST,        VIRTKEY, NOINVERT
     VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
     VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
     VK_F10,         ID_DATABASE_FEATURESELECTION, VIRTKEY, NOINVERT
-    VK_F2,          ID_DATABASE_SORTING,    VIRTKEY, NOINVERT
+    VK_F2,          ID_RETRIEVE_FEATURESELECTED, VIRTKEY, NOINVERT
     VK_F3,          ID_DATABASE_FEATURESAVE, VIRTKEY, NOINVERT
     VK_F4,          ID_DATABASE_NFEATURESPACEVQ, VIRTKEY, NOINVERT
-    VK_F5,          ID_DATABASE_CLUSTERSORTING, VIRTKEY, NOINVERT
+    VK_F5,          ID_DATABASE_OFEATURESPACEVQ, VIRTKEY, NOINVERT
     VK_F6,          ID_DATABASE_CODEWORDSSAVE, VIRTKEY, NOINVERT
-    VK_F7,          ID_DATABASE_VQFEATURESAVE, VIRTKEY, NOINVERT
-    VK_F8,          ID_RETRIEVE_FEATURESELECTED, VIRTKEY, NOINVERT
+    VK_F7,          ID_DATABASE_INDEXSAVE,  VIRTKEY, NOINVERT
     VK_HOME,        ID_DISPLAY_FIRST,       VIRTKEY, NOINVERT
     VK_LEFT,        ID_BUTTONLEFT,          VIRTKEY, NOINVERT
     VK_NEXT,        ID_DISPLAY_NEXT,        VIRTKEY, NOINVERT
@@ -1948,15 +1563,10 @@ STRINGTABLE DISCARDABLE
 BEGIN
     ID_RETRIEVE_START       "Start Retrieve\n Retrieving"
     ID_RETRIEVE_STOP        "Stop Retrieve/nStop"
-END
-
-STRINGTABLE DISCARDABLE 
-BEGIN
     ID_DISPLAY_NEXT         "Next Page\nNext"
     ID_DISPLAY_PREVIOUS     "Previous Page\nPrior"
     ID_DISPLAY_FIRST        "First Page\nHome"
     ID_DISPLAY_LAST         "Last Page\nEnd"
-    ID_EVALUATION           "\nEvaluation"
 END
 
 STRINGTABLE DISCARDABLE 
@@ -1968,23 +1578,22 @@ BEGIN
     ID_DATABASE_FEATURESELECTION "Feature Selection\nFeatureOptions"
     ID_DATABASE_FEATURECOMPUTE 
                             "Compute Feature Database\nDatabaseFeatureComputing"
-    ID_DATABASE_STOP        "Stop Computing\nStop"
     ID_DATABASE_FEATURENORMALIZATION 
                             "Feature Normalization\nDatabaseNormalization"
+    ID_DATABASE_NFEATURESPACEVQ 
+                            "Clustering with Normalized Features\nNormalizedClustering"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    ID_DATABASE_SORTING     "Feature Vector Sorting\nVectorSort"
-    ID_DATABASE_NFEATURESPACEVQ "Feature Space Clustering\nClustering"
-    ID_DATABASE_CLUSTERSORTING "Sorting Clusters\nSortCluster"
+    ID_DATABASE_OFEATURESPACEVQ 
+                            "Clustering with Original Features\nOriginalClustering"
+    ID_DATABASE_STOP        "Stop Computing\nStop"
     ID_DATABASE_FEATURESAVE "Feature File Save\nFeatureSave"
     ID_DATABASE_CODEWORDSSAVE "Codebook Save\nBookSave"
-    ID_DATABASE_VQFEATURESAVE "Index File Save\nVQFeatureSave"
+    ID_DATABASE_INDEXSAVE   "Index File Save\nIndexSave"
     ID_RETRIEVE_FEATUREFILE "Open Feature File\nFeatureFileOpen"
-    ID_RETRIEVE_FEATURESELECTED "View Feature Selection\nViewFeatures"
-    ID_RETRIEVE_CLUSTERINGBOOK "Open Clustering Codebook\nCodebook"
-    ID_RETRIEVE_VQFEATUREFILE "Open VQ Feature File\nVQFeatureFileOpen"
+    ID_RETRIEVE_SORTING     "\nSorting"
 END
 
 #endif    // English (U.S.) resources
@@ -1999,20 +1608,6 @@ END
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
 #pragma code_page(1252)
 #endif //_WIN32
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDI_ICON_POINT1         ICON    DISCARDABLE     "res\\ico00002.ico"
-IDI_ICON_POINT          ICON    DISCARDABLE     "res\\icon_poi.ico"
-IDI_ICON_GRIDLINE       ICON    DISCARDABLE     "res\\icon_hli.ico"
-IDI_ICON_GRIDDASH       ICON    DISCARDABLE     "res\\ico00003.ico"
-IDI_ICON_CONNECT1       ICON    DISCARDABLE     "res\\ico00004.ico"
-IDI_ICON_CONNECT        ICON    DISCARDABLE     "res\\icon_con.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -2443,6 +2038,20 @@ BEGIN
     0
 END
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_POINT1         ICON    DISCARDABLE     "res\\ico00002.ico"
+IDI_ICON_POINT          ICON    DISCARDABLE     "res\\icon_poi.ico"
+IDI_ICON_GRIDLINE       ICON    DISCARDABLE     "res\\icon_hli.ico"
+IDI_ICON_GRIDDASH       ICON    DISCARDABLE     "res\\ico00003.ico"
+IDI_ICON_CONNECT1       ICON    DISCARDABLE     "res\\ico00004.ico"
+IDI_ICON_CONNECT        ICON    DISCARDABLE     "res\\icon_con.ico"
 #endif    // English (U.K.) resources
 /////////////////////////////////////////////////////////////////////////////
 

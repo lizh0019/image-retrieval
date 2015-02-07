@@ -583,13 +583,13 @@ void CDialogFeatureSelection::CheckDimensionandWeights()
 	else
       strcpy(ffi.m_sFeature4_OF,m_feature4);
 	if(ffi.m_bWithFeature1_OF==FALSE)
-	  strcpy(ffi.m_sFeature1_OF,"DCT-VQ Based Features");
+	  strcpy(ffi.m_sFeature1_OF,"Input Name!(<32 Chars)");
 	if(ffi.m_bWithFeature2_OF==FALSE)
-      strcpy(ffi.m_sFeature2_OF,"VQ Based Features");
+      strcpy(ffi.m_sFeature2_OF,"Input Name!(<32 Chars)");
 	if(ffi.m_bWithFeature3_OF==FALSE)
-      strcpy(ffi.m_sFeature3_OF,"MSVQ Based Features");
+      strcpy(ffi.m_sFeature3_OF,"Input Name!(<32 Chars)");
 	if(ffi.m_bWithFeature4_OF==FALSE)
-      strcpy(ffi.m_sFeature4_OF,"MRVQ Based Features");
+      strcpy(ffi.m_sFeature4_OF,"Input Name!(<32 Chars)");
 	
 	int a=0;
 	int i,l;
