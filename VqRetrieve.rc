@@ -1,0 +1,2473 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\VqRetrieve.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_IMAGE MENU DISCARDABLE 
+BEGIN
+    MENUITEM "",                            65535
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Save As",                    ID_SAVECHOOSEIMAGE
+        MENUITEM "&Change As Query Image",      ID_CHANGEASQUERY
+        MENUITEM "&Exit",                       ID_EXIT
+    END
+    POPUP "&Move"
+    BEGIN
+        MENUITEM "&Left",                       ID_BUTTONLEFT
+        MENUITEM "&Up",                         ID_BUTTONUP
+        MENUITEM "&Right",                      ID_BUTTONRITHT
+        MENUITEM "&Down",                       ID_BUTTONDOWN
+        MENUITEM "&Move",                       ID_MOVE
+    END
+    POPUP "&Information"
+    BEGIN
+        MENUITEM "&Information",                ID_IMAGEINFORMATION
+        POPUP "HSV"
+        BEGIN
+            MENUITEM "&H Histogram",                ID_IMAGE_HHIST
+            MENUITEM "&S Histogram",                ID_IMAGE_SHIST
+            MENUITEM "&V Histogram",                ID_IMAGE_VHIST
+        END
+        POPUP "RGB"
+        BEGIN
+            MENUITEM "&R Histogram",                ID_IMAGE_RHIST
+            MENUITEM "&G Histogram",                ID_IMAGE_GHIST
+            MENUITEM "&B Histogram",                ID_IMAGE_BHIST
+        END
+        POPUP "YCbCr"
+        BEGIN
+            MENUITEM "&Y Histogram",                ID_IMAGE_YHIST
+            MENUITEM "C&b Histogram",               ID_IMAGE_CbHIST
+            MENUITEM "C&r Histogram",               ID_IMAGE_CrHIST
+        END
+        POPUP "YIQ"
+        BEGIN
+            MENUITEM "&Y Histogram",                ID_IMAGE_Y1HIST
+            MENUITEM "&I Histogram",                ID_IMAGE_IHIST
+            MENUITEM "&Q Histogram",                ID_IMAGE_QHIST
+        END
+        POPUP "Lab"
+        BEGIN
+            MENUITEM "&L Histogram",                ID_IMAGE_LHIST
+            MENUITEM "&a Histogram",                ID_IMAGE_AHIST
+            MENUITEM "&b Histogram",                ID_IMAGE_B1HIST
+        END
+        POPUP "HCV"
+        BEGIN
+            MENUITEM "&H Histogram",                ID_IMAGE_H1HIST
+            MENUITEM "&C Histogram",                ID_IMAGE_CHIST
+            MENUITEM "&V Histogram",                ID_IMAGE_V1HIST
+        END
+    END
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_SINGLELINE1    ICON    DISCARDABLE     "res\\icon_sin.ico"
+IDI_ICON_SINGLELINE     ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_ICON_LINENOARROW    ICON    DISCARDABLE     "res\\ico00005.ico"
+IDI_ICON_LINEARROW      ICON    DISCARDABLE     "res\\icon_lin.ico"
+IDI_ICON_HISTOGRAM1     ICON    DISCARDABLE     "res\\icon_his.ico"
+IDI_ICON_HISTOGRAM      ICON    DISCARDABLE     "res\\ico00001.ico"
+IDI_ICON_DASHNOARROW    ICON    DISCARDABLE     "res\\ico00007.ico"
+IDI_ICON_DASHARROW      ICON    DISCARDABLE     "res\\ico00006.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_TEST_TMPL           "test\n\ntest\ntest Files (*.tes)\n.tes\ntest.Document\ntest Document"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Query"
+    BEGIN
+        MENUITEM "&Open Query Image\tCtrl+O",   ID_FILE_OPEN
+        MENUITEM "&Feature Computation",        ID_QUERY_FEATURECOMPUTE
+        MENUITEM "Feature &Normalization",      ID_QUERY_FEATURENORMALIZATION
+
+        MENUITEM SEPARATOR
+        POPUP "&Content to be Printed"
+        BEGIN
+            MENUITEM "&Only Query Image",           ID_PRINT_QUERY
+            MENUITEM "&Current Page (With Query Image)", 
+                                                    ID_PRINT_PAGEWITHQUERY
+            MENUITEM "Current &Page (Without Query Image)", 
+                                                    ID_PRINT_PAGENOQUERY
+        END
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "Data&base"
+    BEGIN
+        MENUITEM "Select DataBase Path (Ctrl+S)", ID_DATABASE_PATH
+        MENUITEM "Feature Selection (VK_F10)",  ID_DATABASE_FEATURESELECTION
+        MENUITEM "Generate Codebook for DCTVQ (Ctrl+G)", 
+                                                ID_DATABASE_CODEBOOKFORDCTVQ
+        MENUITEM "Generate Codebook for VQ (Shift+B)", 
+                                                ID_DATABASE_CODEBOOKFORVQ
+        MENUITEM "Generate Codebook for MSVQ (Shift+Q)", 
+                                                ID_DATABASE_CODEBOOKFORMSVQ
+        MENUITEM "Generate Codebook for MRVQ (Shift+G)", 
+                                                ID_DATABASE_CODEBOOKFORMRVQ
+        MENUITEM SEPARATOR
+        MENUITEM "Obtain Feature DataBase (Ctrl+C)", 
+                                                ID_DATABASE_FEATURECOMPUTE
+        MENUITEM "Stop (Ctrl+Q)",               ID_DATABASE_STOP
+        MENUITEM "Feature Normalization and Weighting(Ctrl+N)", 
+                                                ID_DATABASE_FEATURENORMALIZATION
+
+        MENUITEM "Normalized Feature Read From File(Ctrl+F)", 
+                                                ID_DATABASE_READFROMFILE
+        MENUITEM "Feature Vector Sorting(VK_F2)", ID_DATABASE_SORTING
+        MENUITEM "Save Feature Database As (VK_F3)", ID_DATABASE_FEATURESAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Feature Space Clustering(VK_F4)", 
+                                                ID_DATABASE_NFEATURESPACEVQ
+        MENUITEM "Cluster Sorting(VK_F5)",      ID_DATABASE_CLUSTERSORTING
+        MENUITEM "Save Clustering VQ Codebook As (VK_F6)", 
+                                                ID_DATABASE_CODEWORDSSAVE
+        MENUITEM "Save VQ Feature Database As (VK_F7)", 
+                                                ID_DATABASE_VQFEATURESAVE
+    END
+    POPUP "&Retrieve"
+    BEGIN
+        MENUITEM "Open Feature Database(Ctrl+D)", ID_RETRIEVE_FEATUREFILE
+        MENUITEM "Open VQ Feature Database (Ctrl+V)", 
+                                                ID_RETRIEVE_VQFEATUREFILE
+        MENUITEM "Open Clustering Codebook (Ctrl+B)", 
+                                                ID_RETRIEVE_CLUSTERINGBOOK
+        MENUITEM "View Feature Selected (VK_F8)", 
+                                                ID_RETRIEVE_FEATURESELECTED
+        MENUITEM SEPARATOR
+        POPUP "Simple Feedback Options"
+        BEGIN
+            MENUITEM "Memory&Less",                 ID_RETRIEVE_FEEDBACKNOMEMORY
+
+            MENUITEM "&With Memory",                ID_RETRIEVE_FEEDBACKWITHMEMORY
+
+        END
+        POPUP "Number of Return Pages "
+        BEGIN
+            MENUITEM "Only the best-match image",   ID_RETRIEVE_PAGES1AND1Image
+
+            MENUITEM "1",                           ID_RETRIEVE_PAGES1
+            MENUITEM "2",                           ID_RETRIEVE_PAGES2
+            MENUITEM "3",                           ID_RETRIEVE_PAGES3
+            MENUITEM "4",                           ID_RETRIEVE_PAGES4
+            MENUITEM "5",                           ID_RETRIEVE_PAGES5
+            MENUITEM "6",                           ID_RETRIEVE_PAGES6
+            MENUITEM "7",                           ID_RETRIEVE_PAGES7
+            MENUITEM "8",                           ID_RETRIEVE_PAGES8
+            MENUITEM "9",                           ID_RETRIEVE_PAGES9
+            MENUITEM "10",                          ID_RETRIEVE_PAGES10
+            MENUITEM "15",                          ID_RETRIEVE_PAGES15
+            MENUITEM "20",                          ID_RETRIEVE_PAGES20
+            MENUITEM "25",                          ID_RETRIEVE_PAGES25
+            MENUITEM "All",                         ID_RETRIEVE_PAGESALL
+        END
+        POPUP "Retrieve Scheme"
+        BEGIN
+            MENUITEM "Normal Full Search(Ctr+1)",   ID_RETRIEVE_NORMAL
+            MENUITEM "Full Search with Updating Display(Ctrl +2)", 
+                                                    ID_RETRIEVE_UPDATINGFS
+            MENUITEM SEPARATOR
+            MENUITEM "Equal-average K Nearest Neighbor Search (EKNNS,Ctrl+3)", 
+                                                    ID_RETRIEVE_EKNNS
+            MENUITEM "Iterative EKNNS User Controlling (IEKNNSU,Ctrl+4)", 
+                                                    ID_RETRIEVE_IEKNNSUSER
+            MENUITEM "Iterative EKNNS Background Mode(IEKNNSB,Ctrl+5)", 
+                                                    ID_RETRIEVE_IEKNNSBACK
+            MENUITEM SEPARATOR
+            MENUITEM "Equal-average Equal-variance KNNS (EEKNNS,Ctrl+6)", 
+                                                    ID_RETRIEVE_EEKNNS
+            MENUITEM "Iterative EEKNNS User Controlling (IEEKNNSU,Ctrl+7)", 
+                                                    ID_RETRIEVE_IEEKNNSUSER
+            MENUITEM "Iterative EEKNNS Background Mode(IEEKNNSB,Ctrl+8)", 
+                                                    ID_RETRIEVE_IEEKNNSBACK
+            MENUITEM SEPARATOR
+            MENUITEM "Enhanced Equal-average Equal-variance KNNS (EEEKNNS,Ctrl+9)", 
+                                                    ID_RETRIEVE_EEEKNNS
+            MENUITEM "Iterative EEEKNNS User Controlling (IEEEKNNSU,Ctrl+0)", 
+                                                    ID_RETRIEVE_IEEEKNNSUSER
+            MENUITEM "Iterative EEEKNNS Background Mode(IEEEKNNSB,Ctrl+A)", 
+                                                    ID_RETRIEVE_IEEEKNNSBACK
+            MENUITEM SEPARATOR
+            MENUITEM "MEEKNNS only in VQ-NN Cluster(Ctrl+M)", 
+                                                    ID_RETRIEVE_VQONLYNNC
+            MENUITEM "Updating MEEKNNS only in VQ-KNNCs(Ctrl+U)", 
+                                                    ID_RETRIEVE_VQONLYKNNCS
+            MENUITEM "Updating MEEKNNS in all VQ-Clusters(Ctrl+W)", 
+                                                    ID_RETRIEVE_VQALLCLUSTERS
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Start (Ctrl+R)",              ID_RETRIEVE_START
+        MENUITEM "Stop (Ctrl+T)",               ID_RETRIEVE_STOP
+    END
+    POPUP "&FeedBack"
+    BEGIN
+        MENUITEM "Feedback Scheme1",            ID_FEEDBACK_SCHEME1
+        MENUITEM "Feedback Scheme2",            ID_FEEDBACK_SCHEME2
+        MENUITEM "Feedback Scheme3",            ID_FEEDBACK_SCHEME3
+        MENUITEM "Feedback Scheme4",            ID_FEEDBACK_SCHEME4
+        MENUITEM "Feedback Scheme5",            ID_FEEDBACK_SCHEME5
+        MENUITEM "Feedback Scheme6",            ID_FEEDBACK_SCHEME6
+        MENUITEM "Feedback Scheme7",            ID_FEEDBACK_SCHEME7
+        MENUITEM "Feedback Scheme8",            ID_FEEDBACK_SCHEME8
+    END
+    POPUP "&Display"
+    BEGIN
+        POPUP "Bar &View"
+        BEGIN
+            MENUITEM "ToolBar(&T)",                 ID_VIEW_TOOLBAR
+            MENUITEM "StatusBar(&S)",               ID_VIEW_STATUS_BAR
+        END
+        MENUITEM "&First Page  (VK_HOME)",      ID_DISPLAY_FIRST
+        MENUITEM "&Next Page  (VK_NEXT)",       ID_DISPLAY_NEXT
+        MENUITEM "&Previous Page (VK_PRIOR)",   ID_DISPLAY_PREVIOUS
+        MENUITEM "&Last Page (VK_END)",         ID_DISPLAY_LAST
+    END
+    MENUITEM "&Evaluation",                 ID_EVALUATION
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About VqRetrieve...",        ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\VqRetrieve.ico"
+IDR_VQRETRTYPE          ICON    DISCARDABLE     "res\\VqRetrieveDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_DATABASE DIALOG DISCARDABLE  0, 0, 187, 94
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Image Database Path"
+FONT 8, "Times New Roman"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,33,63,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,99,63,50,14
+    LTEXT           "Path:",IDC_STATIC_PATH,23,27,18,13
+    PUSHBUTTON      "&Browse...",IDC_BUTTON_BROWSE,133,26,40,13
+    EDITTEXT        IDC_EDIT_PATH,47,26,70,13,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_DISPLAYIMAGE DIALOG DISCARDABLE  0, 0, 579, 430
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_VSCROLL | WS_HSCROLL | WS_SYSMENU
+CAPTION "Image Display In Pixels"
+MENU IDR_IMAGE
+FONT 10, "System"
+BEGIN
+    CONTROL         "",IDC_BIGIMAGE,"Static",SS_BITMAP | SS_CENTERIMAGE,89,
+                    65,172,88
+END
+
+IDD_INFORMATION DIALOG DISCARDABLE  0, 0, 265, 142
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Image Information"
+FONT 8, "Times New Roman"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,104,114,50,14
+    LTEXT           "Bit Count:",IDC_STATIC,29,15,36,12
+    LTEXT           "BitCount",IDC_BITCOUNT,70,14,97,12
+    LTEXT           "Width:",IDC_STATIC,29,31,36,12
+    LTEXT           "Width",IDC_WIDTH,70,30,97,12
+    LTEXT           "Height:",IDC_STATIC,29,48,36,12
+    LTEXT           "Height",IDC_HEIGHT,70,47,97,12
+    LTEXT           "PathName:",IDC_STATIC,29,66,36,12
+    LTEXT           "PathName",IDC_PATHNAME,70,66,182,40
+END
+
+IDD_DIALOG_FEEDBACK DIALOG DISCARDABLE  0, 0, 309, 144
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "FeedBack"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,75,123,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,175,123,50,14
+    GROUPBOX        "Choose Operation",IDC_STATIC,11,15,290,43
+    LTEXT           "Current Percent:",IDC_STATIC,105,28,58,11
+    LTEXT           "Static",IDC_BACK0,170,28,39,8
+    LTEXT           "%",IDC_STATIC,212,28,15,11
+    GROUPBOX        "Choose The Percent of the Retrieve Image(only Avail for Feedback)",
+                    IDC_STATIC,11,64,290,45
+    LTEXT           "1",IDC_STATIC,16,77,8,9
+    EDITTEXT        IDC_EDIT1,25,75,19,12,ES_AUTOHSCROLL
+    LTEXT           "2",IDC_STATIC,50,78,8,9
+    EDITTEXT        IDC_EDIT2,60,76,19,12,ES_AUTOHSCROLL
+    LTEXT           "3",IDC_STATIC,85,78,8,9
+    EDITTEXT        IDC_EDIT3,93,76,19,12,ES_AUTOHSCROLL
+    LTEXT           "4",IDC_STATIC,117,78,8,9
+    EDITTEXT        IDC_EDIT4,128,76,19,12,ES_AUTOHSCROLL
+    LTEXT           "5",IDC_STATIC,151,78,8,9
+    EDITTEXT        IDC_EDIT5,163,77,19,12,ES_AUTOHSCROLL
+    LTEXT           "6",IDC_STATIC,186,78,8,9
+    EDITTEXT        IDC_EDIT6,196,77,19,12,ES_AUTOHSCROLL
+    LTEXT           "7",IDC_STATIC,219,79,8,9
+    EDITTEXT        IDC_EDIT7,229,76,19,12,ES_AUTOHSCROLL
+    LTEXT           "8",IDC_STATIC,252,76,8,9
+    EDITTEXT        IDC_EDIT8,265,74,19,12,ES_AUTOHSCROLL
+    LTEXT           "9",IDC_STATIC,16,95,8,9
+    EDITTEXT        IDC_EDIT9,25,93,19,12,ES_AUTOHSCROLL
+    LTEXT           "10",IDC_STATIC,50,96,8,9
+    EDITTEXT        IDC_EDIT10,60,94,19,12,ES_AUTOHSCROLL
+    LTEXT           "11",IDC_STATIC,85,96,8,9
+    EDITTEXT        IDC_EDIT11,93,94,19,12,ES_AUTOHSCROLL
+    LTEXT           "12",IDC_STATIC,117,96,9,9
+    EDITTEXT        IDC_EDIT12,128,94,19,12,ES_AUTOHSCROLL
+    LTEXT           "13",IDC_STATIC,151,96,10,9
+    EDITTEXT        IDC_EDIT13,163,95,19,12,ES_AUTOHSCROLL
+    LTEXT           "14",IDC_STATIC,186,96,8,9
+    EDITTEXT        IDC_EDIT14,196,95,19,12,ES_AUTOHSCROLL
+    LTEXT           "15",IDC_STATIC,219,97,8,9
+    EDITTEXT        IDC_EDIT15,229,94,19,12,ES_AUTOHSCROLL
+    LTEXT           "16",IDC_STATIC,251,91,10,9
+    EDITTEXT        IDC_EDIT16,265,92,19,12,ES_AUTOHSCROLL
+    CONTROL         "Continue FeedBack",IDC_RADIO1,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,19,26,72,13
+    CONTROL         "Resume The KeyImage",IDC_RADIO2,"Button",
+                    BS_AUTORADIOBUTTON,19,42,92,10
+END
+
+IDD_DIALOG_FEATURESELECTION DIALOG DISCARDABLE  0, 0, 471, 216
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Feature Selection"
+FONT 8, "Times New Roman"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,307,193,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,367,193,50,14
+    CONTROL         "Color Features",IDC_CHECK_COLOR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,4,71,11
+    GROUPBOX        "Color Feature Settings",IDC_STATIC_COLORFEATURE,8,15,
+                    136,85,BS_CENTER
+    CONTROL         "Texture Features",IDC_CHECK_TEXTURE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,101,71,11
+    GROUPBOX        "Texture Feature Settings",IDC_STATIC_TEXTUREFEATURE,7,
+                    115,134,72,BS_CENTER
+    CONTROL         "Shape Features",IDC_CHECK_SHAPE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,151,125,71,11
+    GROUPBOX        "Shape Feature Settings",IDC_STATIC_SHAPEFEATURE,150,136,
+                    133,49,BS_CENTER
+    CONTROL         "Other Features",IDC_CHECK_OTHER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,299,3,71,11
+    GROUPBOX        "Other Feature Settings",IDC_STATIC_OTHERFEATURE,299,17,
+                    158,84,BS_CENTER
+    CONTROL         "RT-transform Invariant",IDC_CHECK_INVARIANT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,148,1,92,13
+    GROUPBOX        "Invariant Feature Settings",IDC_STATIC_RTINVARIANT,149,
+                    15,138,109,BS_CENTER
+    LTEXT           "Color Space:",IDC_STATIC_COLORSPACE,15,26,43,12
+    LTEXT           "Number of Bins:",IDC_STATIC_BINS,15,65,55,9
+    LTEXT           "Feature Dimensions:",IDC_STATIC_DIMENSION,15,84,65,10
+    COMBOBOX        IDC_COMBO_COLORSPACE,88,26,51,26,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_COLORHISTOGRAM,54,45,85,24,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_BINS,88,61,51,25,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDIT_DIMENSIONS,88,82,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Methods:",IDC_STATIC_DESCRIPTION,14,45,73,10
+    LTEXT           "Number of Points:",IDC_STATIC_POINTS,151,59,58,12
+    LTEXT           "Number of Bins:",IDC_STATIC_BINS2,151,94,56,12
+    COMBOBOX        IDC_COMBO_HOWTODESCRIBE,176,44,100,20,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_POINTNUM,226,61,51,22,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_BINS2,226,94,51,28,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Color Space:",IDC_STATIC_COLORSPACE2,159,26,51,12
+    LTEXT           "Coocurrence parameters:",IDC_STATIC_COOCCURENCE,12,154,
+                    84,10
+    LTEXT           "Methods:",IDC_STATIC_DESCRIPTION1,151,43,77,10
+    LTEXT           "Feature Dimensions:",IDC_STATIC_DIMENSION2,154,111,65,
+                    10
+    LTEXT           "Kinds of Features:",IDC_STATIC_FEATUREKINDS,310,114,61,
+                    10
+    LTEXT           "Total Feature Dimensions:",IDC_STATIC_TOTALDIMENSION,
+                    307,130,85,10
+    COMBOBOX        IDC_COMBO_COLORSPACE2,211,26,51,21,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_COOCURRENCE,105,155,28,24,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DESCRIPTION,52,141,85,26,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_DIMENSIONS2,234,111,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_KINDS,372,114,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIMENSIONS5,377,82,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Color Space:",IDC_STATIC_COLORSPACE3,15,126,51,12
+    LTEXT           "Methods:",IDC_STATIC_DESCRIPTION2,15,142,77,10
+    LTEXT           "Feature Dimensions:",IDC_STATIC_DIMENSION3,19,173,65,10
+    COMBOBOX        IDC_COMBO_COLORSPACE3,86,125,51,24,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DESCRIPTION2,226,158,51,24,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_DIMENSIONS3,88,170,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Feature1:",IDC_STATIC_FEATURE1,320,29,33,11
+    LTEXT           "Feature2:",IDC_STATIC_FEATURE2,320,42,32,11
+    LTEXT           "Feature3:",IDC_STATIC_FEATURE3,320,55,33,11
+    LTEXT           "Feature4:",IDC_STATIC_FEATURE4,320,68,32,11
+    LTEXT           "Feature Dimensions:",IDC_STATIC_DIMENSION4,152,173,65,
+                    10
+    EDITTEXT        IDC_EDIT_FEATURE1,354,27,91,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_FEATURE2,354,40,91,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FEATURE3,353,53,91,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FEATURE4,353,66,91,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DIMENSIONS4,229,173,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Methods:",IDC_STATIC_DESCRIPTION3,152,158,73,10
+    CONTROL         "",IDC_CHECK_FEATURE1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,305,29,10,8
+    CONTROL         "",IDC_CHECK_FEATURE2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,305,43,10,8
+    CONTROL         "",IDC_CHECK_FEATURE3,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,305,55,10,8
+    CONTROL         "",IDC_CHECK_FEATURE4,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,306,69,10,8
+    LTEXT           "Number of Angles:",IDC_STATIC_ANGLES,152,77,64,12
+    COMBOBOX        IDC_COMBO_ANGLE,226,77,51,28,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Color Space:",IDC_STATIC_COLORSPACE4,154,145,51,12
+    COMBOBOX        IDC_COMBO_COLORSPACE4,225,143,51,21,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Feature Dimensions:",IDC_STATIC_DIMENSION5,306,85,65,10
+    EDITTEXT        IDC_EDIT_DIMENSIONS6,392,128,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Global Settings and Information",
+                    IDC_STATIC_TOTALSETTINGS,299,103,158,84,BS_CENTER
+    EDITTEXT        IDC_EDIT_PER1,321,154,20,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER2,359,155,21,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER3,397,154,19,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER4,432,154,20,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER5,321,170,20,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER6,359,171,21,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER7,397,170,19,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PER8,432,170,20,13,ES_AUTOHSCROLL
+    LTEXT           "Weight(%) of each feature",IDC_STATIC_WEIGHTS,309,143,
+                    86,11
+    LTEXT           "CF",IDC_STATIC_CF,305,156,10,8
+    LTEXT           "IF",IDC_STATIC_IF,345,156,8,8
+    LTEXT           "TF",IDC_STATIC_TF,384,156,10,8
+    LTEXT           "SF",IDC_STATIC_SF,418,156,8,8
+    LTEXT           "OF1",IDC_STATIC_OF1,305,171,14,8
+    LTEXT           "OF2",IDC_STATIC_OF2,345,173,14,8
+    LTEXT           "OF3",IDC_STATIC_OF3,382,173,14,8
+    LTEXT           "OF4",IDC_STATIC_OF4,417,173,14,8
+END
+
+IDD_DIALOG_FEEDBACKWITHMEMORY DIALOG DISCARDABLE  0, 0, 187, 161
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Memory Setting"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,38,134,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,104,133,50,14
+    EDITTEXT        IDC_EDIT_T1,46,84,46,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_T2,119,84,46,13,ES_AUTOHSCROLL
+    LTEXT           "T1:",IDC_STATIC_T1,18,85,23,13
+    LTEXT           "T2:",IDC_STATIC_T2,97,84,23,13
+    LTEXT           "Weights:",IDC_STATIC_WEIGHTS,18,105,32,13
+    EDITTEXT        IDC_EDIT_WEIGHTS,51,104,114,21,ES_MULTILINE | 
+                    ES_READONLY | WS_VSCROLL
+END
+
+IDD_DIALOG_EVALUATION DIALOGEX 0, 0, 410, 335
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Evaluation Dialog"
+FONT 8, "Times New Roman", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Feature Database File",IDC_STATIC_DATABASEFILE,3,9,281,
+                    116,BS_CENTER
+    PUSHBUTTON      "Open",IDC_OPEN_DATABASE,5,19,35,9
+    LTEXT           "Feature Database File:",IDC_STATIC_TESTFEATUREFILE,54,
+                    19,78,8
+    EDITTEXT        IDC_DBPATH,142,19,118,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Standard image database?",IDC_STATIC_STANDARD,5,34,90,8
+    EDITTEXT        IDC_EDIT_STANDARD,101,33,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Sorted image database?",IDC_STATIC_SORTED,142,37,94,8
+    EDITTEXT        IDC_EDIT_SORTED,237,34,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Clustered image database?",IDC_STATIC_CLUSTERED,5,48,94,
+                    8
+    EDITTEXT        IDC_EDIT_CLUSTERED,101,48,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Number of Classes:",IDC_STATIC_CLASSES,142,51,67,8
+    EDITTEXT        IDC_EDIT_CLASSES,237,49,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Images in each Classes",IDC_STATIC_IMAGESINCLASS,5,62,
+                    84,9
+    EDITTEXT        IDC_EDIT_IMAGEEACHCLASS,101,63,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Total Number of images",IDC_STATIC_TOTALIMAGENUMBER,142,
+                    65,84,9
+    EDITTEXT        IDC_EDIT_IMAGENUMBER,237,64,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Total Feature Dimension:",IDC_STATIC_VECTORDIMENSION5,5,
+                    77,84,8
+    EDITTEXT        IDC_EDIT_DIMENSIONTOTAL,101,78,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Color Feature Dimension:",IDC_STATIC_VECTORDIMENSION,
+                    142,80,86,8
+    EDITTEXT        IDC_EDIT_DIMENSION1,237,79,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Invariant Feature Dimension:",
+                    IDC_STATIC_VECTORDIMENSION1,5,91,95,11
+    EDITTEXT        IDC_EDIT_DIMENSION2,101,93,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Texture Feature Dimension:",IDC_STATIC_VECTORDIMENSION2,
+                    142,94,92,8
+    EDITTEXT        IDC_EDIT_DIMENSION3,237,94,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Shape Feature Dimension:",IDC_STATIC_VECTORDIMENSION3,5,
+                    108,88,8
+    EDITTEXT        IDC_EDIT_DIMENSION4,101,108,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Other Feature Dimension:",IDC_STATIC_VECTORDIMENSION4,
+                    142,108,87,8
+    EDITTEXT        IDC_EDIT_DIMENSION5,237,109,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Test Conditions",IDC_STATIC_TESTCONDITION,290,11,116,
+                    117,BS_CENTER
+    LTEXT           "Retrieval Method:",IDC_STATIC_METHOD,296,27,60,8
+    COMBOBOX        IDC_METHOD,353,23,40,26,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Random queries from each class:",IDC_STATIC_QUERIES,297,
+                    40,52,20
+    COMBOBOX        IDC_QUERIES,355,41,40,36,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "min num of returned images:",IDC_STATIC_MINRETURN,298,
+                    60,54,16
+    COMBOBOX        IDC_MIN,353,62,40,28,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "max num of returned images:",IDC_STATIC_MAXRETURN,297,
+                    78,50,17
+    COMBOBOX        IDC_MAX,353,78,40,28,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Increasing Step:",IDC_STATIC_STEP,297,98,50,12
+    COMBOBOX        IDC_STEP,351,94,40,28,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Num of clusters to search:",IDC_STATIC_NUMCLUSTERSEARCH,
+                    297,111,50,18
+    COMBOBOX        IDC_NUMCLUSTERTOSEARCH,351,113,40,28,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Codebook File",IDC_STATIC_CODEBOOK,4,133,401,47,
+                    BS_CENTER
+    PUSHBUTTON      "Open",IDC_OPEN_CODEBOOK,12,147,35,9
+    LTEXT           "Feature Codebook File:",IDC_STATIC_TESTCODEBOOK,53,147,
+                    78,8
+    EDITTEXT        IDC_BKPATH,135,143,118,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of Clusters:",IDC_STATIC_CLUSTERS,259,144,67,8
+    EDITTEXT        IDC_EDIT_CLUSTERS,331,142,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Vector number in each Cluster:",
+                    IDC_STATIC_CLUSTERNUMBERS,11,163,99,8
+    EDITTEXT        IDC_NUMINCLUSTER,135,158,232,17,ES_MULTILINE | 
+                    ES_READONLY | WS_VSCROLL
+    GROUPBOX        "Test and Results",IDC_STATIC_TESTING,8,182,391,134,
+                    BS_CENTER
+    PUSHBUTTON      "Generate Random Queries",IDC_RANDOMQUERY,15,191,87,11
+    LTEXT           "Some information of latest test",IDC_STATIC_TESTINFO,
+                    172,193,104,8
+    PUSHBUTTON      "Start Test",IDC_STARTTEST,15,209,52,11
+    EDITTEXT        IDC_TESTINFODISPLAY,80,204,306,17,ES_MULTILINE | 
+                    ES_READONLY | WS_VSCROLL
+    LTEXT           "[Query No.] [Class No.] [Num of Re. Images] [Time] [Precision] [Recall]",
+                    IDC_STATIC_RESULTDISPLAYSTYLE,18,230,233,8
+    LISTBOX         IDC_RESULT_LIST,18,240,368,44,NOT LBS_NOTIFY | 
+                    LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP,WS_EX_ACCEPTFILES
+    LTEXT           "Average: [Num of Re. Images] [Time] [Precision] [Recall]",
+                    IDC_STATIC_RESULTDISPLAYSTYLE2,20,286,185,8
+    PUSHBUTTON      "Clear",IDC_CLEAR,51,299,39,9
+    PUSHBUTTON      "Save to file",IDC_RESULTSAVE,119,299,42,10
+    PUSHBUTTON      "Draw P-R Curve",IDC_DRAWPR,189,299,55,10
+    PUSHBUTTON      "Draw Time Curve",IDC_DRAWTIME,272,299,65,10
+    DEFPUSHBUTTON   "Close Window",IDOK,173,320,72,12
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 239, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About VqRetrieve"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "VqRetrieve Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005.3.27",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,182,7,50,14,WS_GROUP
+    LTEXT           "The Copyright is retained by Prof. Dr. Zhe-Ming Lu",
+                    IDC_STATIC,41,40,181,17
+END
+
+IDD_VQRETRIEVE_FORM DIALOGEX 1024, 768, 649, 375
+STYLE DS_CENTER | WS_CHILD
+EXSTYLE WS_EX_TRANSPARENT
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_STATICQUERY,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,24,45,158,73
+    CONTROL         "",IDC_STATICRETRIEVAL1,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,23,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL2,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,98,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL3,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,175,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL4,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,250,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL5,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,325,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL6,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,399,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL7,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,475,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL8,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,550,190,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL9,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,25,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL10,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,100,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL11,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,175,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL12,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,250,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL14,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,400,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL15,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,475,278,51,45
+    CONTROL         "",IDC_STATICRETRIEVAL16,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,550,278,51,45
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME1,29,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME2,105,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME3,181,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME4,257,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME5,333,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME6,409,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME7,485,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME8,561,246,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME9,29,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME10,105,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME11,181,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME12,257,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME13,333,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME14,409,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME15,485,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RETRIEVALNAME16,561,326,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Dis. 1=",IDC_STATIC_DIS1,26,262,30,14
+    LTEXT           "Dis. 2=",IDC_STATIC_DIS2,101,262,30,14
+    LTEXT           "Dis. 3=",IDC_STATIC_DIS3,176,262,30,14
+    LTEXT           "Dis. 4=",IDC_STATIC_DIS4,251,262,30,14
+    LTEXT           "Dis. 5=",IDC_STATIC_DIS5,326,262,30,14
+    LTEXT           "Dis. 6=",IDC_STATIC_DIS6,401,262,30,14
+    LTEXT           "Dis. 7=",IDC_STATIC_DIS7,476,262,30,14
+    LTEXT           "Dis. 8=",IDC_STATIC_DIS8,551,262,30,14
+    LTEXT           "Dis. 9=",IDC_STATIC_DIS9,26,341,30,14
+    LTEXT           "Dis. 10=",IDC_STATIC_DIS10,101,341,30,14
+    LTEXT           "Dis. 11=",IDC_STATIC_DIS11,176,341,30,14
+    LTEXT           "Dis. 12=",IDC_STATIC_DIS12,251,341,30,14
+    LTEXT           "Dis. 13=",IDC_STATIC_DIS13,326,341,30,14
+    LTEXT           "Dis. 14=",IDC_STATIC_DIS14,401,341,30,14
+    LTEXT           "Dis. 15=",IDC_STATIC_DIS15,476,341,30,14
+    LTEXT           "Dis. 16=",IDC_STATIC_DIS16,551,341,30,14
+    EDITTEXT        IDC_EDIT_DIS1,57,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS2,132,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS3,207,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS4,282,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS5,357,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS6,432,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS7,507,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS8,582,262,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS9,57,341,37,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS10,132,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS11,207,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS12,282,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS13,582,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS14,357,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS15,432,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DIS16,507,341,37,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_DB,341,16,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Image Database Path:",IDC_STATIC_DB,218,16,84,12
+    GROUPBOX        "Query Region",IDC_STATIC_QUERYREGION,11,7,174,150,
+                    BS_CENTER
+    GROUPBOX        "Database Region",IDC_STATIC_DATABASEREGION,199,7,223,
+                    150,BS_CENTER
+    GROUPBOX        "Retrieval Region",IDC_STATIC_RETRIEVALREGION,439,7,190,
+                    150,BS_CENTER
+    GROUPBOX        "Result Region",IDC_STATIC_RESULTREGION,11,161,618,203,
+                    BS_CENTER
+    EDITTEXT        IDC_EDIT_QUERYINFO,19,102,158,45,ES_MULTILINE | 
+                    ES_READONLY | WS_VSCROLL
+    LTEXT           "Number of Possible Images:",IDC_STATIC_DB2,218,31,113,
+                    12
+    LTEXT           "Number of 24/8 bits jpg bmps:",IDC_STATIC_DB3,218,46,
+                    108,12
+    EDITTEXT        IDC_EDIT_DB2,341,31,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB3,341,46,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of images extracted:",IDC_STATIC_DB4,218,61,107,
+                    12
+    LTEXT           "Feature vectors normalized:",IDC_STATIC_DB5,218,76,105,
+                    12
+    EDITTEXT        IDC_EDIT_DB4,341,61,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB5,341,76,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB6,341,91,43,12,ES_AUTOHSCROLL
+    LTEXT           "Number of clusters:",IDC_STATIC_DB6,218,91,111,12
+    CONTROL         "",IDC_STATICRETRIEVAL13,"Static",SS_BITMAP | SS_NOTIFY | 
+                    SS_CENTERIMAGE | SS_SUNKEN | WS_BORDER,325,278,51,45
+    EDITTEXT        IDC_EDIT_DB7,341,106,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Saved feature file name:",IDC_STATIC_DB7,218,106,111,12
+    LTEXT           "Saved codebook file name:",IDC_STATIC_DB8,218,121,114,
+                    12
+    EDITTEXT        IDC_EDIT_DB8,341,121,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Saved vq feature file name:",IDC_STATIC_DB9,218,136,111,
+                    12
+    EDITTEXT        IDC_EDIT_DB9,341,136,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB10,573,16,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Feature Database Path:",IDC_STATIC_DB10,451,16,84,12
+    LTEXT           "Number of Feature Vectors:",IDC_STATIC_DB11,451,31,113,
+                    12
+    EDITTEXT        IDC_EDIT_DB11,573,31,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Ever Interrupted in Extraction?",IDC_STATIC_DB12,451,46,
+                    113,12
+    EDITTEXT        IDC_EDIT_DB12,573,46,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB13,573,61,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Read feature file name:",IDC_STATIC_DB13,451,61,111,12
+    LTEXT           "Read codebook file name:",IDC_STATIC_DB14,451,76,114,12
+    EDITTEXT        IDC_EDIT_DB14,573,76,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Feature vector dimension:",IDC_STATIC_DB15,451,91,111,
+                    12
+    EDITTEXT        IDC_EDIT_DB15,573,91,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Normalized features based?",IDC_STATIC_DB16,451,106,107,
+                    12
+    EDITTEXT        IDC_EDIT_DB17,573,121,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of clusters used:",IDC_STATIC_DB17,451,121,111,
+                    12
+    EDITTEXT        IDC_EDIT_DB16,573,106,43,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_DB18,573,136,43,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Number of retrieved Images:",IDC_STATIC_DB18,451,136,
+                    111,12
+    EDITTEXT        IDC_EDIT_DB19,60,172,26,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Current Page:",IDC_STATIC_DB19,14,173,48,12
+    EDITTEXT        IDC_EDIT_DB20,140,172,43,12,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "Current Status:",IDC_STATIC_DB20,93,173,48,12
+    EDITTEXT        IDC_EDIT_DB21,325,173,43,12,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "Feedback Info:",IDC_STATIC_DB21,263,173,48,12
+    EDITTEXT        IDC_EDIT_DB22,445,173,43,12,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "Other Info:",IDC_STATIC_DB22,383,173,48,12
+    GROUPBOX        "",IDC_REGION_RETRIEVAL1,25,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL2,98,190,51,45,BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL3,175,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL4,250,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL5,324,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL6,399,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL7,475,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL8,549,190,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL9,26,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL10,99,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL11,175,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL12,248,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL13,325,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL14,399,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL15,473,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_RETRIEVAL16,549,278,51,45,BS_BITMAP | 
+                    BS_CENTER
+    GROUPBOX        "",IDC_REGION_QUERY,19,21,158,73,BS_BITMAP | BS_CENTER
+END
+
+IDD_DIALOG_SOURCE DIALOGEX 0, 0, 245, 226
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CONTEXTHELP
+CAPTION "Select Training Images"
+FONT 10, "??", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,49,202,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,175,201,50,14
+    DEFPUSHBUTTON   "Add",IDC_ADD_FILE,188,79,50,14
+    DEFPUSHBUTTON   "delete",IDC_DELETE_FILE,189,135,50,14
+    LTEXT           "No. images Selected",IDC_STATIC_NUMBER,81,11,85,15,
+                    SS_NOPREFIX
+    LISTBOX         IDC_LIST_FILE,22,66,153,120,LBS_NOINTEGRALHEIGHT | 
+                    LBS_DISABLENOSCROLL | WS_HSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_NUMBER,63,27,77,15,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_DIALOG_SHOW DIALOG DISCARDABLE  0, 0, 456, 352
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Encoding Test Results"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,195,321,50,14
+    LTEXT           "PSNR",IDC_STATIC_PSNR,225,293,32,15
+    EDITTEXT        IDC_EDIT_PSNR,260,291,48,14,ES_AUTOHSCROLL
+    LTEXT           "Component",IDC_STATIC_COMPO,99,290,40,15
+    EDITTEXT        IDC_EDIT_COMP,152,290,50,17,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Original Image Path",IDC_STATIC_FILE,64,251,74,15
+    EDITTEXT        IDC_EDIT_FILEPATH,145,248,159,17,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Width",IDC_STATIC_IMAGEWIDTH,98,269,31,15
+    EDITTEXT        IDC_EDIT_IMWIDTH,144,267,50,17,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Height",IDC_STATIC_IMAGEHEIGHT,213,269,31,15
+    EDITTEXT        IDC_EDIT_IMHEIGHT,259,267,50,17,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Original Image",IDC_STATIC_ORIGINAL,66,221,67,18
+    LTEXT           "Compressed Image",IDC_STATIC_DECODE,259,220,67,18
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG_DATABASE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_DISPLAYIMAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 564
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 415
+    END
+
+    IDD_INFORMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 258
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 135
+    END
+
+    IDD_DIALOG_FEEDBACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 137
+    END
+
+    IDD_DIALOG_FEATURESELECTION, DIALOG
+    BEGIN
+        RIGHTMARGIN, 468
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+
+    IDD_DIALOG_SHOW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 449
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 345
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_FEATURESELECTION DLGINIT
+BEGIN
+    IDC_COMBO_COLORSPACE, 0x403, 4, 0
+0x4752, 0x0042, 
+    IDC_COMBO_COLORSPACE, 0x403, 4, 0
+0x5348, 0x0056, 
+    IDC_COMBO_COLORSPACE, 0x403, 13, 0
+0x4348, 0x2856, 0x754d, 0x736e, 0x6c65, 0x296c, "\000" 
+    IDC_COMBO_COLORSPACE, 0x403, 8, 0
+0x4943, 0x5f45, 0x614c, 0x0062, 
+    IDC_COMBO_COLORSPACE, 0x403, 6, 0
+0x4359, 0x4362, 0x0072, 
+    IDC_COMBO_COLORSPACE, 0x403, 4, 0
+0x4959, 0x0051, 
+    IDC_COMBO_COLORSPACE, 0x403, 7, 0
+0x5f59, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_COLORSPACE, 0x403, 2, 0
+0x0048, 
+    IDC_COMBO_COLORSPACE, 0x403, 2, 0
+0x0053, 
+    IDC_COMBO_COLORSPACE, 0x403, 2, 0
+0x0056, 
+    IDC_COMBO_COLORSPACE, 0x403, 2, 0
+0x0052, 
+    IDC_COMBO_COLORSPACE, 0x403, 2, 0
+0x0047, 
+    IDC_COMBO_COLORSPACE, 0x403, 2, 0
+0x0042, 
+    IDC_COMBO_COLORSPACE, 0x403, 18, 0
+0x3149, 0x3249, 0x3349, 0x4f28, 0x6874, 0x2c61, 0x3931, 0x3038, 0x0029, 
+
+    IDC_COMBO_COLORSPACE, 0x403, 22, 0
+0x3149, 0x4927, 0x2732, 0x3349, 0x2827, 0x6942, 0x626d, 0x2c6f, 0x3931, 
+0x3939, 0x0029, 
+    IDC_COMBO_COLORSPACE, 0x403, 20, 0
+0x314c, 0x324c, 0x334c, 0x4728, 0x7665, 0x7265, 0x2c73, 0x3931, 0x3939, 
+0x0029, 
+    IDC_COMBO_COLORSPACE, 0x403, 8, 0
+0x4943, 0x5f45, 0x5958, 0x005a, 
+    IDC_COMBO_COLORSPACE, 0x403, 8, 0
+0x4943, 0x5f45, 0x5559, 0x0056, 
+    IDC_COMBO_COLORSPACE, 0x403, 8, 0
+0x4943, 0x5f45, 0x7978, 0x0059, 
+    IDC_COMBO_COLORSPACE, 0x403, 11, 0
+0x4943, 0x5f45, 0x2755, 0x2756, 0x2757, "\000" 
+    IDC_COMBO_COLORSPACE, 0x403, 6, 0
+0x4752, 0x5f42, 0x0059, 
+    IDC_COMBO_COLORSPACE, 0x403, 16, 0
+0x4559, 0x2853, 0x6153, 0x6562, 0x2c72, 0x3931, 0x3839, 0x0029, 
+    IDC_COMBO_COLORSPACE, 0x403, 4, 0
+0x4c48, 0x0053, 
+    IDC_COMBO_COLORSPACE, 0x403, 4, 0
+0x5348, 0x0049, 
+    IDC_COMBO_COLORSPACE, 0x403, 4, 0
+0x5348, 0x0042, 
+    IDC_COMBO_COLORSPACE, 0x403, 8, 0
+0x4943, 0x5f45, 0x754c, 0x0076, 
+    IDC_COMBO_COLORHISTOGRAM, 0x403, 10, 0
+0x6948, 0x7473, 0x676f, 0x6172, 0x006d, 
+    IDC_COMBO_COLORHISTOGRAM, 0x403, 22, 0
+0x6341, 0x7563, 0x756d, 0x616c, 0x6574, 0x2064, 0x6948, 0x7473, 0x676f, 
+0x6172, 0x006d, 
+    IDC_COMBO_BINS, 0x403, 4, 0
+0x3231, 0x0038, 
+    IDC_COMBO_BINS, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_COMBO_BINS, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_COMBO_BINS, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_COMBO_HOWTODESCRIBE, 0x403, 7, 0
+0x6c47, 0x626f, 0x6c61, "\000" 
+    IDC_COMBO_HOWTODESCRIBE, 0x403, 10, 0
+0x6948, 0x7473, 0x676f, 0x6172, 0x006d, 
+    IDC_COMBO_HOWTODESCRIBE, 0x403, 22, 0
+0x6341, 0x7563, 0x756d, 0x616c, 0x6574, 0x2064, 0x6948, 0x7473, 0x676f, 
+0x6172, 0x006d, 
+    IDC_COMBO_POINTNUM, 0x403, 11, 0
+0x6c41, 0x206c, 0x6970, 0x6578, 0x736c, "\000" 
+    IDC_COMBO_POINTNUM, 0x403, 12, 0
+0x6148, 0x666c, 0x7020, 0x7869, 0x6c65, 0x0073, 
+    IDC_COMBO_POINTNUM, 0x403, 15, 0
+0x7551, 0x7261, 0x6574, 0x2072, 0x6970, 0x6578, 0x736c, "\000" 
+    IDC_COMBO_POINTNUM, 0x403, 14, 0
+0x6945, 0x6867, 0x6874, 0x7020, 0x7869, 0x6c65, 0x0073, 
+    IDC_COMBO_POINTNUM, 0x403, 12, 0
+0x3031, 0x3030, 0x5020, 0x7869, 0x6c65, 0x0073, 
+    IDC_COMBO_POINTNUM, 0x403, 12, 0
+0x3032, 0x3030, 0x5020, 0x7869, 0x6c65, 0x0073, 
+    IDC_COMBO_POINTNUM, 0x403, 12, 0
+0x3034, 0x3030, 0x5020, 0x7869, 0x6c65, 0x0073, 
+    IDC_COMBO_BINS2, 0x403, 4, 0
+0x3231, 0x0038, 
+    IDC_COMBO_BINS2, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_COMBO_BINS2, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_COMBO_BINS2, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_COMBO_COLORSPACE2, 0x403, 4, 0
+0x4752, 0x0042, 
+    IDC_COMBO_COLORSPACE2, 0x403, 4, 0
+0x5348, 0x0056, 
+    IDC_COMBO_COLORSPACE2, 0x403, 13, 0
+0x4348, 0x2856, 0x754d, 0x736e, 0x6c65, 0x296c, "\000" 
+    IDC_COMBO_COLORSPACE2, 0x403, 8, 0
+0x4943, 0x5f45, 0x614c, 0x0062, 
+    IDC_COMBO_COLORSPACE2, 0x403, 6, 0
+0x4359, 0x4362, 0x0072, 
+    IDC_COMBO_COLORSPACE2, 0x403, 4, 0
+0x4959, 0x0051, 
+    IDC_COMBO_COLORSPACE2, 0x403, 7, 0
+0x5f59, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_COLORSPACE2, 0x403, 2, 0
+0x0048, 
+    IDC_COMBO_COLORSPACE2, 0x403, 2, 0
+0x0053, 
+    IDC_COMBO_COLORSPACE2, 0x403, 2, 0
+0x0056, 
+    IDC_COMBO_COLORSPACE2, 0x403, 2, 0
+0x0052, 
+    IDC_COMBO_COLORSPACE2, 0x403, 2, 0
+0x0047, 
+    IDC_COMBO_COLORSPACE2, 0x403, 2, 0
+0x0042, 
+    IDC_COMBO_COLORSPACE2, 0x403, 18, 0
+0x3149, 0x3249, 0x3349, 0x4f28, 0x6874, 0x2c61, 0x3931, 0x3038, 0x0029, 
+
+    IDC_COMBO_COLORSPACE2, 0x403, 22, 0
+0x3149, 0x4927, 0x2732, 0x3349, 0x2827, 0x6942, 0x626d, 0x2c6f, 0x3931, 
+0x3939, 0x0029, 
+    IDC_COMBO_COLORSPACE2, 0x403, 20, 0
+0x314c, 0x324c, 0x334c, 0x4728, 0x7665, 0x7265, 0x2c73, 0x3931, 0x3939, 
+0x0029, 
+    IDC_COMBO_COLORSPACE2, 0x403, 8, 0
+0x4943, 0x5f45, 0x5958, 0x005a, 
+    IDC_COMBO_COLORSPACE2, 0x403, 8, 0
+0x4943, 0x5f45, 0x5559, 0x0056, 
+    IDC_COMBO_COLORSPACE2, 0x403, 8, 0
+0x4943, 0x5f45, 0x7978, 0x0059, 
+    IDC_COMBO_COLORSPACE2, 0x403, 11, 0
+0x4943, 0x5f45, 0x2755, 0x2756, 0x2757, "\000" 
+    IDC_COMBO_COLORSPACE2, 0x403, 6, 0
+0x4752, 0x5f42, 0x0059, 
+    IDC_COMBO_COLORSPACE2, 0x403, 16, 0
+0x4559, 0x2853, 0x6153, 0x6562, 0x2c72, 0x3931, 0x3839, 0x0029, 
+    IDC_COMBO_COLORSPACE2, 0x403, 4, 0
+0x4c48, 0x0053, 
+    IDC_COMBO_COLORSPACE2, 0x403, 4, 0
+0x5348, 0x0049, 
+    IDC_COMBO_COLORSPACE2, 0x403, 4, 0
+0x5348, 0x0042, 
+    IDC_COMBO_COLORSPACE2, 0x403, 8, 0
+0x4943, 0x5f45, 0x754c, 0x0076, 
+    IDC_COMBO_COOCURRENCE, 0x403, 25, 0
+0x3128, 0x302c, 0x2b29, 0x3028, 0x312c, 0x2b29, 0x3128, 0x2d2c, 0x2931, 
+0x282b, 0x2c31, 0x2931, "\000" 
+    IDC_COMBO_COOCURRENCE, 0x403, 25, 0
+0x3228, 0x302c, 0x2b29, 0x3028, 0x322c, 0x2b29, 0x3228, 0x2d2c, 0x2932, 
+0x282b, 0x2c32, 0x2932, "\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 34, 0
+0x2e31, 0x3436, 0x6942, 0x206e, 0x6948, 0x7473, 0x676f, 0x6172, 0x206d, 
+0x6f4d, 0x656d, 0x746e, 0x3328, 0x432f, 0x6c6f, 0x726f, 0x0029, 
+    IDC_COMBO_DESCRIPTION, 0x403, 29, 0
+0x2e32, 0x6f43, 0x636f, 0x7275, 0x6e65, 0x7963, 0x4d20, 0x7461, 0x6972, 
+0x2878, 0x2f35, 0x6f43, 0x6f6c, 0x2972, "\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 30, 0
+0x2e33, 0x6f43, 0x636f, 0x7275, 0x6e65, 0x7963, 0x4d20, 0x7461, 0x6972, 
+0x2878, 0x3031, 0x432f, 0x6c6f, 0x726f, 0x0029, 
+    IDC_COMBO_DESCRIPTION, 0x403, 30, 0
+0x2e34, 0x6f43, 0x636f, 0x7275, 0x6e65, 0x7963, 0x4d20, 0x7461, 0x6972, 
+0x2878, 0x3431, 0x432f, 0x6c6f, 0x726f, 0x0029, 
+    IDC_COMBO_DESCRIPTION, 0x403, 17, 0
+0x2e35, 0x6554, 0x7478, 0x7275, 0x2065, 0x6e45, 0x7265, 0x7967, "\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 37, 0
+0x2e36, 0x6f43, 0x746e, 0x6172, 0x7473, 0x432b, 0x616f, 0x7372, 0x6e65, 
+0x7365, 0x2b73, 0x6944, 0x6572, 0x7463, 0x6f69, 0x616e, 0x696c, 0x7974, 
+"\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 43, 0
+0x2e37, 0x6552, 0x6570, 0x6974, 0x6974, 0x6576, 0x656e, 0x7373, 0x442b, 
+0x7269, 0x6365, 0x6974, 0x6e6f, 0x6c61, 0x7469, 0x2b79, 0x6f43, 0x706d, 
+0x656c, 0x6978, 0x7974, "\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 14, 0
+0x2e38, 0x2820, 0x2b31, 0x2b35, 0x2b36, 0x2937, 0x0020, 
+    IDC_COMBO_DESCRIPTION, 0x403, 13, 0
+0x2e39, 0x2820, 0x2b31, 0x2b34, 0x2b35, 0x2936, "\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 14, 0
+0x3031, 0x202e, 0x3128, 0x342b, 0x352b, 0x372b, 0x0029, 
+    IDC_COMBO_DESCRIPTION, 0x403, 16, 0
+0x3131, 0x202e, 0x3128, 0x342b, 0x352b, 0x362b, 0x372b, 0x0029, 
+    IDC_COMBO_DESCRIPTION, 0x403, 16, 0
+0x3231, 0x442e, 0x5446, 0x5320, 0x6570, 0x7463, 0x7572, 0x006d, 
+    IDC_COMBO_DESCRIPTION, 0x403, 16, 0
+0x3331, 0x442e, 0x5457, 0x5320, 0x6570, 0x7463, 0x7572, 0x006d, 
+    IDC_COMBO_DESCRIPTION, 0x403, 17, 0
+0x3431, 0x4d2e, 0x4550, 0x2047, 0x7053, 0x6365, 0x7274, 0x6d75, "\000" 
+    IDC_COMBO_DESCRIPTION, 0x403, 14, 0
+0x3531, 0x532e, 0x7274, 0x6375, 0x7574, 0x6172, 0x006c, 
+    IDC_COMBO_COLORSPACE3, 0x403, 4, 0
+0x4752, 0x0042, 
+    IDC_COMBO_COLORSPACE3, 0x403, 4, 0
+0x5348, 0x0056, 
+    IDC_COMBO_COLORSPACE3, 0x403, 13, 0
+0x4348, 0x2856, 0x754d, 0x736e, 0x6c65, 0x296c, "\000" 
+    IDC_COMBO_COLORSPACE3, 0x403, 8, 0
+0x4943, 0x5f45, 0x614c, 0x0062, 
+    IDC_COMBO_COLORSPACE3, 0x403, 6, 0
+0x4359, 0x4362, 0x0072, 
+    IDC_COMBO_COLORSPACE3, 0x403, 4, 0
+0x4959, 0x0051, 
+    IDC_COMBO_COLORSPACE3, 0x403, 7, 0
+0x5f59, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_COLORSPACE3, 0x403, 2, 0
+0x0048, 
+    IDC_COMBO_COLORSPACE3, 0x403, 2, 0
+0x0053, 
+    IDC_COMBO_COLORSPACE3, 0x403, 2, 0
+0x0056, 
+    IDC_COMBO_COLORSPACE3, 0x403, 2, 0
+0x0052, 
+    IDC_COMBO_COLORSPACE3, 0x403, 2, 0
+0x0047, 
+    IDC_COMBO_COLORSPACE3, 0x403, 2, 0
+0x0042, 
+    IDC_COMBO_COLORSPACE3, 0x403, 18, 0
+0x3149, 0x3249, 0x3349, 0x4f28, 0x6874, 0x2c61, 0x3931, 0x3038, 0x0029, 
+
+    IDC_COMBO_COLORSPACE3, 0x403, 22, 0
+0x3149, 0x4927, 0x2732, 0x3349, 0x2827, 0x6942, 0x626d, 0x2c6f, 0x3931, 
+0x3939, 0x0029, 
+    IDC_COMBO_COLORSPACE3, 0x403, 20, 0
+0x314c, 0x324c, 0x334c, 0x4728, 0x7665, 0x7265, 0x2c73, 0x3931, 0x3939, 
+0x0029, 
+    IDC_COMBO_COLORSPACE3, 0x403, 8, 0
+0x4943, 0x5f45, 0x5958, 0x005a, 
+    IDC_COMBO_COLORSPACE3, 0x403, 8, 0
+0x4943, 0x5f45, 0x5559, 0x0056, 
+    IDC_COMBO_COLORSPACE3, 0x403, 8, 0
+0x4943, 0x5f45, 0x7978, 0x0059, 
+    IDC_COMBO_COLORSPACE3, 0x403, 11, 0
+0x4943, 0x5f45, 0x2755, 0x2756, 0x2757, "\000" 
+    IDC_COMBO_COLORSPACE3, 0x403, 6, 0
+0x4752, 0x5f42, 0x0059, 
+    IDC_COMBO_COLORSPACE3, 0x403, 16, 0
+0x4559, 0x2853, 0x6153, 0x6562, 0x2c72, 0x3931, 0x3839, 0x0029, 
+    IDC_COMBO_COLORSPACE3, 0x403, 4, 0
+0x4c48, 0x0053, 
+    IDC_COMBO_COLORSPACE3, 0x403, 4, 0
+0x5348, 0x0049, 
+    IDC_COMBO_COLORSPACE3, 0x403, 4, 0
+0x5348, 0x0042, 
+    IDC_COMBO_COLORSPACE3, 0x403, 8, 0
+0x4943, 0x5f45, 0x754c, 0x0076, 
+    IDC_COMBO_DESCRIPTION2, 0x403, 11, 0
+0x2e31, 0x3120, 0x442d, 0x4420, 0x5446, "\000" 
+    IDC_COMBO_DESCRIPTION2, 0x403, 34, 0
+0x2e32, 0x3320, 0x4236, 0x6e69, 0x4520, 0x6764, 0x4465, 0x7269, 0x6365, 
+0x6974, 0x6e6f, 0x6c61, 0x6948, 0x7473, 0x676f, 0x6172, 0x006d, 
+    IDC_COMBO_DESCRIPTION2, 0x403, 34, 0
+0x2e33, 0x3720, 0x4232, 0x6e69, 0x4520, 0x6764, 0x4465, 0x7269, 0x6365, 
+0x6974, 0x6e6f, 0x6c61, 0x6948, 0x7473, 0x676f, 0x6172, 0x006d, 
+    IDC_COMBO_DESCRIPTION2, 0x403, 39, 0
+0x2e34, 0x4620, 0x726f, 0x206d, 0x6146, 0x7463, 0x726f, 0x452b, 0x6363, 
+0x6e65, 0x7274, 0x6369, 0x7469, 0x2b79, 0x7053, 0x6568, 0x6972, 0x6963, 
+0x7974, "\000" 
+    IDC_COMBO_DESCRIPTION2, 0x403, 25, 0
+0x2e35, 0x5220, 0x6765, 0x6f69, 0x616e, 0x206c, 0x6f4d, 0x656d, 0x746e, 
+0x2820, 0x2d34, 0x2944, "\000" 
+    IDC_COMBO_DESCRIPTION2, 0x403, 25, 0
+0x2e36, 0x5220, 0x6765, 0x6f69, 0x616e, 0x206c, 0x6f4d, 0x656d, 0x746e, 
+0x2820, 0x2d37, 0x2944, "\000" 
+    IDC_COMBO_DESCRIPTION2, 0x403, 20, 0
+0x2e37, 0x4420, 0x7369, 0x6f74, 0x7372, 0x6f69, 0x206e, 0x6142, 0x6573, 
+0x0064, 
+    IDC_COMBO_DESCRIPTION2, 0x403, 9, 0
+0x2e38, 0x2820, 0x2b32, 0x2935, "\000" 
+    IDC_COMBO_DESCRIPTION2, 0x403, 9, 0
+0x2e39, 0x2820, 0x2b32, 0x2936, "\000" 
+    IDC_COMBO_DESCRIPTION2, 0x403, 10, 0
+0x3031, 0x202e, 0x3328, 0x352b, 0x0029, 
+    IDC_COMBO_DESCRIPTION2, 0x403, 10, 0
+0x3131, 0x202e, 0x3328, 0x362b, 0x0029, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0033, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0034, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0035, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0036, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0038, 
+    IDC_COMBO_ANGLE, 0x403, 2, 0
+0x0039, 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3231, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3531, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3831, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3432, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3033, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3633, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3034, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3534, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3036, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3237, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 3, 0
+0x3039, "\000" 
+    IDC_COMBO_ANGLE, 0x403, 4, 0
+0x3231, 0x0030, 
+    IDC_COMBO_ANGLE, 0x403, 4, 0
+0x3831, 0x0030, 
+    IDC_COMBO_ANGLE, 0x403, 4, 0
+0x3633, 0x0030, 
+    IDC_COMBO_COLORSPACE4, 0x403, 4, 0
+0x4752, 0x0042, 
+    IDC_COMBO_COLORSPACE4, 0x403, 4, 0
+0x5348, 0x0056, 
+    IDC_COMBO_COLORSPACE4, 0x403, 13, 0
+0x4348, 0x2856, 0x754d, 0x736e, 0x6c65, 0x296c, "\000" 
+    IDC_COMBO_COLORSPACE4, 0x403, 8, 0
+0x4943, 0x5f45, 0x614c, 0x0062, 
+    IDC_COMBO_COLORSPACE4, 0x403, 6, 0
+0x4359, 0x4362, 0x0072, 
+    IDC_COMBO_COLORSPACE4, 0x403, 4, 0
+0x4959, 0x0051, 
+    IDC_COMBO_COLORSPACE4, 0x403, 7, 0
+0x5f59, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_COLORSPACE4, 0x403, 2, 0
+0x0048, 
+    IDC_COMBO_COLORSPACE4, 0x403, 2, 0
+0x0053, 
+    IDC_COMBO_COLORSPACE4, 0x403, 2, 0
+0x0056, 
+    IDC_COMBO_COLORSPACE4, 0x403, 2, 0
+0x0052, 
+    IDC_COMBO_COLORSPACE4, 0x403, 2, 0
+0x0047, 
+    IDC_COMBO_COLORSPACE4, 0x403, 2, 0
+0x0042, 
+    IDC_COMBO_COLORSPACE4, 0x403, 18, 0
+0x3149, 0x3249, 0x3349, 0x4f28, 0x6874, 0x2c61, 0x3931, 0x3038, 0x0029, 
+
+    IDC_COMBO_COLORSPACE4, 0x403, 22, 0
+0x3149, 0x4927, 0x2732, 0x3349, 0x2827, 0x6942, 0x626d, 0x2c6f, 0x3931, 
+0x3939, 0x0029, 
+    IDC_COMBO_COLORSPACE4, 0x403, 20, 0
+0x314c, 0x324c, 0x334c, 0x4728, 0x7665, 0x7265, 0x2c73, 0x3931, 0x3939, 
+0x0029, 
+    IDC_COMBO_COLORSPACE4, 0x403, 8, 0
+0x4943, 0x5f45, 0x5958, 0x005a, 
+    IDC_COMBO_COLORSPACE4, 0x403, 8, 0
+0x4943, 0x5f45, 0x5559, 0x0056, 
+    IDC_COMBO_COLORSPACE4, 0x403, 8, 0
+0x4943, 0x5f45, 0x7978, 0x0059, 
+    IDC_COMBO_COLORSPACE4, 0x403, 11, 0
+0x4943, 0x5f45, 0x2755, 0x2756, 0x2757, "\000" 
+    IDC_COMBO_COLORSPACE4, 0x403, 6, 0
+0x4752, 0x5f42, 0x0059, 
+    IDC_COMBO_COLORSPACE4, 0x403, 16, 0
+0x4559, 0x2853, 0x6153, 0x6562, 0x2c72, 0x3931, 0x3839, 0x0029, 
+    IDC_COMBO_COLORSPACE4, 0x403, 4, 0
+0x4c48, 0x0053, 
+    IDC_COMBO_COLORSPACE4, 0x403, 4, 0
+0x5348, 0x0049, 
+    IDC_COMBO_COLORSPACE4, 0x403, 4, 0
+0x5348, 0x0042, 
+    IDC_COMBO_COLORSPACE4, 0x403, 8, 0
+0x4943, 0x5f45, 0x754c, 0x0076, 
+    0
+END
+
+IDD_DIALOG_EVALUATION DLGINIT
+BEGIN
+    IDC_METHOD, 0x403, 3, 0
+0x5346, "\000" 
+    IDC_METHOD, 0x403, 6, 0
+0x4b45, 0x4e4e, 0x0053, 
+    IDC_METHOD, 0x403, 8, 0
+0x4549, 0x4e4b, 0x534e, 0x0042, 
+    IDC_METHOD, 0x403, 7, 0
+0x4545, 0x4e4b, 0x534e, "\000" 
+    IDC_METHOD, 0x403, 9, 0
+0x4549, 0x4b45, 0x4e4e, 0x4253, "\000" 
+    IDC_METHOD, 0x403, 8, 0
+0x4545, 0x4b45, 0x4e4e, 0x0053, 
+    IDC_METHOD, 0x403, 10, 0
+0x4549, 0x4545, 0x4e4b, 0x534e, 0x0042, 
+    IDC_METHOD, 0x403, 16, 0
+0x4555, 0x4545, 0x4e4b, 0x534e, 0x6e69, 0x5156, 0x4e4b, 0x004e, 
+    IDC_QUERIES, 0x403, 2, 0
+0x0031, 
+    IDC_QUERIES, 0x403, 2, 0
+0x0032, 
+    IDC_QUERIES, 0x403, 2, 0
+0x0035, 
+    IDC_QUERIES, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_QUERIES, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_QUERIES, 0x403, 3, 0
+0x3035, "\000" 
+    IDC_QUERIES, 0x403, 4, 0
+0x3031, 0x0030, 
+    IDC_QUERIES, 0x403, 4, 0
+0x3032, 0x0030, 
+    IDC_QUERIES, 0x403, 4, 0
+0x3532, 0x0030, 
+    IDC_QUERIES, 0x403, 4, 0
+0x3034, 0x0030, 
+    IDC_MIN, 0x403, 2, 0
+0x0031, 
+    IDC_MIN, 0x403, 2, 0
+0x0032, 
+    IDC_MIN, 0x403, 2, 0
+0x0033, 
+    IDC_MIN, 0x403, 2, 0
+0x0034, 
+    IDC_MIN, 0x403, 2, 0
+0x0035, 
+    IDC_MIN, 0x403, 2, 0
+0x0036, 
+    IDC_MIN, 0x403, 2, 0
+0x0037, 
+    IDC_MIN, 0x403, 2, 0
+0x0038, 
+    IDC_MIN, 0x403, 2, 0
+0x0039, 
+    IDC_MIN, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_MIN, 0x403, 3, 0
+0x3231, "\000" 
+    IDC_MIN, 0x403, 3, 0
+0x3531, "\000" 
+    IDC_MIN, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_MIN, 0x403, 3, 0
+0x3831, "\000" 
+    IDC_MIN, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3033, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3034, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3834, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3035, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3036, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3037, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3038, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3039, "\000" 
+    IDC_MAX, 0x403, 3, 0
+0x3639, "\000" 
+    IDC_MAX, 0x403, 4, 0
+0x3031, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3931, 0x0032, 
+    IDC_MAX, 0x403, 4, 0
+0x3032, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3832, 0x0038, 
+    IDC_MAX, 0x403, 4, 0
+0x3033, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3034, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3934, 0x0036, 
+    IDC_MAX, 0x403, 4, 0
+0x3035, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3935, 0x0032, 
+    IDC_MAX, 0x403, 4, 0
+0x3036, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3836, 0x0038, 
+    IDC_MAX, 0x403, 4, 0
+0x3037, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3038, 0x0030, 
+    IDC_MAX, 0x403, 4, 0
+0x3939, 0x0032, 
+    IDC_MAX, 0x403, 5, 0
+0x3031, 0x3030, "\000" 
+    IDC_STEP, 0x403, 2, 0
+0x0031, 
+    IDC_STEP, 0x403, 2, 0
+0x0032, 
+    IDC_STEP, 0x403, 2, 0
+0x0033, 
+    IDC_STEP, 0x403, 2, 0
+0x0034, 
+    IDC_STEP, 0x403, 2, 0
+0x0035, 
+    IDC_STEP, 0x403, 2, 0
+0x0036, 
+    IDC_STEP, 0x403, 2, 0
+0x0037, 
+    IDC_STEP, 0x403, 2, 0
+0x0038, 
+    IDC_STEP, 0x403, 2, 0
+0x0039, 
+    IDC_STEP, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3231, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3531, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3831, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3034, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3035, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_STEP, 0x403, 3, 0
+0x3038, "\000" 
+    IDC_STEP, 0x403, 4, 0
+0x3031, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0031, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0032, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0033, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0034, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0035, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0036, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0037, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0038, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 2, 0
+0x0039, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3233, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3034, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3035, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3436, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 3, 0
+0x3038, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3031, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3231, 0x0038, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3032, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3532, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3532, 0x0036, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3034, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3035, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 4, 0
+0x3038, 0x0030, 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 5, 0
+0x3031, 0x3030, "\000" 
+    IDC_NUMCLUSTERTOSEARCH, 0x403, 5, 0
+0x3031, 0x3432, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_TOOLBAR_DISPLAY     BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_TOOLBAR_DISPLAY TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_BUTTONLEFT
+    BUTTON      ID_BUTTONUP
+    BUTTON      ID_BUTTONRITHT
+    BUTTON      ID_BUTTONDOWN
+END
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  33, 31
+BEGIN
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_QUERY_FEATURECOMPUTE
+    BUTTON      ID_QUERY_FEATURENORMALIZATION
+    SEPARATOR
+    BUTTON      ID_DATABASE_PATH
+    BUTTON      ID_DATABASE_FEATURESELECTION
+    BUTTON      ID_DATABASE_FEATURECOMPUTE
+    BUTTON      ID_DATABASE_FEATURENORMALIZATION
+    BUTTON      ID_DATABASE_SORTING
+    BUTTON      ID_DATABASE_FEATURESAVE
+    BUTTON      ID_DATABASE_NFEATURESPACEVQ
+    BUTTON      ID_DATABASE_CLUSTERSORTING
+    BUTTON      ID_DATABASE_CODEWORDSSAVE
+    BUTTON      ID_DATABASE_VQFEATURESAVE
+    SEPARATOR
+    BUTTON      ID_RETRIEVE_FEATUREFILE
+    BUTTON      ID_RETRIEVE_VQFEATUREFILE
+    BUTTON      ID_RETRIEVE_FEATURESELECTED
+    BUTTON      ID_RETRIEVE_CLUSTERINGBOOK
+    BUTTON      ID_RETRIEVE_START
+    SEPARATOR
+    BUTTON      ID_DISPLAY_FIRST
+    BUTTON      ID_DISPLAY_PREVIOUS
+    BUTTON      ID_DISPLAY_NEXT
+    BUTTON      ID_DISPLAY_LAST
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "0",            ID_RETRIEVE_VQONLYKNNCS, VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_RETRIEVE_NORMAL,     VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_RETRIEVE_UPDATINGFS, VIRTKEY, CONTROL, NOINVERT
+    "3",            ID_RETRIEVE_EKNNS,      VIRTKEY, CONTROL, NOINVERT
+    "4",            ID_RETRIEVE_IEKNNSUSER, VIRTKEY, CONTROL, NOINVERT
+    "5",            ID_RETRIEVE_IEKNNSBACK, VIRTKEY, CONTROL, NOINVERT
+    "6",            ID_RETRIEVE_EEKNNS,     VIRTKEY, CONTROL, NOINVERT
+    "7",            ID_RETRIEVE_IEEKNNSUSER, VIRTKEY, CONTROL, NOINVERT
+    "8",            ID_RETRIEVE_IEEKNNSBACK, VIRTKEY, CONTROL, NOINVERT
+    "9",            ID_RETRIEVE_VQONLYNNC,  VIRTKEY, CONTROL, NOINVERT
+    "A",            ID_RETRIEVE_VQALLCLUSTERS, VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_RETRIEVE_CLUSTERINGBOOK, VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_DATABASE_CODEBOOKFORVQ, VIRTKEY, SHIFT, NOINVERT
+    "C",            ID_DATABASE_FEATURECOMPUTE, VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_RETRIEVE_FEATUREFILE, VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_DATABASE_READFROMFILE, VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_DATABASE_CODEBOOKFORDCTVQ, VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_DATABASE_CODEBOOKFORMRVQ, VIRTKEY, SHIFT, NOINVERT
+    "I",            ID_IMAGEINFORMATION,    VIRTKEY, SHIFT, NOINVERT
+    "N",            ID_DATABASE_FEATURENORMALIZATION, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_DATABASE_STOP,       VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_DATABASE_CODEBOOKFORMSVQ, VIRTKEY, SHIFT, NOINVERT
+    "R",            ID_RETRIEVE_START,      VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_DATABASE_PATH,       VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_RETRIEVE_STOP,       VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_RETRIEVE_VQFEATUREFILE, VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_BUTTONDOWN,          VIRTKEY, NOINVERT
+    VK_END,         ID_DISPLAY_LAST,        VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         ID_DATABASE_FEATURESELECTION, VIRTKEY, NOINVERT
+    VK_F2,          ID_DATABASE_SORTING,    VIRTKEY, NOINVERT
+    VK_F3,          ID_DATABASE_FEATURESAVE, VIRTKEY, NOINVERT
+    VK_F4,          ID_DATABASE_NFEATURESPACEVQ, VIRTKEY, NOINVERT
+    VK_F5,          ID_DATABASE_CLUSTERSORTING, VIRTKEY, NOINVERT
+    VK_F6,          ID_DATABASE_CODEWORDSSAVE, VIRTKEY, NOINVERT
+    VK_F7,          ID_DATABASE_VQFEATURESAVE, VIRTKEY, NOINVERT
+    VK_F8,          ID_RETRIEVE_FEATURESELECTED, VIRTKEY, NOINVERT
+    VK_HOME,        ID_DISPLAY_FIRST,       VIRTKEY, NOINVERT
+    VK_LEFT,        ID_BUTTONLEFT,          VIRTKEY, NOINVERT
+    VK_NEXT,        ID_DISPLAY_NEXT,        VIRTKEY, NOINVERT
+    VK_PRIOR,       ID_DISPLAY_PREVIOUS,    VIRTKEY, NOINVERT
+    VK_RIGHT,       ID_BUTTONRITHT,         VIRTKEY, NOINVERT
+    VK_UP,          ID_BUTTONUP,            VIRTKEY, NOINVERT
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "VqRetrieve MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "VqRetrieve\0"
+            VALUE "LegalCopyright", "Copyright (C) 2004\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "VqRetrieve.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "VqRetrieve Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "VqRetrieve\n\nVqRetr\nVqRetr Files (*.bmp)\n.bmp\nVqRetrieve.Document\nVqRetr Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "VqRetrieve"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_RETRIEVE_START       "Start Retrieve\n Retrieving"
+    ID_RETRIEVE_STOP        "Stop Retrieve/nStop"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DISPLAY_NEXT         "Next Page\nNext"
+    ID_DISPLAY_PREVIOUS     "Previous Page\nPrior"
+    ID_DISPLAY_FIRST        "First Page\nHome"
+    ID_DISPLAY_LAST         "Last Page\nEnd"
+    ID_EVALUATION           "\nEvaluation"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_QUERY_FEATURECOMPUTE "Query Image Features\nQueryFeatureComputing"
+    ID_QUERY_FEATURENORMALIZATION 
+                            "Query feature normalization\nQuery-Normalization"
+    ID_DATABASE_PATH        "Select Path\nDatabasePath"
+    ID_DATABASE_FEATURESELECTION "Feature Selection\nFeatureOptions"
+    ID_DATABASE_FEATURECOMPUTE 
+                            "Compute Feature Database\nDatabaseFeatureComputing"
+    ID_DATABASE_STOP        "Stop Computing\nStop"
+    ID_DATABASE_FEATURENORMALIZATION 
+                            "Feature Normalization\nDatabaseNormalization"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DATABASE_SORTING     "Feature Vector Sorting\nVectorSort"
+    ID_DATABASE_NFEATURESPACEVQ "Feature Space Clustering\nClustering"
+    ID_DATABASE_CLUSTERSORTING "Sorting Clusters\nSortCluster"
+    ID_DATABASE_FEATURESAVE "Feature File Save\nFeatureSave"
+    ID_DATABASE_CODEWORDSSAVE "Codebook Save\nBookSave"
+    ID_DATABASE_VQFEATURESAVE "Index File Save\nVQFeatureSave"
+    ID_RETRIEVE_FEATUREFILE "Open Feature File\nFeatureFileOpen"
+    ID_RETRIEVE_FEATURESELECTED "View Feature Selection\nViewFeatures"
+    ID_RETRIEVE_CLUSTERINGBOOK "Open Clustering Codebook\nCodebook"
+    ID_RETRIEVE_VQFEATUREFILE "Open VQ Feature File\nVQFeatureFileOpen"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_POINT1         ICON    DISCARDABLE     "res\\ico00002.ico"
+IDI_ICON_POINT          ICON    DISCARDABLE     "res\\icon_poi.ico"
+IDI_ICON_GRIDLINE       ICON    DISCARDABLE     "res\\icon_hli.ico"
+IDI_ICON_GRIDDASH       ICON    DISCARDABLE     "res\\ico00003.ico"
+IDI_ICON_CONNECT1       ICON    DISCARDABLE     "res\\ico00004.ico"
+IDI_ICON_CONNECT        ICON    DISCARDABLE     "res\\icon_con.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_DRAWCURVE DIALOG DISCARDABLE  0, 0, 447, 231
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Curve Setting Dialog"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "User Input",IDC_RADIO_USER,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,30,23,47,11
+    CONTROL         "From Data",IDC_RADIO_COMPUTE,"Button",
+                    BS_AUTORADIOBUTTON,77,23,47,11
+    CONTROL         "Default",IDC_RADIO_DEFAULT,"Button",BS_AUTORADIOBUTTON,
+                    130,24,39,11
+    CONTROL         "User Input",IDC_RADIO_USER3,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,28,51,47,11
+    CONTROL         "From Data",IDC_RADIO_COMPUTE3,"Button",
+                    BS_AUTORADIOBUTTON,77,52,47,11
+    CONTROL         "",IDC_RADIO_POINT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,43,104,10,8
+    CONTROL         "",IDC_RADIO_CONNECT,"Button",BS_AUTORADIOBUTTON,79,104,
+                    10,8
+    CONTROL         "",IDC_RADIO_CONNECT2,"Button",BS_AUTORADIOBUTTON,112,
+                    105,10,8
+    CONTROL         "",IDC_RADIO_SINGLELINE,"Button",BS_AUTORADIOBUTTON,145,
+                    105,10,8
+    CONTROL         "",IDC_RADIO_HISTOGRAM,"Button",BS_AUTORADIOBUTTON,181,
+                    104,10,8
+    CONTROL         "None",IDC_RADIO_GRIDLINENONE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,55,119,30,8
+    CONTROL         "",IDC_RADIO_GRIDDASH,"Button",BS_AUTORADIOBUTTON,90,118,
+                    10,8
+    CONTROL         "",IDC_RADIO_GRIDLINE,"Button",BS_AUTORADIOBUTTON,123,
+                    119,10,8
+    CONTROL         "None",IDC_RADIO_SCALEVNONE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,45,136,29,8
+    CONTROL         "",IDC_RADIO_POINT2,"Button",BS_AUTORADIOBUTTON,75,135,
+                    10,8
+    CONTROL         "",IDC_RADIO_SINGLELINE2,"Button",BS_AUTORADIOBUTTON,103,
+                    136,10,8
+    CONTROL         "",IDC_RADIO_HISTOGRAM2,"Button",BS_AUTORADIOBUTTON,134,
+                    134,10,8
+    CONTROL         "None",IDC_RADIO_AXESNONE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,282,23,29,9
+    CONTROL         "",IDC_RADIO_LINENOARROW,"Button",BS_AUTORADIOBUTTON,313,
+                    23,12,9
+    CONTROL         "",IDC_RADIO_LINEARROW,"Button",BS_AUTORADIOBUTTON,344,
+                    23,15,9
+    CONTROL         "",IDC_RADIO_DASHNOARROW,"Button",BS_AUTORADIOBUTTON,375,
+                    23,13,9
+    CONTROL         "",IDC_RADIO_DASHARROW,"Button",BS_AUTORADIOBUTTON,407,
+                    23,11,9
+    CONTROL         "Bottom",IDC_RADIO_XAXISBOTTOM,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,274,36,36,9
+    CONTROL         "Middle",IDC_RADIO_XAISMIDDLE,"Button",
+                    BS_AUTORADIOBUTTON,312,36,37,9
+    CONTROL         "Top",IDC_RADIO_XAISTOP,"Button",BS_AUTORADIOBUTTON,348,
+                    36,29,9
+    CONTROL         "Left",IDC_RADIO_YAXISLEFT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,273,51,29,9
+    CONTROL         "Middle",IDC_RADIO_YAISMIDDLE,"Button",
+                    BS_AUTORADIOBUTTON,305,51,36,9
+    CONTROL         "Right",IDC_RADIO_YAISRIGHT,"Button",BS_AUTORADIOBUTTON,
+                    342,51,29,9
+    CONTROL         "With Border?",IDC_CHECK_BORDER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,157,120,54,11
+    CONTROL         "Show Ticks?",IDC_CHECK_SHOWTICKS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,248,66,50,10
+    CONTROL         "Show Digits?",IDC_CHECK_SHOWDIGITS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,248,85,57,10
+    CONTROL         "With FigTitle?",IDC_CHECK_FIGTITLE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,358,140,61,9
+    CONTROL         "With XTitle?",IDC_CHECK_XTITLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,357,158,57,9
+    CONTROL         "With YTitle?",IDC_CHECK_YTITLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,357,177,61,9
+    EDITTEXT        IDC_EDIT_XMIN,171,23,45,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_XMAX,173,40,44,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_YMAX,134,52,42,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_YMIN,134,68,39,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DLGTITLE,277,121,72,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FIGTITLE,277,139,72,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_XTITLE,277,156,72,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_YTITLE,277,174,72,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_SCALEVCOLOR,198,133,26,19,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_LINECOLOR,43,152,22,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_BACKCOLOR,110,152,24,18,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GRIDCOLOR,165,151,24,19,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_XTICKS,414,36,23,27,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_YTICKS,414,51,23,12,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_TICKCOLOR,338,66,32,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_AXESCOLOR,405,66,32,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_TEXTCOLOR,359,85,32,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_FIGTITLECOLOR,402,121,32,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_XTITLECOLOR,289,191,32,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_YTITLECOLOR,370,191,32,17,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Confirm",IDC_BUTTON_CHECK,2,187,48,14
+    PUSHBUTTON      "FigureView",IDC_BUTTON_DISPLAY,59,187,48,14
+    PUSHBUTTON      "FigureSave",IDC_BUTTON_SAVE,116,187,48,14
+    DEFPUSHBUTTON   "Exit",IDCANCEL,173,187,48,14
+    GROUPBOX        "Get Max-Min Values",IDC_STATIC_GETMAXMIN,6,11,224,76,
+                    BS_CENTER
+    LTEXT           "Xmin:",IDC_STATIC_XMIN,8,24,23,10
+    LTEXT           "Xmax:",IDC_STATIC_XMAX,8,39,23,10
+    LTEXT           "Ymin:",IDC_STATIC_YMIN,8,53,23,10
+    LTEXT           "Ymax:",IDC_STATIC_YMAX,6,67,23,10
+    GROUPBOX        "Curve Settings",IDC_STATIC_CURVESET,6,91,223,84,
+                    BS_CENTER
+    ICON            IDI_ICON_POINT,IDC_STATIC_POINT,54,97,20,20
+    ICON            IDI_ICON_CONNECT,IDC_STATIC_CONNECT,90,99,20,20
+    ICON            IDI_ICON_SINGLELINE,IDC_STATIC_SINGLELINE,156,98,20,20
+    ICON            IDI_ICON_HISTOGRAM,IDC_STATIC_HISTOGRAM,196,100,20,20
+    LTEXT           "Linestyle",IDC_STATIC_LINESTYLE,11,102,34,11
+    LTEXT           "LineColor",IDC_STATIC_LINECOLOR,11,153,34,11
+    LTEXT           "ScaleVstyle",IDC_STATIC_SCALEVSTYLE,7,132,40,11
+    LTEXT           "Color",IDC_STATIC_SCALEVCOLOR,175,134,22,13
+    LTEXT           "BackColor",IDC_STATIC_BACKCOLOR,75,152,34,11
+    LTEXT           "Gridstyle",IDC_STATIC_GRIDSTYLE,10,118,44,11
+    LTEXT           "GridColor",IDC_STATIC_GRIDCOLOR,134,152,34,11
+    GROUPBOX        "Axes Settings",IDC_STATIC_AXESSET,244,11,196,96,
+                    BS_CENTER
+    GROUPBOX        "Titles Setting",IDC_STATIC_TITLESET,244,110,195,102,
+                    BS_CENTER
+    ICON            IDI_ICON_POINT1,IDC_STATIC_POINT2,83,130,20,20
+    ICON            IDI_ICON_SINGLELINE1,IDC_STATIC_SINGLELINE2,114,129,20,
+                    20
+    ICON            IDI_ICON_HISTOGRAM1,IDC_STATIC_HISTOGRAM2,148,131,20,20
+    ICON            IDI_ICON_GRIDLINE,IDC_STATIC_GRIDLINE,134,117,20,20
+    ICON            IDI_ICON_GRIDDASH,IDC_STATIC_GRIDDASH,102,115,20,20
+    ICON            IDI_ICON_CONNECT1,IDC_STATIC_CONNECT2,123,100,20,20
+    LTEXT           "AxesStyle",IDC_STATIC_AXESSTYLE,248,23,31,11
+    ICON            IDI_ICON_LINENOARROW,IDC_STATIC_LINENOARROW,325,18,20,20
+    ICON            IDI_ICON_LINEARROW,IDC_STATIC_LINEARROW,358,18,20,20
+    ICON            IDI_ICON_DASHARROW,IDC_STATIC_DASHARROW,420,18,20,20
+    ICON            IDI_ICON_DASHNOARROW,IDC_STATIC_DASHNOARROW,389,18,20,20
+    LTEXT           "X_Axis",IDC_STATIC_XAXIS,248,36,27,11
+    LTEXT           "Y_Axis",IDC_STATIC_YAXIS,248,51,24,11
+    LTEXT           "X_Ticks",IDC_STATIC_XTICKS,384,36,31,11
+    LTEXT           "Y_Ticks",IDC_STATIC_YTICKS,382,51,31,11
+    LTEXT           "TickColor",IDC_STATIC_TICKCOLOR,303,66,34,11
+    LTEXT           "AxesColor",IDC_STATIC_AXESCOLOR,371,66,34,11
+    LTEXT           "DigitsColor",IDC_STATIC_TEXTCOLOR,317,85,36,11
+    LTEXT           "FigTitleColor",IDC_STATIC_FIGTITLECOLOR,354,123,45,11
+    LTEXT           "XTitleColor",IDC_STATIC_XTITLECOLOR,249,191,36,11
+    LTEXT           "YTitleColor",IDC_STATIC_YTITLECOLOR,330,193,36,11
+    LTEXT           "XTitle",IDC_STATIC_XTITLE,249,159,25,11
+    LTEXT           "YTitle",IDC_STATIC_YTITLE,249,175,25,11
+    LTEXT           "FigTitle",IDC_STATIC_FIGTITLE,249,143,25,11
+    LTEXT           "DlgTitle",IDC_STATIC_DLGTITLE,247,122,25,11
+    PUSHBUTTON      "Return",IDC_BUTTON_RETURN,186,211,48,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG_DRAWCURVE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 435
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_DRAWCURVE DLGINIT
+BEGIN
+    IDC_COMBO_SCALEVCOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_SCALEVCOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_LINECOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_LINECOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_LINECOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_LINECOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_LINECOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_LINECOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_LINECOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_LINECOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_LINECOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_LINECOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_BACKCOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_BACKCOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_BACKCOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_BACKCOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_BACKCOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_BACKCOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_BACKCOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_BACKCOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_BACKCOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_BACKCOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_GRIDCOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_GRIDCOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_GRIDCOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_GRIDCOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_GRIDCOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_GRIDCOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_GRIDCOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_GRIDCOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_GRIDCOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_GRIDCOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0033, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0034, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0035, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0036, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0037, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0038, 
+    IDC_COMBO_XTICKS, 0x403, 2, 0
+0x0039, 
+    IDC_COMBO_XTICKS, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0033, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0034, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0035, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0036, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0037, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0038, 
+    IDC_COMBO_YTICKS, 0x403, 2, 0
+0x0039, 
+    IDC_COMBO_YTICKS, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_COMBO_TICKCOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_TICKCOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_TICKCOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_TICKCOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_TICKCOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_TICKCOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_TICKCOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_TICKCOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_TICKCOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_TICKCOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_AXESCOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_AXESCOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_AXESCOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_AXESCOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_AXESCOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_AXESCOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_AXESCOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_AXESCOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_AXESCOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_AXESCOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_TEXTCOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_TEXTCOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_TEXTCOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_TEXTCOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_TEXTCOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_TEXTCOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_TEXTCOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_TEXTCOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_TEXTCOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_TEXTCOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_FIGTITLECOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_XTITLECOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_XTITLECOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_XTITLECOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_XTITLECOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_XTITLECOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_XTITLECOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_XTITLECOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_XTITLECOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_XTITLECOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_XTITLECOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    IDC_COMBO_YTITLECOLOR, 0x403, 6, 0
+0x6c42, 0x6361, 0x006b, 
+    IDC_COMBO_YTITLECOLOR, 0x403, 6, 0
+0x6857, 0x7469, 0x0065, 
+    IDC_COMBO_YTITLECOLOR, 0x403, 9, 0
+0x6144, 0x6b72, 0x7247, 0x7961, "\000" 
+    IDC_COMBO_YTITLECOLOR, 0x403, 10, 0
+0x694c, 0x6867, 0x4774, 0x6172, 0x0079, 
+    IDC_COMBO_YTITLECOLOR, 0x403, 4, 0
+0x6552, 0x0064, 
+    IDC_COMBO_YTITLECOLOR, 0x403, 6, 0
+0x7247, 0x6565, 0x006e, 
+    IDC_COMBO_YTITLECOLOR, 0x403, 5, 0
+0x6c42, 0x6575, "\000" 
+    IDC_COMBO_YTITLECOLOR, 0x403, 7, 0
+0x6559, 0x6c6c, 0x776f, "\000" 
+    IDC_COMBO_YTITLECOLOR, 0x403, 8, 0
+0x614d, 0x6567, 0x746e, 0x0061, 
+    IDC_COMBO_YTITLECOLOR, 0x403, 5, 0
+0x7943, 0x6e61, "\000" 
+    0
+END
+
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\VqRetrieve.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
